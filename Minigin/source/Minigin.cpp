@@ -14,6 +14,8 @@
 using namespace std;
 using namespace std::chrono;
 
+SDL_Window* dae::Minigin::m_Window{ nullptr };
+
 void dae::Minigin::Initialize()
 {
 	if (SDL_Init(SDL_INIT_VIDEO) != 0) 
@@ -21,8 +23,9 @@ void dae::Minigin::Initialize()
 		throw std::runtime_error(std::string("SDL_Init Error: ") + SDL_GetError());
 	}
 
-	m_Window = SDL_CreateWindow(
-		"Programming 4 assignment",
+	m_Window = SDL_CreateWindow
+	(
+		"Midesinty Engine",
 		SDL_WINDOWPOS_UNDEFINED,
 		SDL_WINDOWPOS_UNDEFINED,
 		640,
@@ -40,7 +43,7 @@ void dae::Minigin::Initialize()
 /**
  * Code constructing the scene world starts here
  */
-void dae::Minigin::LoadGame() const
+void dae::Minigin::LoadGame()
 {
 	auto& scene = SceneManager::GetInstance().CreateScene("Demo");
 
@@ -69,31 +72,36 @@ void dae::Minigin::Cleanup()
 
 void dae::Minigin::Run()
 {
-	Initialize();
+		Initialize();
 
-	// tell the resource manager where he can find the game data
-	ResourceManager::GetInstance().Init("../Data/");
+		// tell the resource manager where he can find the game data
+		ResourceManager::GetInstance().Init("../Data/");
 
-	LoadGame();
+		LoadGame();
 
-	{
-		auto& renderer = Renderer::GetInstance();
-		auto& sceneManager = SceneManager::GetInstance();
-		auto& input = InputManager::GetInstance();
-
-		bool doContinue = true;
-		while (doContinue)
 		{
-			const auto currentTime = high_resolution_clock::now();
-			
-			doContinue = input.ProcessInput();
-			sceneManager.Update();
-			renderer.Render();
-			
-			auto sleepTime = duration_cast<duration<float>>(currentTime + milliseconds(MsPerFrame) - high_resolution_clock::now());
-			this_thread::sleep_for(sleepTime);
-		}
-	}
+			auto& renderer = Renderer::GetInstance();
+			auto& sceneManager = SceneManager::GetInstance();
+			auto& input = InputManager::GetInstance();
 
-	Cleanup();
+			bool doContinue = true;
+			while (doContinue)
+			{
+				const auto currentTime = high_resolution_clock::now();
+
+				doContinue = input.ProcessInput();
+				sceneManager.Update();
+				renderer.Render();
+
+				auto sleepTime = duration_cast<duration<float>>(currentTime + milliseconds(MsPerFrame) - high_resolution_clock::now());
+				this_thread::sleep_for(sleepTime);
+			}
+		}
+
+		Cleanup();
+}
+
+void dae::Minigin::Test()
+{
+	std::cout << "Test\n";
 }

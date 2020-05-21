@@ -25,6 +25,8 @@
  *  Header file for SDL_rect definition and management functions.
  */
 
+#pragma warning( push )
+#pragma warning( disable :26812)
 #ifndef SDL_rect_h_
 #define SDL_rect_h_
 
@@ -145,3 +147,4 @@ extern DECLSPEC SDL_bool SDLCALL SDL_IntersectRectAndLine(const SDL_Rect *
 #endif /* SDL_rect_h_ */
 
 /* vi: set ts=4 sw=4 expandtab: */
+#pragma warning( pop )

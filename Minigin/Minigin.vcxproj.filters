@@ -15,99 +15,99 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MiniginPCH.h">
+    <ClInclude Include="source\Transform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Singleton.h">
+    <ClInclude Include="source\Font.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ResourceManager.h">
+    <ClInclude Include="source\GameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Renderer.h">
+    <ClInclude Include="source\InputManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Texture2D.h">
+    <ClInclude Include="source\Minigin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="InputManager.h">
+    <ClInclude Include="source\MiniginPCH.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.h">
+    <ClInclude Include="source\Renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Transform.h">
+    <ClInclude Include="source\ResourceManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.h">
+    <ClInclude Include="source\RigidBody2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SceneManager.h">
+    <ClInclude Include="source\Scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TextObject.h">
+    <ClInclude Include="source\SceneManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SceneObject.h">
+    <ClInclude Include="source\SceneObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Font.h">
+    <ClInclude Include="source\Singleton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Minigin.h">
+    <ClInclude Include="source\targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SceneGraph.h">
+    <ClInclude Include="source\TextObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RigidBody2D.h">
+    <ClInclude Include="source\Texture2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MiniginPCH.cpp">
+    <ClCompile Include="source\Font.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ResourceManager.cpp">
+    <ClCompile Include="source\GameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Renderer.cpp">
+    <ClCompile Include="source\InputManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Texture2D.cpp">
+    <ClCompile Include="source\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="InputManager.cpp">
+    <ClCompile Include="source\Minigin.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject.cpp">
+    <ClCompile Include="source\MiniginPCH.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Transform.cpp">
+    <ClCompile Include="source\Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Scene.cpp">
+    <ClCompile Include="source\ResourceManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SceneManager.cpp">
+    <ClCompile Include="source\RigidBody2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TextObject.cpp">
+    <ClCompile Include="source\Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Font.cpp">
+    <ClCompile Include="source\SceneManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="source\TextObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Minigin.cpp">
+    <ClCompile Include="source\Texture2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SceneGraph.cpp">
+    <ClCompile Include="source\Texture2DTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RigidBody2D.cpp">
+    <ClCompile Include="source\Transform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

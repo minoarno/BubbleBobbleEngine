@@ -5,12 +5,13 @@ namespace dae
 	class Minigin
 	{
 	public:
-		void Initialize();
-		void LoadGame() const;
-		void Cleanup();
-		void Run();
+		static void Initialize();
+		static void LoadGame();
+		static void Cleanup();
+		static void Run();
+		static void Test();
 	private:
 		static const int MsPerFrame = 16; //16 for 60 fps, 33 for 30 fps
-		SDL_Window* m_Window{};
+		static SDL_Window* m_Window;
 	};
 }
