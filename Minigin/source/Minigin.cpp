@@ -25,7 +25,7 @@ void dae::Minigin::Initialize()
 
 	m_Window = SDL_CreateWindow
 	(
-		"Midesinty Engine",
+		"Midestiny Engine",
 		SDL_WINDOWPOS_UNDEFINED,
 		SDL_WINDOWPOS_UNDEFINED,
 		640,
@@ -72,33 +72,33 @@ void dae::Minigin::Cleanup()
 
 void dae::Minigin::Run()
 {
-		Initialize();
+	Initialize();
 
-		// tell the resource manager where he can find the game data
-		ResourceManager::GetInstance().Init("../Data/");
+	// tell the resource manager where he can find the game data
+	ResourceManager::GetInstance().Init("../Data/");
 
-		LoadGame();
+	LoadGame();
 
+	{
+		auto& renderer = Renderer::GetInstance();
+		auto& sceneManager = SceneManager::GetInstance();
+		auto& input = InputManager::GetInstance();
+
+		bool doContinue = true;
+		while (doContinue)
 		{
-			auto& renderer = Renderer::GetInstance();
-			auto& sceneManager = SceneManager::GetInstance();
-			auto& input = InputManager::GetInstance();
+			const auto currentTime = high_resolution_clock::now();
 
-			bool doContinue = true;
-			while (doContinue)
-			{
-				const auto currentTime = high_resolution_clock::now();
+			doContinue = input.ProcessInput();
+			sceneManager.Update();
+			renderer.Render();
 
-				doContinue = input.ProcessInput();
-				sceneManager.Update();
-				renderer.Render();
-
-				auto sleepTime = duration_cast<duration<float>>(currentTime + milliseconds(MsPerFrame) - high_resolution_clock::now());
-				this_thread::sleep_for(sleepTime);
-			}
+			auto sleepTime = duration_cast<duration<float>>(currentTime + milliseconds(MsPerFrame) - high_resolution_clock::now());
+			this_thread::sleep_for(sleepTime);
 		}
+	}
 
-		Cleanup();
+	Cleanup();
 }
 
 void dae::Minigin::Test()

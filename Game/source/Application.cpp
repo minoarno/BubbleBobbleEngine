@@ -1,8 +1,8 @@
 #include <iostream>
 #include "Minigin.h"
 
-int main(int argc, wchar_t* argv[])
+int main(/*int argc, wchar_t* argv[]*/)
 {
-	dae::Minigin::Test();
+	dae::Minigin::Run();
 	std::cin.get();
 }
