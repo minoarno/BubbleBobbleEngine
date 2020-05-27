@@ -4,6 +4,7 @@ class Sandbox final : public MidestinyEngine::Application
 {
 public:
 	Sandbox()
+		:Application()
 	{
 
 	}
@@ -13,7 +14,7 @@ public:
 
 	}
 
-	void Run()
+	void Run() override
 	{
 
 	}

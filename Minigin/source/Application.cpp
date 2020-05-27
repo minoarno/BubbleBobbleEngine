@@ -18,12 +18,12 @@ using namespace std::chrono;
 MidestinyEngine::Application::Application()
 	:m_Window{nullptr}
 {
-	Initialize();
+	MidestinyEngine::Application::Initialize();
 }
 
 MidestinyEngine::Application::~Application()
 {
-	Cleanup();
+	MidestinyEngine::Application::Cleanup();
 }
 
 void MidestinyEngine::Application::Initialize()

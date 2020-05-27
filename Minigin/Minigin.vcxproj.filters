@@ -113,10 +113,10 @@
     <ClCompile Include="source\MiniginPCH.cpp">
       <Filter>Entry Point</Filter>
     </ClCompile>
-    <ClCompile Include="source\Main.h">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\Application.cpp">
+      <Filter>Entry Point</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Main.h">
       <Filter>Entry Point</Filter>
     </ClCompile>
   </ItemGroup>
