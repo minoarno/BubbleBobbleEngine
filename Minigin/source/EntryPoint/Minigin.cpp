@@ -1,15 +1,15 @@
-#include "MiniginPCH.h"
+#include "../MiniginPCH.h"
 #include "Minigin.h"
 #include <chrono>
 #include <thread>
-#include "InputManager.h"
-#include "SceneManager.h"
-#include "Renderer.h"
-#include "ResourceManager.h"
+#include "..\InputManager.h"
+#include "..\SceneManager.h"
+#include "..\Renderer.h"
+#include "..\ResourceManager.h"
 #include <SDL.h>
-#include "TextObject.h"
-#include "GameObject.h"
-#include "Scene.h"
+#include "..\TextObject.h"
+#include "..\GameObject.h"
+#include "..\Scene.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -99,9 +99,4 @@ void dae::Minigin::Run()
 	}
 
 	Cleanup();
-}
-
-void dae::Minigin::Test()
-{
-	std::cout << "Test\n";
 }

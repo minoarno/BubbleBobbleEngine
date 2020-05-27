@@ -17,15 +17,23 @@ void Scene::Add(const std::shared_ptr<SceneObject>& object)
 
 void Scene::Update()
 {
-	for(auto& object : m_Objects)
+	for(std::shared_ptr<SceneObject>& object : m_Objects)
 	{
 		object->Update();
 	}
 }
 
+void dae::Scene::FixedUpdate()
+{
+	for (std::shared_ptr<SceneObject>& object : m_Objects)
+	{
+		object->FixedUpdate();
+	}
+}
+
 void Scene::Render() const
 {
-	for (const auto& object : m_Objects)
+	for (const std::shared_ptr<SceneObject>& object : m_Objects)
 	{
 		object->Render();
 	}
