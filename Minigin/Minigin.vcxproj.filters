@@ -13,24 +13,27 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Entry Point">
+    <Filter Include="Input">
+      <UniqueIdentifier>{942f0b55-29bf-4164-b06e-ae686db77da3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects">
+      <UniqueIdentifier>{db8ff9ab-8bdf-4da2-845f-c43ad76f4dce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\Components">
+      <UniqueIdentifier>{29485562-cd2d-47dc-87ad-1f6e82a89591}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tilemap">
+      <UniqueIdentifier>{7fd3dd02-70ef-41de-b132-f3c363f39375}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logging">
+      <UniqueIdentifier>{d6806a78-90f1-491c-b100-bce259d2bb77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core">
       <UniqueIdentifier>{94a9c9c3-fce2-4b7a-ae4f-99baa1f6db4b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\MidestinyEngine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Transform.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="source\Font.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\GameObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\InputManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\Renderer.h">
@@ -60,27 +63,45 @@
     <ClInclude Include="source\TextObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\MiniginPCH.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Core.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Application.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="source\InputManager.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="source\GameObject.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
     <ClInclude Include="source\Texture2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\MiniginPCH.h">
-      <Filter>Entry Point</Filter>
+    <ClInclude Include="source\Transform.h">
+      <Filter>GameObjects\Components</Filter>
     </ClInclude>
-    <ClInclude Include="source\Core.h">
-      <Filter>Entry Point</Filter>
+    <ClInclude Include="source\BaseComponent.h">
+      <Filter>GameObjects\Components</Filter>
     </ClInclude>
-    <ClInclude Include="source\Application.h">
-      <Filter>Entry Point</Filter>
+    <ClInclude Include="source\BaseBlock.h">
+      <Filter>Tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Tilemap.h">
+      <Filter>Tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Log.h">
+      <Filter>Logging</Filter>
+    </ClInclude>
+    <ClInclude Include="source\MidestinyEngine.h">
+      <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Font.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\GameObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\InputManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\Renderer.cpp">
@@ -107,17 +128,35 @@
     <ClCompile Include="source\Texture2DTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Transform.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\MiniginPCH.cpp">
-      <Filter>Entry Point</Filter>
+      <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="source\Application.cpp">
-      <Filter>Entry Point</Filter>
+      <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="source\Main.h">
-      <Filter>Entry Point</Filter>
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="source\InputManager.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GameObject.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Transform.cpp">
+      <Filter>GameObjects\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BaseComponent.cpp">
+      <Filter>GameObjects\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BaseBlock.cpp">
+      <Filter>Tilemap</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Tilemap.cpp">
+      <Filter>Tilemap</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Log.cpp">
+      <Filter>Logging</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

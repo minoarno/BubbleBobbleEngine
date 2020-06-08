@@ -1,6 +1,7 @@
 #pragma once
 #include "Transform.h"
 #include "SceneObject.h"
+#include <map>
 
 namespace dae
 {
@@ -24,6 +25,7 @@ namespace dae
 
 	private:
 		Transform m_Transform;
+		std::map<const char*, BaseComponent*> m_Components;
 		std::shared_ptr<Texture2D> m_Texture{};
 	};
 }

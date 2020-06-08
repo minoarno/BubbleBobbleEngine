@@ -1,3 +1,4 @@
+#pragma once
 #include "MiniginPCH.h"
 #include "Application.h"
 #include <chrono>
@@ -107,6 +108,4 @@ void MidestinyEngine::Application::Run()
 			this_thread::sleep_for(sleepTime);
 		}
 	}
-
-	//Cleanup();
 }

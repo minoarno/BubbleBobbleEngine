@@ -6,17 +6,10 @@ public:
 	Sandbox()
 		:Application()
 	{
-
 	}
 
 	~Sandbox()
 	{
-
-	}
-
-	void Run() override
-	{
-
 	}
 };
 
