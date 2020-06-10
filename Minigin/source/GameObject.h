@@ -10,6 +10,7 @@ namespace dae
 	{
 	public:
 		void Update() override;
+		void LateUpdate() override;
 		void FixedUpdate() override;
 		void Render() const override;
 

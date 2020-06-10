@@ -212,6 +212,7 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="source\Collider.h" />
     <ClInclude Include="source\Log.h" />
     <ClInclude Include="source\BaseBlock.h" />
     <ClInclude Include="source\BaseComponent.h" />
@@ -236,6 +237,7 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
     <ClInclude Include="source\Tilemap.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\Collider.cpp" />
     <ClCompile Include="source\Log.cpp" />
     <ClCompile Include="source\BaseBlock.cpp" />
     <ClCompile Include="source\BaseComponent.cpp" />

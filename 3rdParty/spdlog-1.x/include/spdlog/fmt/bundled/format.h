@@ -29,6 +29,8 @@
  source code, you may redistribute such embedded portions in such object form
  without including the above copyright and permission notices.
  */
+#pragma warning(push)
+#pragma warning(disable : 26812)
 
 #ifndef FMT_FORMAT_H_
 #define FMT_FORMAT_H_
@@ -3646,3 +3648,4 @@ FMT_END_NAMESPACE
 #endif
 
 #endif  // FMT_FORMAT_H_
+#pragma warning(pop)

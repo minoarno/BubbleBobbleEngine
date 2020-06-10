@@ -99,6 +99,9 @@
     <ClInclude Include="source\MidestinyEngine.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="source\Collider.h">
+      <Filter>GameObjects\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Font.cpp">
@@ -157,6 +160,9 @@
     </ClCompile>
     <ClCompile Include="source\Log.cpp">
       <Filter>Logging</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Collider.cpp">
+      <Filter>GameObjects\Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

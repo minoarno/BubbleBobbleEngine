@@ -6,11 +6,11 @@ namespace dae
 {
 	class Font;
 	class Texture2D;
-	class SceneObject;
 	class TextObject final : public SceneObject
 	{
 	public:
 		void Update() override;
+		void LateUpdate() override;
 		void FixedUpdate() override;
 		void Render() const override;
 

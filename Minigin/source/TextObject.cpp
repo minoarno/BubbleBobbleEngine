@@ -36,6 +36,10 @@ void dae::TextObject::Update()
 	}
 }
 
+void dae::TextObject::LateUpdate()
+{
+}
+
 void dae::TextObject::FixedUpdate()
 {
 }

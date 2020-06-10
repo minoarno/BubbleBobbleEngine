@@ -23,6 +23,14 @@ void Scene::Update()
 	}
 }
 
+void Scene::LateUpdate()
+{
+	for (std::shared_ptr<SceneObject>& object : m_Objects)
+	{
+		object->LateUpdate();
+	}
+}
+
 void dae::Scene::FixedUpdate()
 {
 	for (std::shared_ptr<SceneObject>& object : m_Objects)

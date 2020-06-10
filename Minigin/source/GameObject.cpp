@@ -9,6 +9,10 @@ void dae::GameObject::Update()
 {
 }
 
+void dae::GameObject::LateUpdate()
+{
+}
+
 void dae::GameObject::FixedUpdate()
 {
 }
