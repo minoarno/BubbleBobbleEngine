@@ -97,7 +97,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>MIDESTINYENGINE_PLATFORM_WINDOWS;MIDESTINYENGINE_BUILD_DLL;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\SDL2\include;$(SolutionDir)3rdParty\Catch2;$(SolutionDir)3rdParty\spdlog-1.x\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\SDL2\include;$(SolutionDir)3rdParty\Catch2;$(SolutionDir)3rdParty\spdlog-1.x\include;$(SolutionDir)3rdParty\imgui-1.76;$(SolutionDir)3rdParty\box2d-master\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>MiniginPCH.h</PrecompiledHeaderFile>
       <TreatWarningAsError>true</TreatWarningAsError>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -156,7 +156,7 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>MIDESTINYENGINE_PLATFORM_WINDOWS;MIDESTINYENGINE_BUILD_DLL;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\SDL2\include;$(SolutionDir)3rdParty\Catch2;$(SolutionDir)3rdParty\spdlog-1.x\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\SDL2\include;$(SolutionDir)3rdParty\Catch2;$(SolutionDir)3rdParty\spdlog-1.x\include;$(SolutionDir)3rdParty\imgui-1.76;$(SolutionDir)3rdParty\box2d-master\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>MiniginPCH.h</PrecompiledHeaderFile>
       <TreatWarningAsError>true</TreatWarningAsError>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -212,6 +212,10 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="source\Observer.h" />
+    <ClInclude Include="source\BinaryReader.h" />
+    <ClInclude Include="source\BinaryWriter.h" />
+    <ClInclude Include="source\Saving.h" />
     <ClInclude Include="source\Collider.h" />
     <ClInclude Include="source\Log.h" />
     <ClInclude Include="source\BaseBlock.h" />
@@ -235,8 +239,12 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
     <ClInclude Include="source\Texture2D.h" />
     <ClInclude Include="source\Transform.h" />
     <ClInclude Include="source\Tilemap.h" />
+    <ClInclude Include="source\Structs.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\Observer.cpp" />
+    <ClCompile Include="source\BinaryReader.cpp" />
+    <ClCompile Include="source\BinaryWriter.cpp" />
     <ClCompile Include="source\Collider.cpp" />
     <ClCompile Include="source\Log.cpp" />
     <ClCompile Include="source\BaseBlock.cpp" />

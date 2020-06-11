@@ -4,31 +4,55 @@
 
 void dae::SceneManager::Update()
 {
-	for(auto& scene : m_Scenes)
+	if (m_Scenes.find(m_CurrentSceneIndex) != m_Scenes.end())
 	{
-		scene->Update();
+		m_Scenes[m_CurrentSceneIndex]->Update();
+	}
+	else
+	{
+		ME_CORE_ERROR("Scene with index {0} doesn't exist",m_CurrentSceneIndex);
 	}
 }
 
 void dae::SceneManager::LateUpdate()
 {
-	for (auto& scene : m_Scenes)
+	if (m_Scenes.find(m_CurrentSceneIndex) != m_Scenes.end())
 	{
-		scene->LateUpdate();
+		m_Scenes[m_CurrentSceneIndex]->LateUpdate();
+	}
+	else
+	{
+		ME_CORE_ERROR("Scene with index {0} doesn't exist", m_CurrentSceneIndex);
 	}
 }
 
 void dae::SceneManager::Render()
 {
-	for (const auto& scene : m_Scenes)
+	if (m_Scenes.find(m_CurrentSceneIndex) != m_Scenes.end())
 	{
-		scene->Render();
+		m_Scenes[m_CurrentSceneIndex]->Render();
 	}
+	else
+	{
+		ME_CORE_ERROR("Scene with index {0} doesn't exist", m_CurrentSceneIndex);
+	}
+}
+
+void dae::SceneManager::SaveScenesToFile(const std::string& filename)
+{
+	ME_CORE_INFO(filename);
+}
+
+void dae::SceneManager::LoadScenesFromFile(const std::string& filename)
+{
+	ME_CORE_INFO(filename);
 }
 
 dae::Scene& dae::SceneManager::CreateScene(const std::string& name)
 {
 	const auto scene = std::shared_ptr<Scene>(new Scene(name));
-	m_Scenes.push_back(scene);
+	int index = int(m_Scenes.size());
+	m_Scenes.emplace(index,scene);
+	m_NameToIndexList.emplace(name, index);
 	return *scene;
 }

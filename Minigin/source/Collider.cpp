@@ -12,3 +12,7 @@ Collider::Collider(GameObject* owner)
 Collider::~Collider()
 {
 }
+
+void Collider::FixedUpdate()
+{
+}

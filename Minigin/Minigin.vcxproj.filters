@@ -31,6 +31,15 @@
     <Filter Include="Core">
       <UniqueIdentifier>{94a9c9c3-fce2-4b7a-ae4f-99baa1f6db4b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Saving">
+      <UniqueIdentifier>{c00f0a75-3079-4e18-a304-dc9c69451aaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{a23317f5-ef27-45a6-ad11-2c70cdf38cac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Design Patterns">
+      <UniqueIdentifier>{6184fe22-53d1-4f05-bb42-0a433754e9f9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Font.h">
@@ -40,18 +49,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\ResourceManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\RigidBody2D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Scene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\SceneManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\SceneObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\Singleton.h">
@@ -78,9 +75,6 @@
     <ClInclude Include="source\GameObject.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="source\Texture2D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="source\Transform.h">
       <Filter>GameObjects\Components</Filter>
     </ClInclude>
@@ -102,6 +96,36 @@
     <ClInclude Include="source\Collider.h">
       <Filter>GameObjects\Components</Filter>
     </ClInclude>
+    <ClInclude Include="source\Saving.h">
+      <Filter>Saving</Filter>
+    </ClInclude>
+    <ClInclude Include="source\BinaryWriter.h">
+      <Filter>Saving</Filter>
+    </ClInclude>
+    <ClInclude Include="source\BinaryReader.h">
+      <Filter>Saving</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Structs.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="source\SceneManager.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="source\SceneObject.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Scene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="source\RigidBody2D.h">
+      <Filter>GameObjects\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Texture2D.h">
+      <Filter>GameObjects\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Observer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Font.cpp">
@@ -113,19 +137,7 @@
     <ClCompile Include="source\ResourceManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\RigidBody2D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Scene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\SceneManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\TextObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Texture2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\Texture2DTests.cpp">
@@ -163,6 +175,27 @@
     </ClCompile>
     <ClCompile Include="source\Collider.cpp">
       <Filter>GameObjects\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BinaryWriter.cpp">
+      <Filter>Saving</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BinaryReader.cpp">
+      <Filter>Saving</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SceneManager.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Scene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="source\RigidBody2D.cpp">
+      <Filter>GameObjects\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Texture2D.cpp">
+      <Filter>GameObjects\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Observer.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

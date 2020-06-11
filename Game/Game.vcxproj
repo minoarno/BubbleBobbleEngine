@@ -176,12 +176,18 @@ $(SolutionDir)3rdParty/SDL2/lib/x64;$(LibraryPath)</LibraryPath>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseEnemy.cpp" />
+    <ClCompile Include="Character.cpp" />
     <ClCompile Include="source\SandboxApp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Minigin\Minigin.vcxproj">
       <Project>{41b0ec47-d48c-4b0f-951b-d98595ffae0a}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BaseEnemy.h" />
+    <ClInclude Include="Character.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
