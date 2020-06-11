@@ -93,9 +93,6 @@
     <ClInclude Include="source\MidestinyEngine.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="source\Collider.h">
-      <Filter>GameObjects\Components</Filter>
-    </ClInclude>
     <ClInclude Include="source\Saving.h">
       <Filter>Saving</Filter>
     </ClInclude>
@@ -125,6 +122,9 @@
     </ClInclude>
     <ClInclude Include="source\Observer.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Collider2D.h">
+      <Filter>GameObjects\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -173,9 +173,6 @@
     <ClCompile Include="source\Log.cpp">
       <Filter>Logging</Filter>
     </ClCompile>
-    <ClCompile Include="source\Collider.cpp">
-      <Filter>GameObjects\Components</Filter>
-    </ClCompile>
     <ClCompile Include="source\BinaryWriter.cpp">
       <Filter>Saving</Filter>
     </ClCompile>
@@ -196,6 +193,9 @@
     </ClCompile>
     <ClCompile Include="source\Observer.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Collider2D.cpp">
+      <Filter>GameObjects\Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

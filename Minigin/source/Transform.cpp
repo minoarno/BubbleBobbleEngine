@@ -2,7 +2,17 @@
 #include "Transform.h"
 
 dae::Transform::Transform()
-	:m_Position{0,0,0}
+	: m_Position{0,0,0}
+{
+}
+
+dae::Transform::Transform(const glm::vec3& pos)
+	: m_Position{ pos }
+{
+}
+
+dae::Transform::Transform(float x, float y, float z)
+	: Transform{ glm::vec3{x,y,z} }
 {
 }
 

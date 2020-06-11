@@ -9,6 +9,7 @@ namespace dae
 	class TextObject final : public SceneObject
 	{
 	public:
+		void Awake() override;
 		void Update() override;
 		void LateUpdate() override;
 		void FixedUpdate() override;

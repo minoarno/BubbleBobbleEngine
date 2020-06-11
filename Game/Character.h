@@ -1,5 +1,12 @@
 #pragma once
-class Character
+#include "GameObject.h"
+
+class Character final : public  dae::GameObject
 {
+public:
+	Character();
+	~Character();
+private:
+
 };
 

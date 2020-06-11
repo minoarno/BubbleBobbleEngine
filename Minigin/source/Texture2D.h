@@ -1,4 +1,6 @@
 #pragma once
+#include "BaseComponent.h"
+
 struct SDL_Texture;
 namespace dae
 {
