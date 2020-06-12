@@ -1,18 +1,10 @@
-#pragma once
 #include "MiniginPCH.h"
-#include "Application.h"
-#include <chrono>
-#include <thread>
 #include "InputManager.h"
 #include "SceneManager.h"
 #include "Renderer.h"
 #include "ResourceManager.h"
-#include <SDL.h>
 #include "TextObject.h"
-#include "GameObject.h"
-#include "Scene.h"
 
-using namespace std;
 using namespace dae;
 using namespace std::chrono;
 
@@ -73,6 +65,25 @@ void MidestinyEngine::Application::LoadGame()
 	scene.Add(to);
 }
 
+void MidestinyEngine::Application::Invoke(std::function<void()> func, int intervalInMilliseconds, bool isLooping)
+{
+	std::thread([func, intervalInMilliseconds,isLooping]()
+	{
+		do
+		{
+			auto nextTimeFunctionCall = std::chrono::steady_clock::now() + std::chrono::milliseconds(intervalInMilliseconds);
+			std::this_thread::sleep_until(nextTimeFunctionCall);
+			func();
+		} while (isLooping);
+	}).detach();
+}
+
+void MidestinyEngine::Application::FixedUpdate()
+{
+	auto& sceneManager = dae::SceneManager::GetInstance();
+	sceneManager.FixedUpdate();
+}
+
 void MidestinyEngine::Application::Cleanup()
 {
 	dae::Renderer::GetInstance().Destroy();
@@ -89,13 +100,15 @@ void MidestinyEngine::Application::Run()
 	dae::ResourceManager::GetInstance().Init("../Data/");
 
 	LoadGame();
-
+	
 	{
 		auto& renderer = dae::Renderer::GetInstance();
 		auto& sceneManager = dae::SceneManager::GetInstance();
 		auto& input = dae::InputManager::GetInstance();
 
-		bool doContinue = true;
+		Invoke(std::bind(&MidestinyEngine::Application::FixedUpdate, this), 1000, true);
+		
+		bool doContinue = true;	
 		while (doContinue)
 		{
 			const auto currentTime = high_resolution_clock::now();
@@ -103,9 +116,10 @@ void MidestinyEngine::Application::Run()
 			doContinue = input.ProcessInput();
 			sceneManager.Update();
 			renderer.Render();
-
+			sceneManager.LateUpdate();
+			
 			auto sleepTime = duration_cast<duration<float>>(currentTime + milliseconds(MsPerFrame) - high_resolution_clock::now());
-			this_thread::sleep_for(sleepTime);
+			std::this_thread::sleep_for(sleepTime);
 		}
 	}
 }

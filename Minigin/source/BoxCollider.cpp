@@ -11,11 +11,6 @@ namespace dae
 		m_pBodyshape->SetAsBox(20, 20);
 	}
 
-	BoxCollider::~BoxCollider()
-	{
-
-	}
-
 	void BoxCollider::Start()
 	{
 		RigidBody* rigidBody = static_cast<RigidBody*>(m_pOwnerGameObject->GetComponent("RigidBody"));

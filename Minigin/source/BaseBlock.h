@@ -1,7 +1,6 @@
 #pragma once
 #include "GameObject.h"
-
-class BaseBlock
+class BaseBlock : public dae::GameObject
 {
 public:
 	BaseBlock();

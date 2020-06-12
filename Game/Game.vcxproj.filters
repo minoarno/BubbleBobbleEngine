@@ -21,18 +21,30 @@
     <ClCompile Include="source\SandboxApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Character.cpp">
+    <ClCompile Include="source\BaseEnemy.cpp">
+      <Filter>Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Character.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BaseEnemy.cpp">
+    <ClCompile Include="source\Maita.cpp">
+      <Filter>Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ZenChan.cpp">
       <Filter>Enemies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Character.h">
+    <ClInclude Include="source\BaseEnemy.h">
+      <Filter>Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Character.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BaseEnemy.h">
+    <ClInclude Include="source\ZenChan.h">
+      <Filter>Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Maita.h">
       <Filter>Enemies</Filter>
     </ClInclude>
   </ItemGroup>

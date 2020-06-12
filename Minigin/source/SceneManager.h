@@ -11,6 +11,7 @@ namespace dae
 		Scene& CreateScene(const std::string& name);
 		void Update();
 		void LateUpdate();
+		void FixedUpdate();
 		void Render();
 		void SaveScenesToFile(const std::string& filename);
 		void LoadScenesFromFile(const std::string& filename);

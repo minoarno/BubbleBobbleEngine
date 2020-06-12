@@ -11,5 +11,5 @@ class Tilemap final
 	void AddRow();
 	void AddCollum();
 private:
-	std::deque<std::deque<BaseBlock*>> m_Tilemap;
+	std::deque<std::deque<BaseBlock*>> m_TilemapGrid;
 };

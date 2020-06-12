@@ -26,6 +26,18 @@ void dae::SceneManager::LateUpdate()
 	}
 }
 
+void dae::SceneManager::FixedUpdate()
+{
+	if (m_Scenes.find(m_CurrentSceneIndex) != m_Scenes.end())
+	{
+		m_Scenes[m_CurrentSceneIndex]->FixedUpdate();
+	}
+	else
+	{
+		ME_CORE_ERROR("Scene with index {0} doesn't exist", m_CurrentSceneIndex);
+	}
+}
+
 void dae::SceneManager::Render()
 {
 	if (m_Scenes.find(m_CurrentSceneIndex) != m_Scenes.end())

@@ -13,24 +13,44 @@ dae::GameObject::~GameObject() = default;
 
 void dae::GameObject::Start()
 {
+	for(std::pair<std::string, BaseComponent*> component : m_pComponents)
+	{
+		component.second->Start();
+	}
 }
 
 void dae::GameObject::Update()
 {
+	for (std::pair<std::string, BaseComponent*> component : m_pComponents)
+	{
+		component.second->Update();
+	}
 }
 
 void dae::GameObject::LateUpdate()
 {
+	for (std::pair<std::string, BaseComponent*> component : m_pComponents)
+	{
+		component.second->LateUpdate();
+	}
 }
 
 void dae::GameObject::FixedUpdate()
 {
+	for (std::pair<std::string, BaseComponent*> component : m_pComponents)
+	{
+		component.second->FixedUpdate();
+	}
 }
 
 void dae::GameObject::Render() const
 {
-	auto pos = m_Transform->GetPosition();
+	const glm::vec3 pos = m_Transform->GetPosition();
 	Renderer::GetInstance().RenderTexture(*m_Texture, pos.x, pos.y);
+	for (std::pair<std::string, BaseComponent*> component : m_pComponents)
+	{
+		component.second->Render();
+	}
 }
 
 void dae::GameObject::SetTexture(const std::string& filename)

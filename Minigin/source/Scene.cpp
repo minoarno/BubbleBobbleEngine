@@ -17,7 +17,7 @@ void Scene::Add(SceneObject* object)
 
 void dae::Scene::Start()
 {
-	m_pWorld = new b2World(b2Vec2{ 0,9.81f });
+	m_pWorld = new b2World{ b2Vec2{0,9.81f} };
 
 	for (SceneObject* object : m_Objects)
 	{
@@ -43,7 +43,7 @@ void Scene::LateUpdate()
 
 void dae::Scene::FixedUpdate()
 {
-	m_pWorld->Step(.5f,3,8);
+	//m_pWorld->Step(.5f,3,8);
 	for (SceneObject* object : m_Objects)
 	{
 		

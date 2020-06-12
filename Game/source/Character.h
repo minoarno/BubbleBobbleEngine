@@ -6,6 +6,8 @@ class Character final : public  dae::GameObject
 public:
 	Character();
 	~Character();
+
+	void SetInput();
 private:
 
 };

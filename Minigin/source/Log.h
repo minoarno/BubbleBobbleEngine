@@ -1,5 +1,4 @@
 #pragma once
-
 //Mentioned in the youtube video of The Cherno about Logging
 //https://www.youtube.com/watch?v=dZr-53LAlOw&t=915s
 //Installed from the github page

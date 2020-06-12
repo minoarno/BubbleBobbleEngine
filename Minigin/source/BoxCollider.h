@@ -1,6 +1,6 @@
 #pragma once
 #include "BaseComponent.h"
-#include "ColliderIncludes.h"
+
 namespace dae
 {
 	class GameObject;
@@ -8,13 +8,12 @@ namespace dae
 	{
 	public:
 		BoxCollider();
-		~BoxCollider();
+		virtual ~BoxCollider() = default;
 
 		virtual void Start() override;
 		virtual void FixedUpdate() override;
 
 		virtual void Render()const override;
-
 
 	private:
 		b2PolygonShape* m_pBodyshape = nullptr;
