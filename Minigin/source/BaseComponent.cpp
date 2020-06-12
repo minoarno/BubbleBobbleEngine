@@ -1,17 +1,23 @@
 #include "MiniginPCH.h"
 #include "BaseComponent.h"
 
-BaseComponent::BaseComponent(GameObject* owner)
-	: m_OwnerGameObject{owner}
-	, m_TypeName{"BaseComponent"}
+namespace dae
 {
-}
+	BaseComponent::BaseComponent()
+		: m_TypeName{ "BaseComponent" }
+	{
+	}
+	BaseComponent::~BaseComponent()
+	{
+	}
 
-BaseComponent::~BaseComponent()
-{
-}
+	std::string BaseComponent::GetTypeName()
+	{
+		return m_TypeName;
+	}
 
-std::string BaseComponent::GetTypeName()
-{
-	return m_TypeName;
+	void BaseComponent::SetGameObject(GameObject* owner)
+	{
+		m_pOwnerGameObject = owner;
+	}
 }

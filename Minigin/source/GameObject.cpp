@@ -11,7 +11,7 @@ dae::GameObject::GameObject()
 
 dae::GameObject::~GameObject() = default;
 
-void dae::GameObject::Awake()
+void dae::GameObject::Start()
 {
 }
 
@@ -45,5 +45,16 @@ void dae::GameObject::SetPosition(float x, float y)
 
 void dae::GameObject::AddComponent(BaseComponent* component)
 {
-	m_Components.emplace(component->GetTypeName(), component);
+	component->SetGameObject(this);
+	m_pComponents.emplace(component->GetTypeName(), component);
+}
+
+dae::BaseComponent* dae::GameObject::GetComponent(const std::string& name)
+{
+	if (m_pComponents.find(name) != m_pComponents.end())
+	{
+		return m_pComponents[name];
+	}
+	ME_ERROR("GameObject {0} has no component of the type {1}", m_Name, name);
+	return nullptr;
 }

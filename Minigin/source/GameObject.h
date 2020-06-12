@@ -5,13 +5,14 @@
 #include <memory>
 namespace dae
 {
+
 	class Texture2D;
 	class GameObject : public SceneObject
 	{
 	public:
 		GameObject();
 		virtual ~GameObject();
-		void Awake() override;
+		void Start() override;
 		void Update() override;
 		void LateUpdate() override;
 		void FixedUpdate() override;
@@ -27,9 +28,10 @@ namespace dae
 
 		void AddComponent(BaseComponent* component);
 
-	private:
+		BaseComponent* GetComponent(const std::string& name);
+	protected:
 		Transform* m_Transform;
-		std::map<std::string, BaseComponent*> m_Components;
+		std::map<std::string, BaseComponent*> m_pComponents;
 		std::shared_ptr<Texture2D> m_Texture{};
 	};
 }

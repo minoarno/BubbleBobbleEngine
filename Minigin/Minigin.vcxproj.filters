@@ -114,16 +114,19 @@
     <ClInclude Include="source\Scene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="source\RigidBody2D.h">
-      <Filter>GameObjects\Components</Filter>
-    </ClInclude>
     <ClInclude Include="source\Texture2D.h">
       <Filter>GameObjects\Components</Filter>
     </ClInclude>
     <ClInclude Include="source\Observer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\Collider2D.h">
+    <ClInclude Include="source\BoxCollider.h">
+      <Filter>GameObjects\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ColliderIncludes.h">
+      <Filter>GameObjects\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="source\RigidBody.h">
       <Filter>GameObjects\Components</Filter>
     </ClInclude>
   </ItemGroup>
@@ -185,16 +188,16 @@
     <ClCompile Include="source\Scene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="source\RigidBody2D.cpp">
-      <Filter>GameObjects\Components</Filter>
-    </ClCompile>
     <ClCompile Include="source\Texture2D.cpp">
       <Filter>GameObjects\Components</Filter>
     </ClCompile>
     <ClCompile Include="source\Observer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Collider2D.cpp">
+    <ClCompile Include="source\BoxCollider.cpp">
+      <Filter>GameObjects\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="source\RigidBody.cpp">
       <Filter>GameObjects\Components</Filter>
     </ClCompile>
   </ItemGroup>

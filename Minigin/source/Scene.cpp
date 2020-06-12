@@ -1,6 +1,5 @@
 #include "MiniginPCH.h"
-#include "Scene.h"
-#include "GameObject.h"
+#include "ColliderIncludes.h"
 
 using namespace dae;
 
@@ -10,14 +9,25 @@ Scene::Scene(const std::string& name) : m_Name(name) {}
 
 Scene::~Scene() = default;
 
-void Scene::Add(const std::shared_ptr<SceneObject>& object)
+void Scene::Add(SceneObject* object)
 {
+	object->SetScene(this);
 	m_Objects.push_back(object);
+}
+
+void dae::Scene::Start()
+{
+	m_pWorld = new b2World(b2Vec2{ 0,9.81f });
+
+	for (SceneObject* object : m_Objects)
+	{
+		object->Start();
+	}
 }
 
 void Scene::Update()
 {
-	for(std::shared_ptr<SceneObject>& object : m_Objects)
+	for (SceneObject* object : m_Objects)
 	{
 		object->Update();
 	}
@@ -25,7 +35,7 @@ void Scene::Update()
 
 void Scene::LateUpdate()
 {
-	for (std::shared_ptr<SceneObject>& object : m_Objects)
+	for (SceneObject* object : m_Objects)
 	{
 		object->LateUpdate();
 	}
@@ -33,15 +43,17 @@ void Scene::LateUpdate()
 
 void dae::Scene::FixedUpdate()
 {
-	for (std::shared_ptr<SceneObject>& object : m_Objects)
+	m_pWorld->Step(.5f,3,8);
+	for (SceneObject* object : m_Objects)
 	{
+		
 		object->FixedUpdate();
 	}
 }
 
 void Scene::Render() const
 {
-	for (const std::shared_ptr<SceneObject>& object : m_Objects)
+	for (SceneObject* object : m_Objects)
 	{
 		object->Render();
 	}

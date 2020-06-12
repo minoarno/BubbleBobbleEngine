@@ -199,15 +199,15 @@ protected:
 	uint32 m_flags;
 
 	// World pool and list pointers.
-	b2Contact* m_prev;
-	b2Contact* m_next;
+	b2Contact* m_prev = nullptr;
+	b2Contact* m_next = nullptr;
 
 	// Nodes for connecting bodies.
 	b2ContactEdge m_nodeA;
 	b2ContactEdge m_nodeB;
 
-	b2Fixture* m_fixtureA;
-	b2Fixture* m_fixtureB;
+	b2Fixture* m_fixtureA = nullptr;
+	b2Fixture* m_fixtureB = nullptr;
 
 	int32 m_indexA;
 	int32 m_indexB;

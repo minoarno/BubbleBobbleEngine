@@ -103,7 +103,7 @@ $(SolutionDir)3rdParty/SDL2/lib/x64;$(LibraryPath)</LibraryPath>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>MIDESTINYENGINE_PLATFORM_WINDOWS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Minigin\source;$(SolutionDir)3rdParty\SDL2\include;$(SolutionDir)3rdParty\spdlog-1.x\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\Catch2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Minigin\source;$(SolutionDir)3rdParty\SDL2\include;$(SolutionDir)3rdParty\spdlog-1.x\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\Catch2;$(SolutionDir)3rdParty\box2d-master\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <AdditionalUsingDirectories>$(SolutionDir)Minigin\source</AdditionalUsingDirectories>
       <PrecompiledHeaderFile />
@@ -121,7 +121,7 @@ $(SolutionDir)3rdParty/SDL2/lib/x64;$(LibraryPath)</LibraryPath>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>MIDESTINYENGINE_PLATFORM_WINDOWS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Minigin\source;$(SolutionDir)3rdParty\SDL2\include;$(SolutionDir)3rdParty\spdlog-1.x\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\Catch2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Minigin\source;$(SolutionDir)3rdParty\SDL2\include;$(SolutionDir)3rdParty\spdlog-1.x\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\Catch2;$(SolutionDir)3rdParty\box2d-master\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <AdditionalUsingDirectories>$(SolutionDir)Minigin\source</AdditionalUsingDirectories>
     </ClCompile>
@@ -140,7 +140,7 @@ $(SolutionDir)3rdParty/SDL2/lib/x64;$(LibraryPath)</LibraryPath>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>MIDESTINYENGINE_PLATFORM_WINDOWS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Minigin\source;$(SolutionDir)3rdParty\SDL2\include;$(SolutionDir)3rdParty\spdlog-1.x\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\Catch2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Minigin\source;$(SolutionDir)3rdParty\SDL2\include;$(SolutionDir)3rdParty\spdlog-1.x\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\Catch2;$(SolutionDir)3rdParty\box2d-master\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <AdditionalUsingDirectories>$(SolutionDir)Minigin\source</AdditionalUsingDirectories>
     </ClCompile>
@@ -161,7 +161,7 @@ $(SolutionDir)3rdParty/SDL2/lib/x64;$(LibraryPath)</LibraryPath>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>MIDESTINYENGINE_PLATFORM_WINDOWS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Minigin\source;$(SolutionDir)3rdParty\SDL2\include;$(SolutionDir)3rdParty\spdlog-1.x\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\Catch2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Minigin\source;$(SolutionDir)3rdParty\SDL2\include;$(SolutionDir)3rdParty\spdlog-1.x\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\Catch2;$(SolutionDir)3rdParty\box2d-master\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <AdditionalUsingDirectories>$(SolutionDir)Minigin\source</AdditionalUsingDirectories>
       <PrecompiledHeaderFile />

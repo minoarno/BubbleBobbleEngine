@@ -58,17 +58,17 @@ void MidestinyEngine::Application::LoadGame()
 {
 	auto& scene = dae::SceneManager::GetInstance().CreateScene("Demo");
 
-	auto go = std::make_shared<dae::GameObject>();
+	auto go = new dae::GameObject{};
 	go->SetTexture("background.jpg");
 	scene.Add(go);
 
-	go = std::make_shared<dae::GameObject>();
+	go = new dae::GameObject{};
 	go->SetTexture("logo.png");
 	go->SetPosition(216, 180);
 	scene.Add(go);
 
 	auto font = dae::ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
-	auto to = std::make_shared<dae::TextObject>("Programming 4 Assignment", font);
+	auto to = new dae::TextObject("Programming 4 Assignment", font);
 	to->SetPosition(80, 20);
 	scene.Add(to);
 }

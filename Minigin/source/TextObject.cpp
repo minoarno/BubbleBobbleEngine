@@ -15,7 +15,7 @@ dae::TextObject::TextObject(const std::string& text, const std::shared_ptr<Font>
 	: m_NeedsUpdate(true), m_Text(text), m_Font(font), m_Texture(nullptr)
 { }
 
-void dae::TextObject::Awake()
+void dae::TextObject::Start()
 {
 }
 

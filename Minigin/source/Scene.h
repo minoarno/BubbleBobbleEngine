@@ -1,5 +1,6 @@
 #pragma once
 #include "SceneManager.h"
+#include "ColliderIncludes.h"
 
 namespace dae
 {
@@ -8,8 +9,9 @@ namespace dae
 	{
 		friend Scene& SceneManager::CreateScene(const std::string& name);
 	public:
-		void Add(const std::shared_ptr<SceneObject>& object);
+		void Add(SceneObject* object);
 
+		void Start();
 		void Update();
 		void LateUpdate();
 		void FixedUpdate();
@@ -21,13 +23,14 @@ namespace dae
 		Scene& operator=(const Scene& other) = delete;
 		Scene& operator=(Scene&& other) = delete;
 
+		b2World* GetWorld() { return m_pWorld; };
 	private: 
 		explicit Scene(const std::string& name);
 
 		std::string m_Name;
-		std::vector < std::shared_ptr<SceneObject>> m_Objects{};
+		std::vector <SceneObject*> m_Objects{};
 
-		static unsigned int m_IdCounter; 
+		static unsigned int m_IdCounter;
+		b2World* m_pWorld = nullptr;
 	};
-
 }
