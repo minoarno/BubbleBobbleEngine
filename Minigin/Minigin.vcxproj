@@ -245,6 +245,8 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
     <ClInclude Include="source\Transform.h" />
     <ClInclude Include="source\Tilemap.h" />
     <ClInclude Include="source\Structs.h" />
+    <ClInclude Include="source\GameTime.h" />
+    <ClInclude Include="source\UnitTexture.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Observer.cpp" />
@@ -275,6 +277,8 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
     <ClCompile Include="source\Texture2DTests.cpp" />
     <ClCompile Include="source\Transform.cpp" />
     <ClCompile Include="source\Tilemap.cpp" />
+    <ClCompile Include="source\GameTime.cpp" />
+    <ClCompile Include="source\UnitTexture.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

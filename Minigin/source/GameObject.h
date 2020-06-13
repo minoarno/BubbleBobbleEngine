@@ -12,11 +12,11 @@ namespace dae
 	public:
 		GameObject();
 		virtual ~GameObject();
-		void Start() override;
-		void Update() override;
-		void LateUpdate() override;
-		void FixedUpdate() override;
-		void Render() const override;
+		virtual void Start() override;
+		virtual void Update() override;
+		virtual void LateUpdate() override;
+		virtual void FixedUpdate() override;
+		virtual void Render() const override;
 
 		void SetTexture(const std::string& filename);
 		void SetPosition(float x, float y);

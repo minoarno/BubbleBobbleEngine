@@ -16,5 +16,6 @@ namespace dae
 		friend std::ostream& operator<<(std::ostream& out, const Tilemap& tilemap);
 	private:
 		std::deque<std::deque<BaseBlock*>> m_TilemapGrid;
+		const float m_BlockSize = 20.f;
 	};
 }

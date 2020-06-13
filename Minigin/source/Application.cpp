@@ -117,9 +117,9 @@ void MidestinyEngine::Application::Run()
 			sceneManager.Update();
 			renderer.Render();
 			sceneManager.LateUpdate();
-			
 			auto sleepTime = duration_cast<duration<float>>(currentTime + milliseconds(MsPerFrame) - high_resolution_clock::now());
 			std::this_thread::sleep_for(sleepTime);
+			dae::GameTime::GetInstance().SetElapsedSeconds(std::chrono::duration<float>(high_resolution_clock::now() - currentTime).count());
 		}
 	}
 }

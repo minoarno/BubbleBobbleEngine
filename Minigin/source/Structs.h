@@ -6,3 +6,8 @@ enum class DataType
 	f = 1,
 	i = 2
 };
+
+struct Rectf
+{
+	float x, y, w, h;
+};

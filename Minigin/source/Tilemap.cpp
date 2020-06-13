@@ -8,7 +8,18 @@ namespace dae
 {
 	Tilemap::Tilemap()
 	{
+		for (int i = 0; i < 27; i++)
+		{
+			std::deque<BaseBlock*> blocks;
+			for (int j = 0; j < 35; j++)
+			{
+				BaseBlock* block = new BaseBlock{};
+				blocks.push_back(block);
+			}
+			m_TilemapGrid.push_back(blocks);
+		}
 	}
+
 	Tilemap::~Tilemap()
 	{
 		int amountRows = int(m_TilemapGrid.size());
@@ -17,7 +28,6 @@ namespace dae
 			int amountCollums = int(m_TilemapGrid[i].size());
 			for (int k = 0; k < amountCollums; k++)
 			{
-				//delete m_TilemapGrid.at(i).at(k);
 				delete m_TilemapGrid[i][k];
 				m_TilemapGrid[i][k] = nullptr;
 			}
@@ -76,6 +86,7 @@ namespace dae
 					break;
 				default:
 					m_TilemapGrid[h][w]->SetBlockType(BaseBlock::BlockType(blockType));
+					m_TilemapGrid[h][w]->SetPosition(w * m_BlockSize, h * m_BlockSize);
 					break;
 				}
 				find = find1 + 1;
@@ -88,7 +99,7 @@ namespace dae
 		out << "Width " << int(tilemap.m_TilemapGrid[0].size());
 		out << " " << "Height " << int(tilemap.m_TilemapGrid.size()) << "\n";
 
-		out << "Blockout=\"" << std::endl;
+		out << "Blockout\"" << std::endl;
 		for (int y = int(tilemap.m_TilemapGrid.size()) - 1; y >= 0; y--)
 		{
 			for (int x = 0; x < int(tilemap.m_TilemapGrid[y].size()); x++)

@@ -37,8 +37,8 @@
     <Filter Include="Scenes">
       <UniqueIdentifier>{a23317f5-ef27-45a6-ad11-2c70cdf38cac}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Design Patterns">
-      <UniqueIdentifier>{6184fe22-53d1-4f05-bb42-0a433754e9f9}</UniqueIdentifier>
+    <Filter Include="Textures">
+      <UniqueIdentifier>{2160d80a-7c73-49d5-bb9c-80f7bb52c5b8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +129,12 @@
     <ClInclude Include="source\RigidBody.h">
       <Filter>GameObjects\Components</Filter>
     </ClInclude>
+    <ClInclude Include="source\GameTime.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="source\UnitTexture.h">
+      <Filter>Textures</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Font.cpp">
@@ -199,6 +205,12 @@
     </ClCompile>
     <ClCompile Include="source\RigidBody.cpp">
       <Filter>GameObjects\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GameTime.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="source\UnitTexture.cpp">
+      <Filter>Textures</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
