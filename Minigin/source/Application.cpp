@@ -55,7 +55,7 @@ void MidestinyEngine::Application::Initialize()
 void MidestinyEngine::Application::LoadGame()
 {
 	//auto& scene = dae::SceneManager::GetInstance().CreateScene("Demo");
-	dae::SceneManager::GetInstance().CreateScene("level1");
+	//dae::SceneManager::GetInstance().CreateScene("level1");
 
 	//auto go = new dae::GameObject{};
 	//go->SetTexture("background.jpg");
@@ -74,14 +74,15 @@ void MidestinyEngine::Application::LoadGame()
 
 void MidestinyEngine::Application::Invoke(std::function<void()> func, int intervalInMilliseconds, bool isLooping)
 {
-	std::thread([func, intervalInMilliseconds,isLooping]()
+	std::atomic<bool> gameloopBoolean{  };
+	std::thread([=]/*[func, intervalInMilliseconds,isLooping,gameloopBoolean]*/()
 	{
 		do
 		{
 			auto nextTimeFunctionCall = std::chrono::steady_clock::now() + std::chrono::milliseconds(intervalInMilliseconds);
 			std::this_thread::sleep_until(nextTimeFunctionCall);
 			func();
-		} while (isLooping);
+		} while (isLooping && std::atomic<bool>(this->m_DoContinue));
 	}).detach();
 }
 
@@ -93,7 +94,7 @@ void MidestinyEngine::Application::FixedUpdate()
 
 void MidestinyEngine::Application::Cleanup()
 {
-	dae::SceneManager::GetInstance().~SceneManager();
+	//dae::SceneManager::GetInstance().~SceneManager();
 	dae::Renderer::GetInstance().Destroy();
 	SDL_DestroyWindow(m_Window);
 	m_Window = nullptr;
@@ -116,12 +117,11 @@ void MidestinyEngine::Application::Run()
 
 		Invoke(std::bind(&MidestinyEngine::Application::FixedUpdate, this), 1000, true);
 		
-		bool doContinue = true;	
-		while (doContinue)
+		while (m_DoContinue)
 		{
 			const auto currentTime = high_resolution_clock::now();
 
-			doContinue = input.ProcessInput();
+			m_DoContinue = input.ProcessInput();
 			sceneManager.Update();
 			renderer.Render();
 			sceneManager.LateUpdate();

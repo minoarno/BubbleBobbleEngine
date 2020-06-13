@@ -9,7 +9,17 @@ dae::GameObject::GameObject()
 {
 }
 
-dae::GameObject::~GameObject() = default;
+dae::GameObject::~GameObject()
+{
+	for (std::pair<std::string, BaseComponent*> component : m_pComponents)
+	{
+		delete component.second;
+		component.second = nullptr;
+	}
+	m_pComponents.clear();
+	delete m_Transform;
+	m_Transform = nullptr;
+}
 
 void dae::GameObject::Start()
 {

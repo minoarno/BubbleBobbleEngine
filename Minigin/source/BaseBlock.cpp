@@ -10,6 +10,7 @@ namespace dae
 		:GameObject{}
 	{
 		SetTexture("LevelBlocks.png");
+		Start();
 	}
 
 	BaseBlock::~BaseBlock()
@@ -18,6 +19,22 @@ namespace dae
 
 	void BaseBlock::Start()
 	{
+		if (m_BlockType == BlockType::Air)
+		{
+			if (m_pComponents.find("BoxCollider") != m_pComponents.end())
+			{
+				m_pComponents.erase("BoxCollider");
+			}
+		}
+		else
+		{
+			if (m_pComponents.find("BoxCollider") != m_pComponents.end())
+			{
+				BoxCollider* boxCollider = new BoxCollider{};
+				boxCollider->SetSize(m_BlockSize, m_BlockSize);
+				m_pComponents.emplace(boxCollider->GetTypeName(), boxCollider);
+			}
+		}
 	}
 
 	void BaseBlock::Update()
@@ -67,6 +84,7 @@ namespace dae
 	void BaseBlock::UpdateBlockType()
 	{
 		m_BlockType = BlockType((1 +(int)m_BlockType) % 2);
+		Start();
 	}
 	#endif
 	std::ostream& operator<<(std::ostream& out, const BaseBlock& block)

@@ -22,9 +22,9 @@ namespace dae
 		int GetWidth()const { return m_Width; }
 		int GetHeight()const { return m_Height; }
 	private:
-		SDL_Texture* m_Texture;
-		int m_Width;
-		int m_Height;
-		Uint32 m_Format;
+		SDL_Texture* m_Texture = nullptr;
+		int m_Width = 0;
+		int m_Height = 0;
+		Uint32 m_Format = NULL;
 	};
 }

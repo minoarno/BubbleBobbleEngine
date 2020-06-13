@@ -8,7 +8,6 @@ namespace dae
 
 	void Scene::LoadScene(int widthTilemap, int heightTilemap, const std::string& tileMapInfo, const std::string& gameObjectsInfo)
 	{
-		ME_INFO("{0} {1} {2}",widthTilemap, heightTilemap ,tileMapInfo);
 		m_pTilemap = new Tilemap{};
 		m_pTilemap->LoadTileMapFromFile(widthTilemap, heightTilemap, tileMapInfo);
 		LoadObjects(gameObjectsInfo);

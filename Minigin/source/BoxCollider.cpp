@@ -23,6 +23,16 @@ namespace dae
 		m_pFixture = rigidBody->AddCollider(m_FixtureDef);
 	}
 
+	void BoxCollider::Update()
+	{
+
+	}
+
+	void BoxCollider::LateUpdate()
+	{
+
+	}
+
 	void BoxCollider::FixedUpdate()
 	{
 
@@ -30,5 +40,10 @@ namespace dae
 
 	void BoxCollider::Render() const
 	{
+	}
+
+	void BoxCollider::SetSize(float width, float height)
+	{
+		m_pBodyshape->SetAsBox(width, height);
 	}
 }

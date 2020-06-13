@@ -85,6 +85,7 @@ void dae::SceneManager::LoadScenesFromFile(const std::string& filename)
 			{
 				ME_CORE_ERROR("File {0} doesn't match: {1} is not compatible with", filename, temp);
 			}
+			ME_CORE_INFO("{0}", m_Scenes.size());
 		}
 	}
 	in.close();
@@ -102,13 +103,16 @@ Scene* dae::SceneManager::GetActiveScene()
 
 dae::SceneManager::~SceneManager()
 {
-	for (std::pair<int,Scene*> scene : m_Scenes)
+	if (m_Scenes.size() != 0)
 	{
-		delete scene.second;
-		scene.second = nullptr;
+		for (std::pair<int, Scene*> scene : m_Scenes)
+		{
+			delete scene.second;
+			scene.second = nullptr;
+		}
+		m_Scenes.clear();
+		m_NameToIndexList.clear();
 	}
-	m_Scenes.clear();
-	m_NameToIndexList.clear();
 }
 
 dae::Scene& dae::SceneManager::CreateScene(const std::string& name)
@@ -117,5 +121,6 @@ dae::Scene& dae::SceneManager::CreateScene(const std::string& name)
 	int index = int(m_Scenes.size());
 	m_Scenes.emplace(index,scene);
 	m_NameToIndexList.emplace(name, index);
+	ME_CORE_INFO("{0}", m_Scenes.size());
 	return *scene;
 }
