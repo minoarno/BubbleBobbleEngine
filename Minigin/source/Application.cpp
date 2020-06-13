@@ -16,12 +16,14 @@ MidestinyEngine::Application::Application()
 
 MidestinyEngine::Application::~Application()
 {
-	glDisable(GL_TEXTURE_2D);
 	MidestinyEngine::Application::Cleanup();
 }
 
 void MidestinyEngine::Application::Initialize()
 {
+	Core::g_WindowWidth = 1024;
+	Core::g_WindowHeight = 760;
+
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 	{
 		throw std::runtime_error(std::string("SDL_Init Error: ") + SDL_GetError());
@@ -35,8 +37,8 @@ void MidestinyEngine::Application::Initialize()
 		"Midestiny Engine",
 		SDL_WINDOWPOS_UNDEFINED,
 		SDL_WINDOWPOS_UNDEFINED,
-		1024,
-		760,
+		Core::g_WindowWidth,
+		Core::g_WindowHeight,
 		SDL_WINDOW_OPENGL
 	);
 	if (m_Window == nullptr)
@@ -45,7 +47,6 @@ void MidestinyEngine::Application::Initialize()
 	}
 
 	dae::Renderer::GetInstance().Init(m_Window);
-	glEnable(GL_TEXTURE_2D);
 }
 
 /**
@@ -92,6 +93,7 @@ void MidestinyEngine::Application::FixedUpdate()
 
 void MidestinyEngine::Application::Cleanup()
 {
+	dae::SceneManager::GetInstance().~SceneManager();
 	dae::Renderer::GetInstance().Destroy();
 	SDL_DestroyWindow(m_Window);
 	m_Window = nullptr;
@@ -104,7 +106,7 @@ void MidestinyEngine::Application::Run()
 
 	// tell the resource manager where he can find the game data
 	dae::ResourceManager::GetInstance().Init("../Data/");
-
+	dae::SceneManager::GetInstance().LoadScenesFromFile("../Data/Scenes.txt");
 	LoadGame();
 	
 	{
@@ -128,5 +130,7 @@ void MidestinyEngine::Application::Run()
 			//std::this_thread::sleep_for(sleepTime);
 			dae::GameTime::GetInstance().SetElapsedSeconds(std::chrono::duration<float>(high_resolution_clock::now() - currentTime).count());
 		}
+
+		dae::SceneManager::GetInstance().SaveScenesToFile("../Data/Scenes.txt");
 	}
 }

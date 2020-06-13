@@ -29,7 +29,7 @@ namespace dae
 		Rectf GetBoundaries()const;
 		Rectf GetSourceRect()const;
 	protected:
-		BlockType m_BlockType = BlockType::Air;
+		BlockType m_BlockType = BlockType::BaseFill;
 		static float m_BlockSize;
 	};
 }

@@ -38,14 +38,14 @@ namespace dae
 		if (m_BlockType != BlockType::Air)
 		{
 			const glm::vec3 pos = m_Transform->GetPosition();
-			
-			Renderer::GetInstance().RenderTexture(*m_Texture,GetSourceRect(),GetBoundaries());
+
+			Renderer::GetInstance().RenderTexture(*m_Texture, GetSourceRect(), GetBoundaries());
 		}
-		else
-		{
-			Rectf source{ float(m_Texture->GetWidth() / 10),0,float(m_Texture->GetWidth() / 10),float(m_Texture->GetHeight() / 10) };
-			Renderer::GetInstance().RenderTexture(*m_Texture, source, GetBoundaries());
-		}
+		//else
+		//{
+		//	Rectf source{ float(m_Texture->GetWidth() / 10),0,float(m_Texture->GetWidth() / 10),float(m_Texture->GetHeight() / 10) };
+		//	Renderer::GetInstance().RenderTexture(*m_Texture, source, GetBoundaries());
+		//}
 
 		//m_Texture
 		//SetColor(Color4f{ 1.f,0.f,0.f,1.f });
@@ -63,12 +63,12 @@ namespace dae
 		return Rectf{ 0,0,float(m_Texture->GetWidth() / 10),float(m_Texture->GetHeight() / 10) };
 	}
 
+	#ifdef _DEBUG
 	void BaseBlock::UpdateBlockType()
 	{
 		m_BlockType = BlockType((1 +(int)m_BlockType) % 2);
-		ME_INFO(m_BlockType);
 	}
-
+	#endif
 	std::ostream& operator<<(std::ostream& out, const BaseBlock& block)
 	{
 		out << int(block.m_BlockType);

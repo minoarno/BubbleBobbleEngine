@@ -27,6 +27,9 @@ namespace dae
 		void LoadScene(int widthTilemap, int heightTilemap, const std::string& tileMapInfo, const std::string& gameObjectsInfo);
 		void LoadObjects(const std::string& gameObjectsInfo);
 		b2World* GetWorld() { return m_pWorld; };
+		Tilemap* GetTilemap() { return m_pTilemap; }
+
+		friend std::ostream& operator<<(std::ostream& out, const Scene& scene);
 	private: 
 		explicit Scene(const std::string& name);
 		

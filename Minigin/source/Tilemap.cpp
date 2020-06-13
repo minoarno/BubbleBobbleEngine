@@ -26,21 +26,7 @@ namespace dae
 
 	Tilemap::~Tilemap()
 	{
-		int amountRows = int(m_TilemapGrid.size());
-		for (int i = 0; i < amountRows; i++)
-		{
-			int amountCollums = int(m_TilemapGrid[i].size());
-			for (int k = 0; k < amountCollums; k++)
-			{
-				delete m_TilemapGrid[i][k];
-				m_TilemapGrid[i][k] = nullptr;
-			}
-		}
-		for (int i = 0; i < amountRows; i++)
-		{
-			m_TilemapGrid[i].clear();
-		}
-		m_TilemapGrid.clear();
+		ClearGrid();
 	}
 
 	void Tilemap::AddRow()
@@ -67,6 +53,7 @@ namespace dae
 		{
 			for (BaseBlock* block : deque)
 			{
+				if (block == nullptr) continue;
 				block->Start();
 			}
 		}
@@ -78,31 +65,8 @@ namespace dae
 		{
 			for (BaseBlock* block : deque)
 			{
+				if (block == nullptr) continue;
 				block->Update();
-			}
-		}
-
-		SDL_Event e{};
-
-		int mouseX{ -1 }, mouseY{ -1 };
-		while (SDL_PollEvent(&e) != 0) 
-		{
-			if (e.type == SDL_MOUSEBUTTONDOWN - 1)
-			{
-				if (e.button.button == SDL_BUTTON_LEFT)
-				{
-					SDL_GetMouseState(&mouseX, &mouseY);
-					for (std::deque<BaseBlock*>& deque : m_TilemapGrid)
-					{
-						for (BaseBlock* block : deque)
-						{
-							if (IsPointInRect(float(mouseX), float(mouseY), block->GetBoundaries()))
-							{
-								block->UpdateBlockType();
-							}
-						}
-					}
-				}
 			}
 		}
 	}
@@ -113,6 +77,7 @@ namespace dae
 		{
 			for (BaseBlock* block : deque)
 			{
+				if (block == nullptr) continue;
 				block->FixedUpdate();
 			}
 		}
@@ -124,6 +89,7 @@ namespace dae
 		{
 			for (BaseBlock* block : deque)
 			{
+				if (block == nullptr) continue;
 				block->LateUpdate();
 			}
 		}
@@ -135,21 +101,50 @@ namespace dae
 		{
 			for (int x = 0; x < m_TilemapGrid.at(i).size(); x++)
 			{
+				if (m_TilemapGrid[i][x] == nullptr) continue;
 				m_TilemapGrid[i][x]->Render();
 			}
 		}
+	}
 
-		//for (std::deque<BaseBlock*> deque : m_TilemapGrid)
-		//{
-		//	for (BaseBlock* block : deque)
-		//	{
-		//		block->Render();
-		//	}
-		//}
+	#ifdef _DEBUG
+	void Tilemap::TilemapBlockChanger(float x, float y)
+	{
+		for (std::deque<BaseBlock*>& deque : m_TilemapGrid)
+		{
+			for (BaseBlock* block : deque)
+			{
+				if (IsPointInRect(x, y, block->GetBoundaries()))
+				{
+					block->UpdateBlockType();
+				}
+			}
+		}
+	}
+	#endif
+
+	void Tilemap::ClearGrid()
+	{
+		int amountRows = int(m_TilemapGrid.size());
+		for (int i = 0; i < amountRows; i++)
+		{
+			int amountCollums = int(m_TilemapGrid[i].size());
+			for (int k = 0; k < amountCollums; k++)
+			{
+				delete m_TilemapGrid[i][k];
+				m_TilemapGrid[i][k] = nullptr;
+			}
+		}
+		for (int i = 0; i < amountRows; i++)
+		{
+			m_TilemapGrid[i].clear();
+		}
+		m_TilemapGrid.clear();
 	}
 
 	void Tilemap::LoadTileMapFromFile(int width, int height, const std::string& blockoutPart)
 	{
+		ClearGrid();
 		for (int h = 0; h < height; h++)
 		{
 			std::deque<BaseBlock*> blocks;
@@ -171,9 +166,14 @@ namespace dae
 				int blockType = std::stoi(blockoutPart.substr(find, find1 - find));
 				switch (blockType)
 				{
+			#ifndef _DEBUG
 				case 0:
 					delete m_TilemapGrid[h][w];
 					m_TilemapGrid[h][w] = nullptr;
+					break;
+			#endif // !_DEBUG
+				case -1:
+					//Ghost
 					break;
 				default:
 					m_TilemapGrid[h][w]->SetBlockType(BaseBlock::BlockType(blockType));
@@ -187,10 +187,10 @@ namespace dae
 
 	std::ostream& operator<<(std::ostream& out, const Tilemap& tilemap)
 	{
-		out << "Width " << int(tilemap.m_TilemapGrid[0].size());
-		out << " " << "Height " << int(tilemap.m_TilemapGrid.size()) << "\n";
+		out << "Width " << int(tilemap.m_TilemapGrid[0].size()) << ' ';
+		out << "Height " << int(tilemap.m_TilemapGrid.size()) << ' ';
 
-		out << "Blockout\"" << std::endl;
+		out << "Blockout ";
 		for (int y = int(tilemap.m_TilemapGrid.size()) - 1; y >= 0; y--)
 		{
 			for (int x = 0; x < int(tilemap.m_TilemapGrid[y].size()); x++)

@@ -10,7 +10,7 @@ namespace dae
 	{
 		ME_INFO("{0} {1} {2}",widthTilemap, heightTilemap ,tileMapInfo);
 		m_pTilemap = new Tilemap{};
-		//m_pTilemap->LoadTileMapFromFile(widthTilemap, heightTilemap, tileMapInfo);
+		m_pTilemap->LoadTileMapFromFile(widthTilemap, heightTilemap, tileMapInfo);
 		LoadObjects(gameObjectsInfo);
 	}
 
@@ -21,7 +21,18 @@ namespace dae
 
 	Scene::Scene(const std::string& name) : m_Name(name) {}
 
-	Scene::~Scene() = default;
+	Scene::~Scene()
+	{
+		delete m_pTilemap;
+		m_pTilemap = nullptr;
+
+		for (SceneObject* object : m_Objects)
+		{
+			delete object;
+			object = nullptr;
+		}
+		m_Objects.clear();
+	}
 
 	void Scene::Add(SceneObject * object)
 	{
@@ -115,6 +126,11 @@ namespace dae
 		{
 			ME_CORE_ERROR("Tilemap isn't loaded in");
 		}
+	}
+	std::ostream& operator<<(std::ostream& out, const Scene& scene)
+	{
+		out << "<Scene " << scene.m_Name << " " << *scene.m_pTilemap << " GameObjects >";
+		return out;
 	}
 }
 

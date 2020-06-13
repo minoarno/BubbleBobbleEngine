@@ -8,6 +8,7 @@ namespace dae
 	class SceneManager final : public Singleton<SceneManager>
 	{
 	public:
+		~SceneManager();
 		Scene& CreateScene(const std::string& name);
 		void Update();
 		void LateUpdate();

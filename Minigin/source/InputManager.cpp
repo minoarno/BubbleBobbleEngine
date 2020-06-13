@@ -1,7 +1,8 @@
 #include "MiniginPCH.h"
 #include "InputManager.h"
 #include <SDL.h>
-
+#include "Tilemap.h"
+#include "Core.h"
 
 bool dae::InputManager::ProcessInput()
 {
@@ -22,7 +23,9 @@ bool dae::InputManager::ProcessInput()
 		}
 		if (e.type == SDL_MOUSEBUTTONDOWN) 
 		{
-			
+			#ifdef _DEBUG
+			SceneManager::GetInstance().GetActiveScene()->GetTilemap()->TilemapBlockChanger(float(e.button.x),float(e.button.y));
+			#endif
 		}
 		if (e.type == SDL_MOUSEBUTTONUP)
 		{

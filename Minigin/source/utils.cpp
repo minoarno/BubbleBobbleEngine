@@ -75,9 +75,9 @@ namespace dae
 	{
 		if (!inputStream)
 		{
-			if (inputStream.eof())std::cout << "End of file reached\n";
-			if (inputStream.fail())std::cout << "Stream is in a fail state\n";
-			if (inputStream.bad())std::cout << "Stream is in a bad state\n";
+			if (inputStream.eof()) ME_CORE_ERROR("End of file reached");
+			if (inputStream.fail()) ME_CORE_ERROR("Stream is in a fail state");
+			if (inputStream.bad()) ME_CORE_ERROR("Stream is in a bad state");
 			inputStream.clear();
 			return false;
 		}

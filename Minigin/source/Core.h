@@ -9,3 +9,9 @@
 #else
 	#error The Midestiny Egine only supports Windows!
 #endif
+
+namespace Core
+{
+	static int g_WindowWidth;
+	static int g_WindowHeight;
+};
