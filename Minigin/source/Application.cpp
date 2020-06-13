@@ -16,6 +16,7 @@ MidestinyEngine::Application::Application()
 
 MidestinyEngine::Application::~Application()
 {
+	glDisable(GL_TEXTURE_2D);
 	MidestinyEngine::Application::Cleanup();
 }
 
@@ -26,13 +27,16 @@ void MidestinyEngine::Application::Initialize()
 		throw std::runtime_error(std::string("SDL_Init Error: ") + SDL_GetError());
 	}
 
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+
 	m_Window = SDL_CreateWindow
 	(
 		"Midestiny Engine",
 		SDL_WINDOWPOS_UNDEFINED,
 		SDL_WINDOWPOS_UNDEFINED,
-		640,
-		480,
+		1024,
+		760,
 		SDL_WINDOW_OPENGL
 	);
 	if (m_Window == nullptr)
@@ -41,6 +45,7 @@ void MidestinyEngine::Application::Initialize()
 	}
 
 	dae::Renderer::GetInstance().Init(m_Window);
+	glEnable(GL_TEXTURE_2D);
 }
 
 /**
@@ -48,21 +53,22 @@ void MidestinyEngine::Application::Initialize()
  */
 void MidestinyEngine::Application::LoadGame()
 {
-	auto& scene = dae::SceneManager::GetInstance().CreateScene("Demo");
+	//auto& scene = dae::SceneManager::GetInstance().CreateScene("Demo");
+	dae::SceneManager::GetInstance().CreateScene("level1");
 
-	auto go = new dae::GameObject{};
-	go->SetTexture("background.jpg");
-	scene.Add(go);
+	//auto go = new dae::GameObject{};
+	//go->SetTexture("background.jpg");
+	//scene.Add(go);
 
-	go = new dae::GameObject{};
-	go->SetTexture("logo.png");
-	go->SetPosition(216, 180);
-	scene.Add(go);
+	//auto go = new dae::GameObject{};
+	//go->SetTexture("logo.png");
+	//go->SetPosition(216, 180);
+	//scene.Add(go);
 
-	auto font = dae::ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
-	auto to = new dae::TextObject("Programming 4 Assignment", font);
-	to->SetPosition(80, 20);
-	scene.Add(to);
+	dae::ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
+	//auto to = new dae::TextObject("Programming 4 Assignment", font);
+	//to->SetPosition(80, 20);
+	//scene.Add(to);
 }
 
 void MidestinyEngine::Application::Invoke(std::function<void()> func, int intervalInMilliseconds, bool isLooping)
@@ -117,8 +123,9 @@ void MidestinyEngine::Application::Run()
 			sceneManager.Update();
 			renderer.Render();
 			sceneManager.LateUpdate();
-			auto sleepTime = duration_cast<duration<float>>(currentTime + milliseconds(MsPerFrame) - high_resolution_clock::now());
-			std::this_thread::sleep_for(sleepTime);
+
+			//auto sleepTime = duration_cast<duration<float>>(currentTime + milliseconds(MsPerFrame) - high_resolution_clock::now());
+			//std::this_thread::sleep_for(sleepTime);
 			dae::GameTime::GetInstance().SetElapsedSeconds(std::chrono::duration<float>(high_resolution_clock::now() - currentTime).count());
 		}
 	}

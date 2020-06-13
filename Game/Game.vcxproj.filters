@@ -19,6 +19,9 @@
     <Filter Include="Drops">
       <UniqueIdentifier>{b3a11256-ec48-4cc4-9f44-5cbb58584531}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Bubbles">
+      <UniqueIdentifier>{9aaae328-c096-430d-8bb2-dae01f4f55f1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\SandboxApp.cpp">

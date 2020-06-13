@@ -75,9 +75,19 @@ void dae::SceneManager::LoadScenesFromFile(const std::string& filename)
 	in.close();
 }
 
+Scene* dae::SceneManager::GetActiveScene()
+{
+	if (m_Scenes.find(m_CurrentSceneIndex) == m_Scenes.end())
+	{
+		ME_CORE_ERROR("Active scene can't be found", m_CurrentSceneIndex);
+		return nullptr;
+	}
+	return m_Scenes[m_CurrentSceneIndex];
+}
+
 dae::Scene& dae::SceneManager::CreateScene(const std::string& name)
 {
-	const auto scene = std::shared_ptr<Scene>(new Scene(name));
+	const auto scene = new Scene(name);
 	int index = int(m_Scenes.size());
 	m_Scenes.emplace(index,scene);
 	m_NameToIndexList.emplace(name, index);

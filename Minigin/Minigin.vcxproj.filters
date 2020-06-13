@@ -40,15 +40,12 @@
     <Filter Include="Textures">
       <UniqueIdentifier>{2160d80a-7c73-49d5-bb9c-80f7bb52c5b8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Code Pattern">
+      <UniqueIdentifier>{ecb97da8-b1aa-423f-8eab-596cd0fc9fb3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Font.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Renderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\ResourceManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\Singleton.h">
@@ -135,15 +132,21 @@
     <ClInclude Include="source\UnitTexture.h">
       <Filter>Textures</Filter>
     </ClInclude>
+    <ClInclude Include="source\utils.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Command.h">
+      <Filter>Code Pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Renderer.h">
+      <Filter>Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ResourceManager.h">
+      <Filter>Textures</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Font.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Renderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\ResourceManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\TextObject.cpp">
@@ -210,6 +213,18 @@
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="source\UnitTexture.cpp">
+      <Filter>Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="source\utils.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Command.cpp">
+      <Filter>Code Pattern</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Renderer.cpp">
+      <Filter>Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ResourceManager.cpp">
       <Filter>Textures</Filter>
     </ClCompile>
   </ItemGroup>

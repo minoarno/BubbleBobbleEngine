@@ -6,14 +6,18 @@
 
 namespace dae
 {
+	float Tilemap::m_BlockSize{ 20.f };
+
 	Tilemap::Tilemap()
 	{
+		BaseBlock::SetBlockSize(m_BlockSize);
 		for (int i = 0; i < 27; i++)
 		{
 			std::deque<BaseBlock*> blocks;
 			for (int j = 0; j < 35; j++)
 			{
 				BaseBlock* block = new BaseBlock{};
+				block->SetPosition((j + .5f) * m_BlockSize, (i + .5f) * m_BlockSize);
 				blocks.push_back(block);
 			}
 			m_TilemapGrid.push_back(blocks);
@@ -57,6 +61,93 @@ namespace dae
 		}
 	}
 
+	void Tilemap::Start()
+	{
+		for (std::deque<BaseBlock*>& deque : m_TilemapGrid)
+		{
+			for (BaseBlock* block : deque)
+			{
+				block->Start();
+			}
+		}
+	}
+
+	void Tilemap::Update()
+	{
+		for (std::deque<BaseBlock*>& deque : m_TilemapGrid)
+		{
+			for (BaseBlock* block : deque)
+			{
+				block->Update();
+			}
+		}
+
+		SDL_Event e{};
+
+		int mouseX{ -1 }, mouseY{ -1 };
+		while (SDL_PollEvent(&e) != 0) 
+		{
+			if (e.type == SDL_MOUSEBUTTONDOWN - 1)
+			{
+				if (e.button.button == SDL_BUTTON_LEFT)
+				{
+					SDL_GetMouseState(&mouseX, &mouseY);
+					for (std::deque<BaseBlock*>& deque : m_TilemapGrid)
+					{
+						for (BaseBlock* block : deque)
+						{
+							if (IsPointInRect(float(mouseX), float(mouseY), block->GetBoundaries()))
+							{
+								block->UpdateBlockType();
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	void Tilemap::FixedUpdate()
+	{
+		for (std::deque<BaseBlock*>& deque : m_TilemapGrid)
+		{
+			for (BaseBlock* block : deque)
+			{
+				block->FixedUpdate();
+			}
+		}
+	}
+
+	void Tilemap::LateUpdate()
+	{
+		for (std::deque<BaseBlock*>& deque : m_TilemapGrid)
+		{
+			for (BaseBlock* block : deque)
+			{
+				block->LateUpdate();
+			}
+		}
+	}
+
+	void Tilemap::Render() const
+	{
+		for (int i = 0; i < m_TilemapGrid.size(); i++)
+		{
+			for (int x = 0; x < m_TilemapGrid.at(i).size(); x++)
+			{
+				m_TilemapGrid[i][x]->Render();
+			}
+		}
+
+		//for (std::deque<BaseBlock*> deque : m_TilemapGrid)
+		//{
+		//	for (BaseBlock* block : deque)
+		//	{
+		//		block->Render();
+		//	}
+		//}
+	}
+
 	void Tilemap::LoadTileMapFromFile(int width, int height, const std::string& blockoutPart)
 	{
 		for (int h = 0; h < height; h++)
@@ -72,7 +163,7 @@ namespace dae
 		std::stringstream blockout{ blockoutPart };
 		size_t find{ 0 };
 		char delimiter{ ' ' };
-		for (int h = 0; h < height; h++)
+		for (int h = height - 1; h >= 0; h--)
 		{
 			for (int w = 0; w < width; w++)
 			{
@@ -86,7 +177,7 @@ namespace dae
 					break;
 				default:
 					m_TilemapGrid[h][w]->SetBlockType(BaseBlock::BlockType(blockType));
-					m_TilemapGrid[h][w]->SetPosition(w * m_BlockSize, h * m_BlockSize);
+					m_TilemapGrid[h][w]->SetPosition((w + .5f) * m_BlockSize, (h + .5f)* m_BlockSize);
 					break;
 				}
 				find = find1 + 1;
@@ -106,9 +197,7 @@ namespace dae
 			{
 				out << *tilemap.m_TilemapGrid[y][x] << ' ';
 			}
-			out << std::endl;
 		}
-		out << "\"/>\n\n";
 		return out;
 	}
 }

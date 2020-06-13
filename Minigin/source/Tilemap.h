@@ -1,9 +1,11 @@
 #pragma once
 #include <deque>
+#include "SceneObject.h"
+
 namespace dae
 {
 	class BaseBlock;
-	class Tilemap
+	class Tilemap : public SceneObject
 	{
 	public:
 		Tilemap();
@@ -13,9 +15,17 @@ namespace dae
 		void AddRow();
 		void AddCollum();
 
+		virtual void Start() override;
+		virtual void Update() override;
+		virtual void FixedUpdate() override;
+		virtual void LateUpdate() override;
+		virtual void Render()const override;
+
+		static float GetBlockSize() { return m_BlockSize; }
+
 		friend std::ostream& operator<<(std::ostream& out, const Tilemap& tilemap);
 	private:
 		std::deque<std::deque<BaseBlock*>> m_TilemapGrid;
-		const float m_BlockSize = 20.f;
+		static float m_BlockSize;
 	};
 }

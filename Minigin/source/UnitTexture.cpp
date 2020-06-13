@@ -2,6 +2,7 @@
 #include "UnitTexture.h"
 #include "GameObject.h"
 #include "ResourceManager.h"
+#include "Texture2D.h"
 
 UnitTexture::UnitTexture()
 {
@@ -25,9 +26,9 @@ void UnitTexture::Update()
 void UnitTexture::Render() const
 {
 	//int number{ (int(m_pAvatar->GetStance()) + 1) + int(m_pAvatar->GetActionState()) * m_AmountOfStances };
-	//Rectf srcRect{ m_AnimCounter * m_ImageWidth, number * m_ImageHeight, m_ImageWidth, m_ImageHeight };
+	//Rectf srcRect{ m_AnimationCounter * m_ImageWidth, number * m_ImageHeight, m_ImageWidth, m_ImageHeight };
 
-	//m_pTexture->Draw(destRect, srcRect);
+	//m_pTexture->GetSDLTexture(); Draw(m_DestinationRectangle, srcRect);
 }
 
 void UnitTexture::ResetAnimationCounter()

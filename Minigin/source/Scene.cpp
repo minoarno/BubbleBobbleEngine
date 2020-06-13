@@ -8,7 +8,9 @@ namespace dae
 
 	void Scene::LoadScene(int widthTilemap, int heightTilemap, const std::string& tileMapInfo, const std::string& gameObjectsInfo)
 	{
-		m_pTilemap->LoadTileMapFromFile(widthTilemap, heightTilemap, tileMapInfo);
+		ME_INFO("{0} {1} {2}",widthTilemap, heightTilemap ,tileMapInfo);
+		m_pTilemap = new Tilemap{};
+		//m_pTilemap->LoadTileMapFromFile(widthTilemap, heightTilemap, tileMapInfo);
 		LoadObjects(gameObjectsInfo);
 	}
 
@@ -35,6 +37,15 @@ namespace dae
 		{
 			object->Start();
 		}
+		if (m_pTilemap != nullptr)
+		{
+			m_pTilemap->Start();
+		}
+		else
+		{
+			ME_CORE_ERROR("Tilemap isn't loaded in");
+			m_pTilemap = new Tilemap{};
+		}
 	}
 
 	void Scene::Update()
@@ -43,6 +54,15 @@ namespace dae
 		{
 			object->Update();
 		}
+		if (m_pTilemap != nullptr)
+		{
+			m_pTilemap->Update();
+		}
+		else
+		{
+			ME_CORE_ERROR("Tilemap isn't loaded in");
+			m_pTilemap = new Tilemap{};
+		}
 	}
 
 	void Scene::LateUpdate()
@@ -50,6 +70,15 @@ namespace dae
 		for (SceneObject* object : m_Objects)
 		{
 			object->LateUpdate();
+		}
+		if (m_pTilemap != nullptr)
+		{
+			m_pTilemap->LateUpdate();
+		}
+		else
+		{
+			ME_CORE_ERROR("Tilemap isn't loaded in");
+			m_pTilemap = new Tilemap{};
 		}
 	}
 
@@ -61,6 +90,15 @@ namespace dae
 
 			object->FixedUpdate();
 		}
+		if (m_pTilemap != nullptr)
+		{
+			m_pTilemap->FixedUpdate();
+		}
+		else
+		{
+			ME_CORE_ERROR("Tilemap isn't loaded in");
+			m_pTilemap = new Tilemap{};
+		}
 	}
 
 	void Scene::Render() const
@@ -68,6 +106,14 @@ namespace dae
 		for (SceneObject* object : m_Objects)
 		{
 			object->Render();
+		}
+		if (m_pTilemap != nullptr)
+		{
+			m_pTilemap->Render();
+		}
+		else
+		{
+			ME_CORE_ERROR("Tilemap isn't loaded in");
 		}
 	}
 }
