@@ -58,6 +58,21 @@ void dae::SceneManager::SaveScenesToFile(const std::string& filename)
 void dae::SceneManager::LoadScenesFromFile(const std::string& filename)
 {
 	ME_CORE_INFO(filename);
+	std::ifstream in{ filename };
+	std::string temp{};
+	while (!in.eof())
+	{
+		std::getline(in, temp, '>');
+		std::regex levelRegex{ "<Scene (\\w+) Width (\\d+) Height (\\d+) Blockout (.+) GameObjects (.+)>" };
+
+		std::smatch matches;
+		if (std::regex_search(temp, matches, levelRegex))
+		{
+			Scene& scene = CreateScene(matches[1].str());
+			scene.LoadScene(std::stoi(matches[2].str()), std::stoi(matches[3].str()),matches[4].str(),matches[5].str());
+		}
+	}
+	in.close();
 }
 
 dae::Scene& dae::SceneManager::CreateScene(const std::string& name)

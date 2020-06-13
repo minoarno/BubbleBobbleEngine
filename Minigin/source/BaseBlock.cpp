@@ -1,11 +1,21 @@
 #include "MiniginPCH.h"
 #include "BaseBlock.h"
+#include <iomanip>
 
-BaseBlock::BaseBlock()
-	:GameObject{}
+namespace dae
 {
-}
+	BaseBlock::BaseBlock()
+		:GameObject{}
+	{
+	}
 
-BaseBlock::~BaseBlock()
-{
+	BaseBlock::~BaseBlock()
+	{
+	}
+
+	std::ostream& operator<<(std::ostream& out, const BaseBlock& block)
+	{
+		out << int(block.m_BlockType);
+		return out;
+	}
 }

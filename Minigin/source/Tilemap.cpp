@@ -1,50 +1,103 @@
 #include "MiniginPCH.h"
-#include "Tilemap.h"
 #include "BaseBlock.h"
-Tilemap::Tilemap()
-{
+#include <regex>
+#include <sstream>
+#include "Tilemap.h"
 
-}
-
-Tilemap::~Tilemap()
+namespace dae
 {
-	int amountRows = int(m_TilemapGrid.size());
-	for (int i = 0; i < amountRows; i++)
+	Tilemap::Tilemap()
 	{
-		int amountCollums = int(m_TilemapGrid[i].size());
-		for (int k = 0; k < amountCollums; k++)
+	}
+	Tilemap::~Tilemap()
+	{
+		int amountRows = int(m_TilemapGrid.size());
+		for (int i = 0; i < amountRows; i++)
 		{
-			//delete m_TilemapGrid.at(i).at(k);
-			delete m_TilemapGrid[i][k];
-			m_TilemapGrid[i][k] = nullptr;
+			int amountCollums = int(m_TilemapGrid[i].size());
+			for (int k = 0; k < amountCollums; k++)
+			{
+				//delete m_TilemapGrid.at(i).at(k);
+				delete m_TilemapGrid[i][k];
+				m_TilemapGrid[i][k] = nullptr;
+			}
+		}
+		for (int i = 0; i < amountRows; i++)
+		{
+			m_TilemapGrid[i].clear();
+		}
+		m_TilemapGrid.clear();
+	}
+
+	void Tilemap::AddRow()
+	{
+		std::deque<BaseBlock*> baseBlocks;
+		for (int i = 0; i < m_TilemapGrid[0].size(); i++)
+		{
+			baseBlocks.push_back(nullptr);
+		}
+		m_TilemapGrid.push_back(baseBlocks);
+	}
+
+	void Tilemap::AddCollum()
+	{
+		for (int i = 0; i < m_TilemapGrid.size(); i++)
+		{
+			m_TilemapGrid.at(i).push_back(nullptr);
 		}
 	}
-	for (int i = 0; i < amountRows; i++)
+
+	void Tilemap::LoadTileMapFromFile(int width, int height, const std::string& blockoutPart)
 	{
-		m_TilemapGrid[i].clear();
+		for (int h = 0; h < height; h++)
+		{
+			std::deque<BaseBlock*> blocks;
+			for (int w = 0; w < width; w++)
+			{
+				blocks.push_back(new BaseBlock{});
+			}
+			m_TilemapGrid.push_back(blocks);
+		}
+
+		std::stringstream blockout{ blockoutPart };
+		size_t find{ 0 };
+		char delimiter{ ' ' };
+		for (int h = 0; h < height; h++)
+		{
+			for (int w = 0; w < width; w++)
+			{
+				size_t find1{ blockoutPart.find(delimiter,find) };
+				int blockType = std::stoi(blockoutPart.substr(find, find1 - find));
+				switch (blockType)
+				{
+				case 0:
+					delete m_TilemapGrid[h][w];
+					m_TilemapGrid[h][w] = nullptr;
+					break;
+				default:
+					m_TilemapGrid[h][w]->SetBlockType(BaseBlock::BlockType(blockType));
+					break;
+				}
+				find = find1 + 1;
+			}
+		}
 	}
-	m_TilemapGrid.clear();
-}
 
-void Tilemap::LoadTileMapFromFile(const char* filename)
-{
-	ME_INFO(filename);
-}
-
-void Tilemap::AddRow()
-{
-	std::deque<BaseBlock*> baseBlocks;
-	for(int i = 0; i < m_TilemapGrid[0].size(); i++)
+	std::ostream& operator<<(std::ostream& out, const Tilemap& tilemap)
 	{
-		baseBlocks.push_back(nullptr);
-	}
-	m_TilemapGrid.push_back(baseBlocks);
-}
+		out << "Width " << int(tilemap.m_TilemapGrid[0].size());
+		out << " " << "Height " << int(tilemap.m_TilemapGrid.size()) << "\n";
 
-void Tilemap::AddCollum()
-{
-	for (int i = 0; i < m_TilemapGrid.size(); i++)
-	{
-		m_TilemapGrid.at(i).push_back(nullptr);
+		out << "Blockout=\"" << std::endl;
+		for (int y = int(tilemap.m_TilemapGrid.size()) - 1; y >= 0; y--)
+		{
+			for (int x = 0; x < int(tilemap.m_TilemapGrid[y].size()); x++)
+			{
+				out << *tilemap.m_TilemapGrid[y][x] << ' ';
+			}
+			out << std::endl;
+		}
+		out << "\"/>\n\n";
+		return out;
 	}
 }

@@ -16,6 +16,9 @@
     <Filter Include="Enemies">
       <UniqueIdentifier>{797ad136-53d2-41f5-a064-fb36aa5ca7e0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Drops">
+      <UniqueIdentifier>{b3a11256-ec48-4cc4-9f44-5cbb58584531}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\SandboxApp.cpp">

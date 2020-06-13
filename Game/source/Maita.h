@@ -5,6 +5,8 @@ class Maita final : public BaseEnemy
 public:
 	Maita();
 	~Maita() = default;
+
+	
 private:
 	
 };

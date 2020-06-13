@@ -3,6 +3,7 @@
 #pragma warning(push)
 #pragma warning(disable : 26495)
 #pragma warning(disable : 26812)
+#pragma warning(disable : 6385)
 
 #include <box2d/b2_body.h>
 #include <box2d/b2_collision.h>

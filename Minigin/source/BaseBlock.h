@@ -1,11 +1,24 @@
 #pragma once
-#include "GameObject.h"
-class BaseBlock : public dae::GameObject
+namespace dae
 {
-public:
-	BaseBlock();
-	virtual ~BaseBlock();
-protected:
+	#include "GameObject.h"
+	class BaseBlock : public dae::GameObject
+	{
+	public:
+		enum class BlockType
+		{
+			Air = 0,
+			BaseFill = 1
+		};
 
-};
+		BaseBlock();
+		virtual ~BaseBlock();
 
+		void SetBlockType(BlockType blockType) { m_BlockType = blockType; }
+		BlockType GetBlockType() { return m_BlockType; }
+		friend std::ostream& operator<<(std::ostream& out, const BaseBlock& block);
+	protected:
+		BlockType m_BlockType = BlockType::Air;
+	};
+
+}

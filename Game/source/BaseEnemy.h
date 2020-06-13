@@ -1,5 +1,7 @@
 #pragma once
-class BaseEnemy
+#include <GameObject.h>
+
+class BaseEnemy : public dae::GameObject
 {
 public:
 	BaseEnemy();
