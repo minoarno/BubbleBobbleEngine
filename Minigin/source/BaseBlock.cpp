@@ -18,10 +18,6 @@ namespace MidestinyEngine
 		Start();
 	}
 
-	BaseBlock::~BaseBlock()
-	{
-	}
-
 	void BaseBlock::Start()
 	{
 		if (m_BlockType == BlockType::Air)

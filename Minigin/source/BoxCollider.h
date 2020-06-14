@@ -8,7 +8,7 @@ namespace MidestinyEngine
 	{
 	public:
 		BoxCollider();
-		virtual ~BoxCollider();
+		virtual ~BoxCollider() = default;
 
 		virtual void Start() override;
 		virtual void Update() override;

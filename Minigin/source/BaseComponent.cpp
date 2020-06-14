@@ -8,10 +8,6 @@ namespace MidestinyEngine
 	{
 	}
 
-	BaseComponent::~BaseComponent()
-	{
-	}
-
 	std::string BaseComponent::GetTypeName()
 	{
 		return m_TypeName;

@@ -33,7 +33,6 @@ namespace MidestinyEngine
 		}
 		m_Objects.clear();
 
-		m_pWorld->~b2World();
 		delete m_pWorld;
 		m_pWorld = nullptr;
 	}

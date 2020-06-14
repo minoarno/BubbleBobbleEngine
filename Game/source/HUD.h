@@ -4,9 +4,11 @@ class HUD
 public:
 	HUD() = default;
 
-
+	void LoseALive();
+	void Restart();
 private:
 	unsigned int m_Score = 0;
-	unsigned int m_Lives = 5;
+	unsigned int m_MaxLives = 5;
+	unsigned int m_CurrentLives = 5;
 };
 

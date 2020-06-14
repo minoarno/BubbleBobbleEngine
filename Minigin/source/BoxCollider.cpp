@@ -14,15 +14,6 @@ namespace MidestinyEngine
 		m_FixtureDef.density = 1.f;
 	}
 
-	BoxCollider::~BoxCollider()
-	{
-		RigidBody* rigidBody = static_cast<RigidBody*>(m_pOwnerGameObject->GetComponent("RigidBody"));
-		if (rigidBody == nullptr)
-		{
-			return;
-		}
-	}
-
 	void BoxCollider::Start()
 	{
 		RigidBody* rigidBody = static_cast<RigidBody*>(m_pOwnerGameObject->GetComponent("RigidBody"));

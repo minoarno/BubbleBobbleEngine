@@ -12,7 +12,7 @@ namespace MidestinyEngine
 		};
 
 		BaseBlock();
-		virtual ~BaseBlock();
+		virtual ~BaseBlock() = default;
 
 		virtual void Start() override;
 		virtual void Update() override;
