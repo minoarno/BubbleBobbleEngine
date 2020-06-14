@@ -25,6 +25,9 @@
     <Filter Include="Projectiles">
       <UniqueIdentifier>{9aaae328-c096-430d-8bb2-dae01f4f55f1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Textures">
+      <UniqueIdentifier>{0588c766-8272-4af7-93db-937aea0c26b5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\SandboxApp.cpp">
@@ -57,9 +60,6 @@
     <ClCompile Include="source\Boulder.cpp">
       <Filter>Projectiles</Filter>
     </ClCompile>
-    <ClCompile Include="source\WalkCommand.cpp">
-      <Filter>Commands</Filter>
-    </ClCompile>
     <ClCompile Include="source\JumpCommand.cpp">
       <Filter>Commands</Filter>
     </ClCompile>
@@ -69,8 +69,14 @@
     <ClCompile Include="source\Enums.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\WalkLeftCommand.cpp">
+      <Filter>Commands</Filter>
+    </ClCompile>
     <ClCompile Include="source\UnitTexture.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="source\EnemyTexture.cpp">
+      <Filter>Textures</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -101,9 +107,6 @@
     <ClInclude Include="source\Projectile.h">
       <Filter>Projectiles</Filter>
     </ClInclude>
-    <ClInclude Include="source\WalkCommand.h">
-      <Filter>Commands</Filter>
-    </ClInclude>
     <ClInclude Include="source\JumpCommand.h">
       <Filter>Commands</Filter>
     </ClInclude>
@@ -113,8 +116,14 @@
     <ClInclude Include="source\Enums.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\WalkLeftCommand.h">
+      <Filter>Commands</Filter>
+    </ClInclude>
     <ClInclude Include="source\UnitTexture.h">
-      <Filter>Header Files</Filter>
+      <Filter>Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="source\EnemyTexture.h">
+      <Filter>Textures</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
