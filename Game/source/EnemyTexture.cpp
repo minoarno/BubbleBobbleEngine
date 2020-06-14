@@ -3,6 +3,7 @@
 #include "Enums.h"
 #include "BaseEnemy.h"
 #include "ResourceManager.h"
+#include "ThreadMaster.h"
 
 EnemyTexture::EnemyTexture(MidestinyEngine::GameObject* gameObject, const std::string& filepath, int amountOfFrames)
 {
@@ -16,7 +17,7 @@ void EnemyTexture::Start()
 	m_ImageWidth = m_pTexture->GetWidth() / float(m_AmountOfFrames);
 	m_ImageHeight = m_pTexture->GetHeight() / 8.f;
 	int cooldown = int(1000.f / m_FramesPerSec);
-	Invoke(std::bind(&EnemyTexture::IncrementAnimationCounter, this), cooldown, true);
+	MidestinyEngine::ThreadMaster::GetInstance().Invoke(std::bind(&EnemyTexture::IncrementAnimationCounter, this), cooldown, true);
 }
 
 void EnemyTexture::Update()

@@ -1,5 +1,11 @@
 #pragma once
-class Bubble
+#include "Projectile.h"
+class Bubble : public Projectile
 {
+public:
+	Bubble();
+	virtual ~Bubble();
+private:
+
 };
 

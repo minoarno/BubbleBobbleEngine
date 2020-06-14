@@ -33,6 +33,7 @@ namespace MidestinyEngine
 		}
 		m_Objects.clear();
 
+		m_pWorld->~b2World();
 		delete m_pWorld;
 		m_pWorld = nullptr;
 	}
@@ -64,7 +65,6 @@ namespace MidestinyEngine
 
 	void Scene::Update()
 	{
-		ME_INFO(GameTime::GetInstance().GetElapsedSeconds());
 		float sec = GameTime::GetInstance().GetElapsedSeconds();
 		m_pWorld->Step(sec, 8, 3);
 		for (SceneObject* object : m_Objects)
@@ -133,9 +133,9 @@ namespace MidestinyEngine
 		{
 			object->Render();
 		}
-	#ifdef _DEBUG
-		m_pWorld->DebugDraw();
-	#endif // _DEBUG
+	//#ifdef _DEBUG
+	//	m_pWorld->DebugDraw();
+	//#endif // _DEBUG
 	}
 
 	std::ostream& operator<<(std::ostream& out, const Scene& scene)

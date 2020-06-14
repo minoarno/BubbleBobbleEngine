@@ -84,7 +84,7 @@
     <ClCompile Include="source\Character.cpp">
       <Filter>Character</Filter>
     </ClCompile>
-    <ClCompile Include="HUD.cpp">
+    <ClCompile Include="source\HUD.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -140,7 +140,7 @@
     <ClInclude Include="source\Enemies.h">
       <Filter>Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="HUD.h">
+    <ClInclude Include="source\HUD.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -2,6 +2,7 @@
 #include "InputManager.h"
 #include "SceneManager.h"
 #include "Renderer.h"
+#include "ThreadMaster.h"
 #include "ResourceManager.h"
 #include "TextObject.h"
 
@@ -76,7 +77,7 @@ void MidestinyEngine::Application::Cleanup()
 
 void MidestinyEngine::Application::Run()
 {
-	Core::g_DoContinue = true;
+	std::atomic(Core::g_DoContinue = true);
 
 	if(m_Window == nullptr) Initialize();
 
@@ -86,8 +87,9 @@ void MidestinyEngine::Application::Run()
 		auto& renderer = MidestinyEngine::Renderer::GetInstance();
 		auto& sceneManager = MidestinyEngine::SceneManager::GetInstance();
 		auto& input = MidestinyEngine::InputManager::GetInstance();
+		auto& threadMaster = MidestinyEngine::ThreadMaster::GetInstance();
 		{
-			MidestinyEngine::Invoke(std::bind(&MidestinyEngine::Application::FixedUpdate, this), 1000, true);
+			threadMaster.Invoke(std::bind(&MidestinyEngine::Application::FixedUpdate, this), 1000, true);
 
 			sceneManager.GetActiveScene()->Start();
 			while (Core::g_DoContinue)
@@ -98,10 +100,10 @@ void MidestinyEngine::Application::Run()
 				sceneManager.Update();
 				renderer.Render();
 				sceneManager.LateUpdate();
-
+				threadMaster.Update();
 				MidestinyEngine::GameTime::GetInstance().SetElapsedSeconds(std::chrono::duration<float>(high_resolution_clock::now() - currentTime).count());
 			}
-			std::this_thread::sleep_for(std::chrono::milliseconds(1001));
+			threadMaster.TerminateAllThreads();
 		}
 		MidestinyEngine::SceneManager::GetInstance().SaveScenesToFile("../Data/Scenes.txt");
 	}

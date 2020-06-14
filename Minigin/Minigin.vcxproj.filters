@@ -141,6 +141,9 @@
     <ClInclude Include="source\ResourceManager.h">
       <Filter>Textures</Filter>
     </ClInclude>
+    <ClInclude Include="source\ThreadMaster.h">
+      <Filter>Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Font.cpp">
@@ -220,6 +223,9 @@
     </ClCompile>
     <ClCompile Include="source\ResourceManager.cpp">
       <Filter>Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ThreadMaster.cpp">
+      <Filter>Core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

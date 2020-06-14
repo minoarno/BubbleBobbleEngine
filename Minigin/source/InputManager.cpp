@@ -15,6 +15,7 @@ bool MidestinyEngine::InputManager::ProcessInput()
 	{
 		if (e.type == SDL_QUIT) 
 		{
+			ME_WARN("YOU SHOULDN'T BE HERE UNLESS YOU CLOSE");
 			return false;
 		}
 		if (e.type == SDL_KEYDOWN) 
@@ -32,7 +33,6 @@ bool MidestinyEngine::InputManager::ProcessInput()
 
 		}
 	}
-
 	return true;
 }
 
@@ -40,15 +40,21 @@ bool MidestinyEngine::InputManager::IsPressed(ControllerButton button) const
 {
 	switch (button)
 	{
-	case ControllerButton::ButtonA: 
+	case ControllerButton::ButtonA:
+		ME_INFO("something");
 		return m_CurrentState.Gamepad.wButtons & XINPUT_GAMEPAD_A;
 	case ControllerButton::ButtonB: 
+		ME_INFO("something");
 		return m_CurrentState.Gamepad.wButtons & XINPUT_GAMEPAD_B;
 	case ControllerButton::ButtonX: 
+		ME_INFO("something");
 		return m_CurrentState.Gamepad.wButtons & XINPUT_GAMEPAD_X;
 	case ControllerButton::ButtonY: 
+		ME_INFO("something");
 		return m_CurrentState.Gamepad.wButtons & XINPUT_GAMEPAD_Y;
-	default: return false;
+	default:
+
+		return false;
 	}
 }
 

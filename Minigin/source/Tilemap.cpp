@@ -156,7 +156,7 @@ namespace MidestinyEngine
 					delete m_TilemapGrid[h][w];
 					m_TilemapGrid[h][w] = nullptr;
 					break;
-			#endif // !_DEBUG
+			#endif
 				case -1:
 					//Ghost
 					break;
@@ -180,7 +180,14 @@ namespace MidestinyEngine
 		{
 			for (int x = 0; x < int(tilemap.m_TilemapGrid[y].size()); x++)
 			{
-				out << *tilemap.m_TilemapGrid[y][x] << ' ';
+				if (tilemap.m_TilemapGrid[y][x] == nullptr)
+				{
+					out << 0 << ' ';
+				}
+				else
+				{
+					out << *tilemap.m_TilemapGrid[y][x] << ' ';
+				}
 			}
 		}
 		return out;

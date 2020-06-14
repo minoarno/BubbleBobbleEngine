@@ -2,6 +2,7 @@
 #include "UnitTexture.h"
 #include "GameObject.h"
 #include "ResourceManager.h"
+#include "ThreadMaster.h"
 #include "Texture2D.h"
 #include "Character.h" 
 
@@ -16,7 +17,7 @@ void UnitTexture::Start()
 {
 	m_ImageWidth = m_pTexture->GetWidth() / float(m_AmountOfFrames);
 	m_ImageHeight = m_pTexture->GetHeight() / 3.f;
-	Invoke(std::bind(&UnitTexture::IncrementAnimationCounter, this), int(1000.f / m_FramesPerSec), true);
+	MidestinyEngine::ThreadMaster::GetInstance().Invoke(std::bind(&UnitTexture::IncrementAnimationCounter, this), int(1000.f / m_FramesPerSec), true);
 }
 
 void UnitTexture::Update()

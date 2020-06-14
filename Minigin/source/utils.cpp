@@ -92,21 +92,6 @@ namespace MidestinyEngine
 		return int(value * 100) / 100.f;
 	}
 
-	void Invoke(std::function<void()> func, int intervalInMilliseconds, bool isLooping)
-	{
-		std::thread([=]()
-		{
-			bool isGameStillGoing{ true };
-			do
-			{
-				auto nextTimeFunctionCall = std::chrono::steady_clock::now() + std::chrono::milliseconds(intervalInMilliseconds);
-				std::this_thread::sleep_until(nextTimeFunctionCall);
-				func();
-				isGameStillGoing = std::atomic<bool>(Core::g_DoContinue);
-			} while (isLooping && isGameStillGoing);
-		}).detach();
-	}
-
 	glm::vec3 MakeVec3(const b2Vec2& pos)
 	{
 		return glm::vec3{ float(pos.x),float(pos.y),0.f };
