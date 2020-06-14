@@ -41,7 +41,7 @@ void Character::Start()
 	m_pComponents["BoxCollider"]->Start();
 	for (std::pair<std::string, MidestinyEngine::BaseComponent*> component : m_pComponents)
 	{
-		component.second->Start();
+		if (component.first != "RigidBody" || component.first != "BoxCollider") component.second->Start();
 	}
 }
 

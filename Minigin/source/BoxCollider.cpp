@@ -15,6 +15,8 @@ namespace MidestinyEngine
 
 	BoxCollider::~BoxCollider()
 	{
+		delete m_pBodyshape;
+		m_pBodyshape = nullptr;
 	}
 
 	void BoxCollider::Start()

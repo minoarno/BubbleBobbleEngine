@@ -6,11 +6,8 @@
 
 namespace MidestinyEngine
 {
-	float Tilemap::m_BlockSize{ 20.f };
-
 	Tilemap::Tilemap()
 	{
-		BaseBlock::SetBlockSize(m_BlockSize);
 		m_TilemapGrid.reserve(27);
 		for (int i = 0; i < 27; i++)
 		{
@@ -19,12 +16,12 @@ namespace MidestinyEngine
 			for (int j = 0; j < 35; j++)
 			{
 				BaseBlock* block = new BaseBlock{};
-				block->SetPosition((j + .5f) * m_BlockSize, (i + .5f) * m_BlockSize);
+				block->SetPosition((j + .5f) * Core::g_BlockSize, (i + .5f) * Core::g_BlockSize);
 				blocks.push_back(block);
 			}
 			m_TilemapGrid.push_back(blocks);
 		}
-		m_LevelBoundaries = Rectf{ 0,0,35 * m_BlockSize,27 * m_BlockSize };
+		m_LevelBoundaries = Rectf{ 0,0,35 * Core::g_BlockSize,27 * Core::g_BlockSize };
 	}
 
 	Tilemap::~Tilemap()
@@ -165,7 +162,7 @@ namespace MidestinyEngine
 					break;
 				default:
 					m_TilemapGrid[h][w]->SetBlockType(BaseBlock::BlockType(blockType));
-					m_TilemapGrid[h][w]->SetPosition((w + .5f) * m_BlockSize, (h + .5f)* m_BlockSize);
+					m_TilemapGrid[h][w]->SetPosition((w + .5f) * Core::g_BlockSize, (h + .5f)* Core::g_BlockSize);
 					break;
 				}
 				find = find1 + 1;

@@ -21,14 +21,11 @@ namespace MidestinyEngine
 	#ifdef _DEBUG
 		virtual void TilemapBlockChanger(float x, float y);
 	#endif
-		static float GetBlockSize() { return m_BlockSize; }
-
 		friend std::ostream& operator<<(std::ostream& out, const Tilemap& tilemap);
 
 		Rectf GetLevelBoundaries()const { return m_LevelBoundaries; }
 	private:
 		std::vector<std::vector<BaseBlock*>> m_TilemapGrid;
-		static float m_BlockSize;
 
 		Rectf m_LevelBoundaries;
 

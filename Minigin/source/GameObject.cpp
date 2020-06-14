@@ -7,6 +7,8 @@
 MidestinyEngine::GameObject::GameObject()
 	:m_Transform{ new Transform{} }
 {
+	m_Transform->SetGameObject(this);
+	m_pComponents.emplace(m_Transform->GetTypeName(), m_Transform);
 }
 
 MidestinyEngine::GameObject::~GameObject()
@@ -17,8 +19,6 @@ MidestinyEngine::GameObject::~GameObject()
 		component.second = nullptr;
 	}
 	m_pComponents.clear();
-	delete m_Transform;
-	m_Transform = nullptr;
 }
 
 void MidestinyEngine::GameObject::Start()
@@ -56,7 +56,7 @@ void MidestinyEngine::GameObject::FixedUpdate()
 void MidestinyEngine::GameObject::Render() const
 {
 	const glm::vec3 pos = m_Transform->GetPosition();
-	Renderer::GetInstance().RenderTexture(*m_Texture, pos.x, pos.y);
+	Renderer::GetInstance().RenderTexture(*m_pTexture, pos.x, pos.y);
 	for (std::pair<std::string, BaseComponent*> component : m_pComponents)
 	{
 		component.second->Render();
@@ -65,7 +65,7 @@ void MidestinyEngine::GameObject::Render() const
 
 void MidestinyEngine::GameObject::SetTexture(const std::string& filename)
 {
-	m_Texture = ResourceManager::GetInstance().LoadTexture(filename);
+	m_pTexture = ResourceManager::GetInstance().LoadTexture(filename);
 }
 
 void MidestinyEngine::GameObject::SetPosition(float x, float y)

@@ -28,6 +28,9 @@
     <Filter Include="Textures">
       <UniqueIdentifier>{0588c766-8272-4af7-93db-937aea0c26b5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Character">
+      <UniqueIdentifier>{a43e7d76-585e-4d2c-8bea-b8305cd5d737}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\SandboxApp.cpp">
@@ -35,9 +38,6 @@
     </ClCompile>
     <ClCompile Include="source\BaseEnemy.cpp">
       <Filter>Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Character.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\Maita.cpp">
       <Filter>Enemies</Filter>
@@ -81,13 +81,13 @@
     <ClCompile Include="source\EnemyTexture.cpp">
       <Filter>Textures</Filter>
     </ClCompile>
+    <ClCompile Include="source\Character.cpp">
+      <Filter>Character</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\BaseEnemy.h">
       <Filter>Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Character.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\ZenChan.h">
       <Filter>Enemies</Filter>
@@ -116,9 +116,6 @@
     <ClInclude Include="source\Drop.h">
       <Filter>Drops</Filter>
     </ClInclude>
-    <ClInclude Include="source\Enums.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="source\WalkLeftCommand.h">
       <Filter>Commands</Filter>
     </ClInclude>
@@ -130,6 +127,15 @@
     </ClInclude>
     <ClInclude Include="source\EnemyTexture.h">
       <Filter>Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Character.h">
+      <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Enums.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Enemies.h">
+      <Filter>Enemies</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

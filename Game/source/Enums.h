@@ -25,3 +25,9 @@ enum class EnemyState
 	trapped = 1,
 	dying = 2,
 };
+
+enum class EnemyType
+{
+	ZenChan = 0,
+	Maita = 6
+};

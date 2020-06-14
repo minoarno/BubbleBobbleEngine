@@ -1,6 +1,7 @@
 #include "MiniginPCH.h"
 #include "ColliderIncludes.h"
 #include "Tilemap.h"
+#include "GameTime.h"
 
 namespace MidestinyEngine
 {
@@ -31,6 +32,9 @@ namespace MidestinyEngine
 			object = nullptr;
 		}
 		m_Objects.clear();
+
+		delete m_pWorld;
+		m_pWorld = nullptr;
 	}
 
 	void Scene::Add(SceneObject * object)
@@ -94,7 +98,7 @@ namespace MidestinyEngine
 
 	void MidestinyEngine::Scene::FixedUpdate()
 	{
-		//m_pWorld->Step(.5f,3,8);
+		m_pWorld->Step(GameTime::GetInstance().GetElapsedSeconds(),8,3);
 		for (SceneObject* object : m_Objects)
 		{
 
@@ -126,6 +130,9 @@ namespace MidestinyEngine
 		{
 			object->Render();
 		}
+	#ifdef _DEBUG
+		m_pWorld->DebugDraw();
+	#endif // _DEBUG
 	}
 
 	std::ostream& operator<<(std::ostream& out, const Scene& scene)

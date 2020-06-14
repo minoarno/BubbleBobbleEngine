@@ -3,7 +3,7 @@
 class ZenChan final : public BaseEnemy
 {
 public:
-	ZenChan() = default;
+	ZenChan();
 	~ZenChan() = default;
 private:
 };

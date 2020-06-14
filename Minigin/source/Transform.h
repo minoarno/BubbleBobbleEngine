@@ -5,16 +5,21 @@
 #pragma warning(pop)
 #include "BaseComponent.h"
 #include <string>
-
 namespace MidestinyEngine
 {
-	class Transform final
+	class Transform final : public BaseComponent
 	{
 	public:
 		Transform();
 		Transform(const glm::vec3& pos);
 		Transform(float x, float y, float z);
-		~Transform();
+		~Transform() = default;
+
+		virtual void Start() override;
+		virtual void Update() override;
+		virtual void LateUpdate() override;
+		virtual void FixedUpdate() override;
+		virtual void Render() const override;
 
 		const glm::vec3& GetPosition() const { return m_Position; }
 		void SetPosition(float x, float y, float z);

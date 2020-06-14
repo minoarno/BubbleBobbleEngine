@@ -202,6 +202,7 @@ $(SolutionDir)3rdParty/SDL2/lib/x86;$(LibraryPath)</LibraryPath>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\Enemies.h" />
     <ClInclude Include="source\EnemyTexture.h" />
     <ClInclude Include="source\Drop.h" />
     <ClInclude Include="source\Boulder.h" />

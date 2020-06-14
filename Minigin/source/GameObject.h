@@ -3,6 +3,8 @@
 #include "SceneObject.h"
 #include <map>
 #include <memory>
+#include "Structs.h"
+
 namespace MidestinyEngine
 {
 
@@ -30,9 +32,13 @@ namespace MidestinyEngine
 
 		BaseComponent* GetComponent(const std::string& name);
 		Transform* GetTransform()const { return m_Transform; }
+		Rectf GetDestinationRectangle()const { return Rectf{ m_Transform->GetPosition().x, m_Transform->GetPosition().y,m_DestinationRectangle.w,m_DestinationRectangle.h };
+		}
+		void SetSize(float width, float height) { m_DestinationRectangle = Rectf{ m_Transform->GetPosition().x, m_Transform->GetPosition().y,width,height }; }
 	protected:
+		Rectf m_DestinationRectangle = Rectf{ 0,0,0,0 };
 		Transform* m_Transform;
 		std::map<std::string, BaseComponent*> m_pComponents;
-		std::shared_ptr<Texture2D> m_Texture{};
+		std::shared_ptr<Texture2D> m_pTexture{};
 	};
 }

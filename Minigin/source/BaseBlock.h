@@ -22,7 +22,6 @@ namespace MidestinyEngine
 
 		void SetBlockType(BlockType blockType) { m_BlockType = blockType; }
 		BlockType GetBlockType() { return m_BlockType; }
-		static void SetBlockSize(float size) { m_BlockSize = size; }
 		friend std::ostream& operator<<(std::ostream& out, const BaseBlock& block);
 
 		void UpdateBlockType();
@@ -30,6 +29,5 @@ namespace MidestinyEngine
 		Rectf GetSourceRect()const;
 	protected:
 		BlockType m_BlockType = BlockType::BaseFill;
-		static float m_BlockSize;
 	};
 }
