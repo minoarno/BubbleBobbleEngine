@@ -22,11 +22,11 @@ public:
 
 	void ResetAnimationCounter();
 
-	int GetFramesPerSec()const { return m_FramesPerSec; }
-	int GetAmountOfFrames()const { return m_AmountOfFrames; }
-	int GetAmountOfWalkingFrames()const { return m_AmountOfWalkingFrames; }
-	int GetAmountOfDyingFrames()const { return m_AmountOfDyingFrames; }
-	int GetAmountOfAttackingFrames()const { return m_AmountOfAttackingFrames; }
+	int GetFramesPerSec() const { return m_FramesPerSec; }
+	int GetAmountOfFrames() const { return m_AmountOfFrames; }
+	int GetAmountOfWalkingFrames() const { return m_AmountOfWalkingFrames; }
+	int GetAmountOfDyingFrames() const { return m_AmountOfDyingFrames; }
+	int GetAmountOfAttackingFrames() const { return m_AmountOfAttackingFrames; }
 
 	void SetFramesPerSec(int value) { m_FramesPerSec = value; }
 	void SetAmountOfFrames(int value) { m_AmountOfFrames = value; }

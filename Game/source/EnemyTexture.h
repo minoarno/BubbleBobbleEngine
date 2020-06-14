@@ -2,6 +2,7 @@
 class BaseEnemy;
 class EnemyTexture
 {
+public:
 	EnemyTexture() = default;
 	EnemyTexture(MidestinyEngine::GameObject * gameObject, const std::string & filepath, int amountOfFrames);
 	EnemyTexture(const EnemyTexture& other) = delete;
@@ -41,7 +42,7 @@ private:
 
 	std::shared_ptr<MidestinyEngine::Texture2D> m_pTexture;
 
-	int m_FramesPerSec = 4, m_AmountOfFrames = 4, m_AmountOfWalkingFrames = 0, m_AmountOfDyingFrames = 0, m_AmountOfBeingTrappedFrames = 0;
+	int m_FramesPerSec = 4, m_AmountOfFrames = 12, m_AmountOfWalkingFrames = 4, m_AmountOfDyingFrames = 4, m_AmountOfBeingTrappedFrames = 4;
 
 	float m_AnimationTimer = 0;
 	int m_AnimationCounter = 0;

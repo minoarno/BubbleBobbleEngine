@@ -14,6 +14,6 @@ namespace Core
 {
 	static int g_WindowWidth = 1024;
 	static int g_WindowHeight = 760;
-	static bool g_DoContinue = true;
+	static bool g_DoContinue;
 	static float g_BlockSize = 20.f;
 };

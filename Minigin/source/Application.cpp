@@ -57,24 +57,7 @@ void MidestinyEngine::Application::Initialize()
  */
 void MidestinyEngine::Application::LoadGame()
 {
-	//MidestinyEngine::SceneManager::GetInstance().LoadScenesFromFile("../Data/Scenes.txt");
-
-	//auto& scene = dae::SceneManager::GetInstance().CreateScene("Demo");
-	//dae::SceneManager::GetInstance().CreateScene("level1");
-
-	//auto go = new dae::GameObject{};
-	//go->SetTexture("background.jpg");
-	//scene.Add(go);
-
-	//auto go = new dae::GameObject{};
-	//go->SetTexture("logo.png");
-	//go->SetPosition(216, 180);
-	//scene.Add(go);
-
 	MidestinyEngine::ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
-	//auto to = new dae::TextObject("Programming 4 Assignment", font);
-	//to->SetPosition(80, 20);
-	//scene.Add(to);
 }
 
 void MidestinyEngine::Application::FixedUpdate()
@@ -116,8 +99,6 @@ void MidestinyEngine::Application::Run()
 				renderer.Render();
 				sceneManager.LateUpdate();
 
-				//auto sleepTime = duration_cast<duration<float>>(currentTime + milliseconds(MsPerFrame) - high_resolution_clock::now());
-				//std::this_thread::sleep_for(sleepTime);
 				MidestinyEngine::GameTime::GetInstance().SetElapsedSeconds(std::chrono::duration<float>(high_resolution_clock::now() - currentTime).count());
 			}
 			std::this_thread::sleep_for(std::chrono::milliseconds(1001));

@@ -18,6 +18,7 @@ public:
 
 	virtual void GoTowardsThePlayer();
 	EnemyState GetEnemyState()const { return m_EnemyState; }
+	EnemyType GetEnemyType()const { return m_EnemyType; }
 protected:
 	EnemyTexture* m_pTexture = nullptr;
 	bool m_HitWithBubble = false;

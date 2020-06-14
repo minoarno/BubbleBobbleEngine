@@ -8,7 +8,6 @@ Character::Character()
 	: GameObject{}
 	, m_pTexture{ new UnitTexture{}}
 	, m_CharacterState{CharacterState::walking}
-	, m_DestinationRectangle{ Rectf{} }
 {
 	m_pTexture->SetCharacter(this);
 	if (m_pComponents.find("BoxCollider") == m_pComponents.end())
@@ -18,7 +17,6 @@ Character::Character()
 		m_pComponents.emplace(boxCollider->GetTypeName(), boxCollider);
 
 		MidestinyEngine::RigidBody* rigid = new MidestinyEngine::RigidBody(false);
-		//rigid->AddCollider()
 		m_pComponents.emplace(rigid->GetTypeName(), rigid);
 	}
 }
@@ -86,9 +84,4 @@ void Character::SetTexture(const std::string& filename)
 
 void Character::SetInput()
 {
-}
-
-void Character::SetSize(float width, float height)
-{
-	m_DestinationRectangle = Rectf{ m_Transform->GetPosition().x, m_Transform->GetPosition().y,50,50 };
 }

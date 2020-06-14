@@ -19,11 +19,9 @@ public:
 	void SetTexture(const std::string& filename) override;
 
 	void SetInput();
-	void SetSize(float width, float height);
-	Rectf GetBoundaries() const { return Rectf{m_Transform->GetPosition().x, m_Transform->GetPosition().y,m_DestinationRectangle.w,m_DestinationRectangle.h}; }
+
 	CharacterState GetCharacterState() const { return m_CharacterState; }
 private:
-	Rectf m_DestinationRectangle;
 	UnitTexture* m_pTexture = nullptr;
 	CharacterState m_CharacterState;
 };
