@@ -8,6 +8,13 @@ namespace MidestinyEngine
 		:GameObject{}
 	{
 		SetTexture("LevelBlocks.png");
+		MidestinyEngine::BoxCollider* boxCollider = new MidestinyEngine::BoxCollider();
+		boxCollider->SetSize(Core::g_BlockSize, Core::g_BlockSize);
+		AddComponent(boxCollider);
+
+		MidestinyEngine::RigidBody* rigid = new MidestinyEngine::RigidBody(false);
+		AddComponent(rigid);
+
 		Start();
 	}
 

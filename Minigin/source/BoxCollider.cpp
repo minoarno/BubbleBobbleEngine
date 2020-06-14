@@ -10,13 +10,16 @@ namespace MidestinyEngine
 		m_pBodyshape = new b2PolygonShape();
 		m_pBodyshape->SetAsBox(20, 20);
 		m_FixtureDef.shape = m_pBodyshape;
-		m_FixtureDef.density = 5;
+		m_FixtureDef.density = 1.f;
 	}
 
 	BoxCollider::~BoxCollider()
 	{
-		delete m_pBodyshape;
-		m_pBodyshape = nullptr;
+		//delete m_pBodyshape;
+		//m_pBodyshape = nullptr;
+
+		//delete m_pFixture;
+		//m_pFixture = nullptr;
 	}
 
 	void BoxCollider::Start()
@@ -27,6 +30,7 @@ namespace MidestinyEngine
 			ME_ERROR("Rigidbody is nullptr");
 			return;
 		}
+
 
 		m_pFixture = rigidBody->AddCollider(m_FixtureDef);
 	}

@@ -17,21 +17,18 @@ public:
 		MidestinyEngine::SceneManager::GetInstance().GetActiveScene()->Add(Bub);
 
 		ZenChan* zenchan1 = new ZenChan{};
-		zenchan1->SetTexture("EnemySpriteSheet.png");
 		zenchan1->SetPosition(60, 40); 
 		zenchan1->SetSize(Core::g_BlockSize * 2, Core::g_BlockSize * 2);
 		MidestinyEngine::SceneManager::GetInstance().GetActiveScene()->Add(zenchan1);
 
 		ZenChan* zenchan2 = new ZenChan{};
-		zenchan1->SetTexture("EnemySpriteSheet.png");
-		zenchan1->SetPosition(230, 40);
-		zenchan1->SetSize(Core::g_BlockSize * 2, Core::g_BlockSize * 2);
+		zenchan2->SetPosition(230, 40);
+		zenchan2->SetSize(Core::g_BlockSize * 2, Core::g_BlockSize * 2);
 		MidestinyEngine::SceneManager::GetInstance().GetActiveScene()->Add(zenchan2);
 
 		ZenChan* zenchan3 = new ZenChan{};
-		zenchan1->SetTexture("EnemySpriteSheet.png");
-		zenchan1->SetPosition(400, 40);
-		zenchan1->SetSize(Core::g_BlockSize * 2, Core::g_BlockSize * 2);
+		zenchan3->SetPosition(400, 40);
+		zenchan3->SetSize(Core::g_BlockSize * 2, Core::g_BlockSize * 2);
 		MidestinyEngine::SceneManager::GetInstance().GetActiveScene()->Add(zenchan3);
 	}
 

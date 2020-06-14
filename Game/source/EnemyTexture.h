@@ -28,7 +28,7 @@ public:
 	void SetAmountOfFrames(int value) { m_AmountOfFrames = value; }
 	void SetAmountOfWalkingFrames(int value) { m_AmountOfWalkingFrames = value; }
 	void SetAmountOfDyingFrames(int value) { m_AmountOfDyingFrames = value; }
-	void SetAmountOfAttackingFrames(int value) { m_AmountOfBeingTrappedFrames = value; }
+	void SetAmountOfBeingTrappedFrames(int value) { m_AmountOfBeingTrappedFrames = value; }
 	void SetGameObject(MidestinyEngine::GameObject * gameObject) { m_pGameObject = gameObject; }
 
 	void SetTexture(const std::string & filepath);

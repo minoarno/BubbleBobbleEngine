@@ -3,6 +3,11 @@
 #include <iostream>
 #include <cmath>
 #include "Utils.h"
+#pragma warning(push)
+#pragma warning(disable:4201)
+#include "glm/vec2.hpp"
+#pragma warning(pop)
+#include <ios>
 
 namespace MidestinyEngine
 {
@@ -100,5 +105,10 @@ namespace MidestinyEngine
 				isGameStillGoing = std::atomic<bool>(Core::g_DoContinue);
 			} while (isLooping && isGameStillGoing);
 		}).detach();
+	}
+
+	glm::vec3 MakeVec3(const b2Vec2& pos)
+	{
+		return glm::vec3{ float(pos.x),float(pos.y),0.f };
 	}
 }

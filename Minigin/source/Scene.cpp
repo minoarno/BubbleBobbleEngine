@@ -64,6 +64,9 @@ namespace MidestinyEngine
 
 	void Scene::Update()
 	{
+		ME_INFO(GameTime::GetInstance().GetElapsedSeconds());
+		float sec = GameTime::GetInstance().GetElapsedSeconds();
+		m_pWorld->Step(sec, 8, 3);
 		for (SceneObject* object : m_Objects)
 		{
 			object->Update();
@@ -98,7 +101,7 @@ namespace MidestinyEngine
 
 	void MidestinyEngine::Scene::FixedUpdate()
 	{
-		m_pWorld->Step(GameTime::GetInstance().GetElapsedSeconds(),8,3);
+
 		for (SceneObject* object : m_Objects)
 		{
 

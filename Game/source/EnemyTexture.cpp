@@ -4,6 +4,13 @@
 #include "BaseEnemy.h"
 #include "ResourceManager.h"
 
+EnemyTexture::EnemyTexture(MidestinyEngine::GameObject* gameObject, const std::string& filepath, int amountOfFrames)
+{
+	SetGameObject(gameObject);
+	SetTexture(filepath);
+	m_AmountOfFrames = amountOfFrames;
+}
+
 void EnemyTexture::Start()
 {
 	m_ImageWidth = m_pTexture->GetWidth() / float(m_AmountOfFrames);

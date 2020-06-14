@@ -59,6 +59,11 @@ void MidestinyEngine::Transform::SetPosition(const glm::vec3& pos)
 	}
 }
 
+void MidestinyEngine::Transform::SetPosThroughRigidBody(const glm::vec3& pos)
+{
+	m_Position = pos;
+}
+
 void MidestinyEngine::Transform::Translate(float x, float y, float z)
 {
 	m_Position.x += x;

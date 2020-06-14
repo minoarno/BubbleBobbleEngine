@@ -13,11 +13,11 @@ Character::Character()
 	if (m_pComponents.find("BoxCollider") == m_pComponents.end())
 	{
 		MidestinyEngine::BoxCollider* boxCollider = new MidestinyEngine::BoxCollider();
-		boxCollider->SetSize(40, 40);
-		m_pComponents.emplace(boxCollider->GetTypeName(), boxCollider);
+		boxCollider->SetSize(Core::g_BlockSize * 2, Core::g_BlockSize * 2);
+		AddComponent(boxCollider);
 
 		MidestinyEngine::RigidBody* rigid = new MidestinyEngine::RigidBody(false);
-		m_pComponents.emplace(rigid->GetTypeName(), rigid);
+		AddComponent(rigid);
 	}
 }
 

@@ -1,6 +1,5 @@
 #pragma once
 #include "Structs.h"
-#include <ios>
 
 namespace MidestinyEngine
 {
@@ -28,4 +27,6 @@ namespace MidestinyEngine
 	float Round2Dec(float value);
 
 	void Invoke(std::function<void()> func, int IntervalInMilliseconds, bool isLooping);
+
+	glm::vec3 MakeVec3(const b2Vec2& pos);
 }

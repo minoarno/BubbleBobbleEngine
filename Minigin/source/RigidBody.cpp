@@ -1,5 +1,6 @@
 #include "MiniginPCH.h"
 #include "ColliderIncludes.h"
+#include "Transform.h"
 
 namespace MidestinyEngine
 {
@@ -11,14 +12,22 @@ namespace MidestinyEngine
 
 	RigidBody::~RigidBody()
 	{
-		m_pOwnerGameObject->GetScene()->GetWorld()->DestroyBody(m_pBody);
+		Scene* scene = m_pOwnerGameObject->GetScene();
+		if (scene != nullptr)
+		{
+			m_pOwnerGameObject->GetScene()->GetWorld()->DestroyBody(m_pBody);
+		}
 	}
 
 	void RigidBody::Start()
 	{
 		glm::vec3 pos = m_pOwnerGameObject->GetTransform()->GetPosition();
 		m_BodyDef.position = b2Vec2{ pos.x,pos.y };
+	
 		m_pBody = m_pOwnerGameObject->GetScene()->GetWorld()->CreateBody(&m_BodyDef);
+		b2MassData massData = b2MassData{};
+		massData.mass = 10;
+		m_pBody->SetMassData(&massData);
 	}
 
 	void RigidBody::Update()
@@ -31,6 +40,8 @@ namespace MidestinyEngine
 
 	void RigidBody::LateUpdate()
 	{
+		ME_INFO("{0},{1}   {2},{3}   {4},{5}",m_pBody->GetPosition().x, m_pBody->GetPosition().y, m_pBody->GetTransform().p.x , m_pBody->GetTransform().p.y, m_pBody->GetTransform().q.c, m_pBody->GetTransform().q.s);
+		static_cast<Transform*>(m_pOwnerGameObject->GetComponent("Transform"))->SetPosThroughRigidBody(MakeVec3(m_pBody->GetPosition()));
 	}
 
 	void RigidBody::Render() const
