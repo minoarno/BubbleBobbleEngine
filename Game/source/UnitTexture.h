@@ -47,7 +47,7 @@ private:
 
 	std::shared_ptr<MidestinyEngine::Texture2D> m_pTexture;
 
-	int m_FramesPerSec = 4, m_AmountOfFrames = 0, m_AmountOfWalkingFrames = 0, m_AmountOfDyingFrames = 0, m_AmountOfAttackingFrames = 0;
+	int m_FramesPerSec = 4, m_AmountOfFrames = 4, m_AmountOfWalkingFrames = 0, m_AmountOfDyingFrames = 0, m_AmountOfAttackingFrames = 0;
 
 	float m_AnimationTimer = 0;
 	int m_AnimationCounter = 0;

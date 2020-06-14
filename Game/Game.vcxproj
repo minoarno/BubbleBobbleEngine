@@ -178,6 +178,7 @@ $(SolutionDir)3rdParty/SDL2/lib/x86;$(LibraryPath)</LibraryPath>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\EnemyTexture.cpp" />
     <ClCompile Include="source\Drop.cpp" />
     <ClCompile Include="source\Boulder.cpp" />
     <ClCompile Include="source\Bubble.cpp" />
@@ -201,6 +202,7 @@ $(SolutionDir)3rdParty/SDL2/lib/x86;$(LibraryPath)</LibraryPath>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\EnemyTexture.h" />
     <ClInclude Include="source\Drop.h" />
     <ClInclude Include="source\Boulder.h" />
     <ClInclude Include="source\Bubble.h" />

@@ -18,3 +18,10 @@ enum class CharacterState
 	dying = 1,
 	attack = 2
 };
+
+enum class EnemyState
+{
+	walking = 0,
+	trapped = 1,
+	dying = 2,
+};

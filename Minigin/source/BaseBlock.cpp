@@ -32,7 +32,14 @@ namespace MidestinyEngine
 			{
 				BoxCollider* boxCollider = new BoxCollider{};
 				boxCollider->SetSize(m_BlockSize, m_BlockSize);
+				boxCollider->SetGameObject(this);
 				m_pComponents.emplace(boxCollider->GetTypeName(), boxCollider);
+			}
+			if (m_pComponents.find("RigidBody") != m_pComponents.end())
+			{
+				RigidBody* rigidBody = new RigidBody{true};
+				rigidBody->SetGameObject(this);
+				m_pComponents.emplace(rigidBody->GetTypeName(), rigidBody);
 			}
 		}
 	}

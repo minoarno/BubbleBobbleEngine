@@ -1,5 +1,7 @@
 #pragma once
 #include "BaseComponent.h"
+#include "Transform.h"
+
 namespace MidestinyEngine
 {
 	class GameObject;
@@ -21,8 +23,11 @@ namespace MidestinyEngine
 
 		b2Fixture* AddCollider(const b2FixtureDef& fixtureDef);
 	private:
+		friend class Transform;
 		bool m_IsStatic = false;
 		b2BodyDef m_BodyDef;
 		b2Body* m_pBody = nullptr;
+
+		void AdjustPosition(const glm::vec3& pos);
 	};
 }

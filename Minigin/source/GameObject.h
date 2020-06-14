@@ -29,6 +29,7 @@ namespace MidestinyEngine
 		void AddComponent(BaseComponent* component);
 
 		BaseComponent* GetComponent(const std::string& name);
+		Transform* GetTransform()const { return m_Transform; }
 	protected:
 		Transform* m_Transform;
 		std::map<std::string, BaseComponent*> m_pComponents;

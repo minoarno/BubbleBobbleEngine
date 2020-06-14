@@ -106,6 +106,7 @@ void MidestinyEngine::Application::Run()
 		{
 			MidestinyEngine::Invoke(std::bind(&MidestinyEngine::Application::FixedUpdate, this), 1000, true);
 
+			sceneManager.GetActiveScene()->Start();
 			while (Core::g_DoContinue)
 			{
 				const auto currentTime = high_resolution_clock::now();

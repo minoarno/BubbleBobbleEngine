@@ -1,9 +1,12 @@
+#include "MiniginPCH.h"
 #include "ColliderIncludes.h"
 #include "Character.h"
 #include "UnitTexture.h"
+#include "BoxCollider.h"
 
 Character::Character()
-	: m_pTexture{ new UnitTexture{}}
+	: GameObject{}
+	, m_pTexture{ new UnitTexture{}}
 	, m_CharacterState{CharacterState::walking}
 	, m_DestinationRectangle{ Rectf{} }
 {
@@ -15,6 +18,7 @@ Character::Character()
 		m_pComponents.emplace(boxCollider->GetTypeName(), boxCollider);
 
 		MidestinyEngine::RigidBody* rigid = new MidestinyEngine::RigidBody(false);
+		//rigid->AddCollider()
 		m_pComponents.emplace(rigid->GetTypeName(), rigid);
 	}
 }
@@ -27,7 +31,14 @@ Character::~Character()
 
 void Character::Start()
 {
+	for (std::pair<std::string, MidestinyEngine::BaseComponent*> component : m_pComponents)
+	{
+		component.second->SetGameObject(this);
+	}
+
 	m_pTexture->Start();
+	m_pComponents["RigidBody"]->Start();
+	m_pComponents["BoxCollider"]->Start();
 	for (std::pair<std::string, MidestinyEngine::BaseComponent*> component : m_pComponents)
 	{
 		component.second->Start();

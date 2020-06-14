@@ -48,7 +48,7 @@ void UnitTexture::Render() const
 	Rectf srcRect{ m_AnimationCounter * m_ImageWidth, number * m_ImageHeight, m_ImageWidth, m_ImageHeight };
 
 	Renderer::GetInstance().RenderTexture(*m_pTexture, srcRect, m_pCharacter->GetBoundaries());
-	m_pTexture->GetSDLTexture();
+	//m_pTexture->GetSDLTexture();
 }
 
 void UnitTexture::ResetAnimationCounter()
