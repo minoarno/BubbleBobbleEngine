@@ -7,6 +7,7 @@ namespace MidestinyEngine
 		: m_TypeName{ "BaseComponent" }
 	{
 	}
+
 	BaseComponent::~BaseComponent()
 	{
 	}

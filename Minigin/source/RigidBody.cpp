@@ -12,6 +12,7 @@ namespace MidestinyEngine
 
 	RigidBody::~RigidBody()
 	{
+
 		Scene* scene = m_pOwnerGameObject->GetScene();
 		if (scene != nullptr)
 		{
@@ -41,6 +42,7 @@ namespace MidestinyEngine
 	void RigidBody::LateUpdate()
 	{
 		ME_INFO("{0},{1}   {2},{3}   {4},{5}",m_pBody->GetPosition().x, m_pBody->GetPosition().y, m_pBody->GetTransform().p.x , m_pBody->GetTransform().p.y, m_pBody->GetTransform().q.c, m_pBody->GetTransform().q.s);
+		ME_INFO("{0} {1} {2},{3}",m_pBody->GetGravityScale(), m_pOwnerGameObject->GetScene()->GetWorld()->IsLocked(), m_pOwnerGameObject->GetScene()->GetWorld()->GetGravity().x, m_pOwnerGameObject->GetScene()->GetWorld()->GetGravity().y);
 		static_cast<Transform*>(m_pOwnerGameObject->GetComponent("Transform"))->SetPosThroughRigidBody(MakeVec3(m_pBody->GetPosition()));
 	}
 
@@ -50,7 +52,8 @@ namespace MidestinyEngine
 
 	b2Fixture* RigidBody::AddCollider(const b2FixtureDef& fixtureDef)
 	{
-		return m_pBody->CreateFixture(&fixtureDef);
+		m_pFixture = m_pBody->CreateFixture(&fixtureDef);
+		return m_pFixture;
 	}
 
 	void RigidBody::AdjustPosition(const glm::vec3& pos)

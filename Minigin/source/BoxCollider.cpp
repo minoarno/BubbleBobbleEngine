@@ -9,17 +9,18 @@ namespace MidestinyEngine
 		m_TypeName = "BoxCollider";
 		m_pBodyshape = new b2PolygonShape();
 		m_pBodyshape->SetAsBox(20, 20);
+
 		m_FixtureDef.shape = m_pBodyshape;
 		m_FixtureDef.density = 1.f;
 	}
 
 	BoxCollider::~BoxCollider()
 	{
-		//delete m_pBodyshape;
-		//m_pBodyshape = nullptr;
-
-		//delete m_pFixture;
-		//m_pFixture = nullptr;
+		RigidBody* rigidBody = static_cast<RigidBody*>(m_pOwnerGameObject->GetComponent("RigidBody"));
+		if (rigidBody == nullptr)
+		{
+			return;
+		}
 	}
 
 	void BoxCollider::Start()

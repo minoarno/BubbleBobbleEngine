@@ -26,6 +26,7 @@ namespace MidestinyEngine
 		friend class Transform;
 		bool m_IsStatic = false;
 		b2BodyDef m_BodyDef;
+		b2Fixture* m_pFixture;
 		b2Body* m_pBody = nullptr;
 
 		void AdjustPosition(const glm::vec3& pos);
