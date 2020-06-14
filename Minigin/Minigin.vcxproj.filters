@@ -129,9 +129,6 @@
     <ClInclude Include="source\GameTime.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="source\UnitTexture.h">
-      <Filter>Textures</Filter>
-    </ClInclude>
     <ClInclude Include="source\utils.h">
       <Filter>Core</Filter>
     </ClInclude>
@@ -211,9 +208,6 @@
     </ClCompile>
     <ClCompile Include="source\GameTime.cpp">
       <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="source\UnitTexture.cpp">
-      <Filter>Textures</Filter>
     </ClCompile>
     <ClCompile Include="source\utils.cpp">
       <Filter>Core</Filter>

@@ -1,5 +1,8 @@
 #include "ColliderIncludes.h"
 #include "Character.h"
+#include "UnitTexture.h"
+
+int Character::m_AmountOfCharacters{ 0 };
 
 Character::Character()
 {
@@ -9,6 +12,10 @@ Character::Character()
 
 		m_pComponents.emplace(boxCollider->GetTypeName(), boxCollider);
 	}
+	m_AmountOfCharacters++;
+
+	
+
 }
 
 Character::~Character()
@@ -34,6 +41,15 @@ void Character::FixedUpdate()
 
 void Character::Render() const
 {
+}
+
+void Character::SetTexture(const std::string& filename)
+{
+	m_pTexture->SetTexture(filename);
+	m_pTexture->SetAmountOfFrames(4);
+	m_pTexture->SetAmountOfWalkingFrames(4);
+	m_pTexture->SetAmountOfDyingFrames(4);
+	m_pTexture->SetAmountOfAttackingFrames(2);
 }
 
 void Character::SetInput()

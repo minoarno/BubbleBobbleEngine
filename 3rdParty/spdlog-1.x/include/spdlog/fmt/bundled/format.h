@@ -33,6 +33,7 @@
 #pragma warning(disable : 26812)
 #pragma warning(disable : 26451)
 #pragma warning(disable : 26495)
+#pragma warning(disable : 6385)
 
 #ifndef FMT_FORMAT_H_
 #define FMT_FORMAT_H_

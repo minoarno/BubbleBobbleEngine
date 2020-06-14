@@ -178,13 +178,21 @@ $(SolutionDir)3rdParty/SDL2/lib/x86;$(LibraryPath)</LibraryPath>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\Drop.cpp" />
+    <ClCompile Include="source\Boulder.cpp" />
+    <ClCompile Include="source\Bubble.cpp" />
+    <ClCompile Include="source\JumpCommand.cpp" />
+    <ClCompile Include="source\Projectile.cpp" />
     <ClCompile Include="source\FireCommand.cpp" />
     <ClCompile Include="source\EnemyManager.cpp" />
     <ClCompile Include="source\Maita.cpp" />
     <ClCompile Include="source\BaseEnemy.cpp" />
     <ClCompile Include="source\Character.cpp" />
     <ClCompile Include="source\SandboxApp.cpp" />
+    <ClCompile Include="source\UnitTexture.cpp" />
     <ClCompile Include="source\ZenChan.cpp" />
+    <ClCompile Include="source\WalkCommand.cpp" />
+    <ClCompile Include="source\Enums.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Minigin\Minigin.vcxproj">
@@ -192,12 +200,20 @@ $(SolutionDir)3rdParty/SDL2/lib/x86;$(LibraryPath)</LibraryPath>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\Drop.h" />
+    <ClInclude Include="source\Boulder.h" />
+    <ClInclude Include="source\Bubble.h" />
+    <ClInclude Include="source\JumpCommand.h" />
+    <ClInclude Include="source\Projectile.h" />
     <ClInclude Include="source\FireCommand.h" />
     <ClInclude Include="source\EnemyManager.h" />
     <ClInclude Include="source\Maita.h" />
     <ClInclude Include="source\BaseEnemy.h" />
     <ClInclude Include="source\Character.h" />
+    <ClInclude Include="source\UnitTexture.h" />
     <ClInclude Include="source\ZenChan.h" />
+    <ClInclude Include="source\WalkCommand.h" />
+    <ClInclude Include="source\Enums.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

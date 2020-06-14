@@ -2,7 +2,8 @@
 // Distributed under the MIT License (http://opensource.org/licenses/MIT)
 
 #pragma once
-
+#pragma warning(push)
+#pragma warning(disable : 26812)
 #include <spdlog/common.h>
 #include <spdlog/details/log_msg.h>
 #include <spdlog/details/os.h>
@@ -124,3 +125,4 @@ private:
 #ifdef SPDLOG_HEADER_ONLY
 #include "pattern_formatter-inl.h"
 #endif
+#pragma warning(pop)

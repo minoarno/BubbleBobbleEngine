@@ -3,8 +3,9 @@
 #include "GameObject.h"
 #include "ResourceManager.h"
 #include "Texture2D.h"
-
+#include "Character.h" 
 UnitTexture::UnitTexture()
+	:m_DestinationRectangle{ Rectf{} }
 {
 }
 
@@ -19,16 +20,23 @@ UnitTexture::~UnitTexture()
 {
 }
 
+void UnitTexture::Start()
+{
+	m_ImageWidth = m_pTexture->GetWidth() / float(m_AmountOfFrames);
+
+	m_ImageHeight = m_pTexture->GetHeight() / 3.f;
+}
+
 void UnitTexture::Update()
 {
 }
 
 void UnitTexture::Render() const
 {
-	//int number{ (int(m_pAvatar->GetStance()) + 1) + int(m_pAvatar->GetActionState()) * m_AmountOfStances };
-	//Rectf srcRect{ m_AnimationCounter * m_ImageWidth, number * m_ImageHeight, m_ImageWidth, m_ImageHeight };
+	int number = int(m_pCharacter->GetCharacterState());
+	Rectf srcRect{ m_AnimationCounter * m_ImageWidth, number * m_ImageHeight, m_ImageWidth, m_ImageHeight };
 
-	//m_pTexture->GetSDLTexture(); Draw(m_DestinationRectangle, srcRect);
+	m_pTexture->GetSDLTexture(); //Draw(m_DestinationRectangle, srcRect);
 }
 
 void UnitTexture::ResetAnimationCounter()
@@ -41,5 +49,3 @@ void UnitTexture::SetTexture(const std::string& filepath)
 {
 	m_pTexture = ResourceManager::GetInstance().LoadTexture(filepath);
 }
-
-

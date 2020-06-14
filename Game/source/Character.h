@@ -1,15 +1,11 @@
 #pragma once
 #include "GameObject.h"
+#include "Enums.h"
 
+class UnitTexture;
 class Character final : public  MidestinyEngine::GameObject
 {
 public:
-	enum class CharacterState
-	{
-		idle = 0,
-		walking = 1,
-	};
-
 	Character();
 	~Character();
 
@@ -19,8 +15,13 @@ public:
 	void FixedUpdate() override;
 	void Render() const override;
 
-	void SetInput();
-private:
+	void SetTexture(const std::string& filename) override;
 
+	void SetInput();
+	CharacterState GetCharacterState()const { return m_CharacterState; }
+private:
+	UnitTexture* m_pTexture;
+	static int m_AmountOfCharacters;
+	CharacterState m_CharacterState;
 };
 

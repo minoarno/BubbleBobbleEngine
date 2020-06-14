@@ -19,11 +19,11 @@
     <Filter Include="Drops">
       <UniqueIdentifier>{b3a11256-ec48-4cc4-9f44-5cbb58584531}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Bubbles">
-      <UniqueIdentifier>{9aaae328-c096-430d-8bb2-dae01f4f55f1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Commands">
       <UniqueIdentifier>{49e61ac1-5edd-4c9e-a043-12f20ce3fdee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Projectiles">
+      <UniqueIdentifier>{9aaae328-c096-430d-8bb2-dae01f4f55f1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -48,6 +48,30 @@
     <ClCompile Include="source\EnemyManager.cpp">
       <Filter>Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="source\Projectile.cpp">
+      <Filter>Projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Bubble.cpp">
+      <Filter>Projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Boulder.cpp">
+      <Filter>Projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WalkCommand.cpp">
+      <Filter>Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="source\JumpCommand.cpp">
+      <Filter>Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Drop.cpp">
+      <Filter>Drops</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Enums.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\UnitTexture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\BaseEnemy.h">
@@ -67,6 +91,30 @@
     </ClInclude>
     <ClInclude Include="source\EnemyManager.h">
       <Filter>Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Boulder.h">
+      <Filter>Projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Bubble.h">
+      <Filter>Projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Projectile.h">
+      <Filter>Projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WalkCommand.h">
+      <Filter>Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="source\JumpCommand.h">
+      <Filter>Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Drop.h">
+      <Filter>Drops</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Enums.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\UnitTexture.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

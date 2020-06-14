@@ -18,7 +18,7 @@ namespace MidestinyEngine
 		virtual void FixedUpdate() override;
 		virtual void Render() const override;
 
-		void SetTexture(const std::string& filename);
+		virtual void SetTexture(const std::string& filename);
 		void SetPosition(float x, float y);
 
 		GameObject(const GameObject& other) = delete;
