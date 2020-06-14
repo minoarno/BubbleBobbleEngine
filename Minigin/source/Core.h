@@ -14,4 +14,5 @@ namespace Core
 {
 	static int g_WindowWidth;
 	static int g_WindowHeight;
+	static bool g_DoContinue;
 };

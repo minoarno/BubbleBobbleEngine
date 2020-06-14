@@ -12,4 +12,7 @@
 #include <box2d/b2_polygon_shape.h>
 #include <box2d/b2_shape.h>
 #include <box2d/b2_world.h>
+
+#include "BoxCollider.h"
+#include "RigidBody.h"
 #pragma warning(pop)

@@ -7,6 +7,6 @@ public:
 	BaseEnemy();
 	virtual ~BaseEnemy();
 protected:
-
+	bool m_HitWithBubble = false;
 };
 

@@ -6,9 +6,18 @@ namespace dae
 	BoxCollider::BoxCollider()
 		: BaseComponent{}
 	{
-		m_TypeName = "Collider2D";
+		m_TypeName = "BoxCollider";
 
 		m_pBodyshape->SetAsBox(20, 20);
+	}
+
+	BoxCollider::~BoxCollider()
+	{
+		delete m_pBodyshape;
+		m_pBodyshape = nullptr;
+
+		delete m_pFixture;
+		m_pFixture = nullptr;
 	}
 
 	void BoxCollider::Start()

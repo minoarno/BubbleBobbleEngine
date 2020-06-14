@@ -26,4 +26,6 @@ namespace dae
 	bool CheckStream(std::istream& inputStream);
 
 	float Round2Dec(float value);
+
+	void Invoke(std::function<void()> func, int IntervalInMilliseconds, bool isLooping);
 }

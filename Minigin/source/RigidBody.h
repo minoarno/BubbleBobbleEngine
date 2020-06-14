@@ -1,6 +1,5 @@
 #pragma once
 #include "BaseComponent.h"
-#include "ColliderIncludes.h"
 namespace dae
 {
 	class GameObject;

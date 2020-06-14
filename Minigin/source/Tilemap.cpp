@@ -11,9 +11,11 @@ namespace dae
 	Tilemap::Tilemap()
 	{
 		BaseBlock::SetBlockSize(m_BlockSize);
+		m_TilemapGrid.reserve(27);
 		for (int i = 0; i < 27; i++)
 		{
-			std::deque<BaseBlock*> blocks;
+			std::vector<BaseBlock*> blocks;
+			blocks.reserve(35);
 			for (int j = 0; j < 35; j++)
 			{
 				BaseBlock* block = new BaseBlock{};
@@ -22,6 +24,7 @@ namespace dae
 			}
 			m_TilemapGrid.push_back(blocks);
 		}
+		m_LevelBoundaries = Rectf{ 0,0,35 * m_BlockSize,27 * m_BlockSize };
 	}
 
 	Tilemap::~Tilemap()
@@ -29,29 +32,11 @@ namespace dae
 		ClearGrid();
 	}
 
-	void Tilemap::AddRow()
-	{
-		std::deque<BaseBlock*> baseBlocks;
-		for (int i = 0; i < m_TilemapGrid[0].size(); i++)
-		{
-			baseBlocks.push_back(nullptr);
-		}
-		m_TilemapGrid.push_back(baseBlocks);
-	}
-
-	void Tilemap::AddCollum()
-	{
-		for (int i = 0; i < m_TilemapGrid.size(); i++)
-		{
-			m_TilemapGrid.at(i).push_back(nullptr);
-		}
-	}
-
 	void Tilemap::Start()
 	{
-		for (std::deque<BaseBlock*>& deque : m_TilemapGrid)
+		for (std::vector<BaseBlock*>& vector : m_TilemapGrid)
 		{
-			for (BaseBlock* block : deque)
+			for (BaseBlock* block : vector)
 			{
 				if (block == nullptr) continue;
 				block->Start();
@@ -61,9 +46,9 @@ namespace dae
 
 	void Tilemap::Update()
 	{
-		for (std::deque<BaseBlock*>& deque : m_TilemapGrid)
+		for (std::vector<BaseBlock*>& vector : m_TilemapGrid)
 		{
-			for (BaseBlock* block : deque)
+			for (BaseBlock* block : vector)
 			{
 				if (block == nullptr) continue;
 				block->Update();
@@ -73,9 +58,9 @@ namespace dae
 
 	void Tilemap::FixedUpdate()
 	{
-		for (std::deque<BaseBlock*>& deque : m_TilemapGrid)
+		for (std::vector<BaseBlock*>& vector : m_TilemapGrid)
 		{
-			for (BaseBlock* block : deque)
+			for (BaseBlock* block : vector)
 			{
 				if (block == nullptr) continue;
 				block->FixedUpdate();
@@ -85,9 +70,9 @@ namespace dae
 
 	void Tilemap::LateUpdate()
 	{
-		for (std::deque<BaseBlock*>& deque : m_TilemapGrid)
+		for (std::vector<BaseBlock*>& vector : m_TilemapGrid)
 		{
-			for (BaseBlock* block : deque)
+			for (BaseBlock* block : vector)
 			{
 				if (block == nullptr) continue;
 				block->LateUpdate();
@@ -110,9 +95,9 @@ namespace dae
 	#ifdef _DEBUG
 	void Tilemap::TilemapBlockChanger(float x, float y)
 	{
-		for (std::deque<BaseBlock*>& deque : m_TilemapGrid)
+		for (std::vector<BaseBlock*>& vector : m_TilemapGrid)
 		{
-			for (BaseBlock* block : deque)
+			for (BaseBlock* block : vector)
 			{
 				if (IsPointInRect(x, y, block->GetBoundaries()))
 				{
@@ -145,9 +130,11 @@ namespace dae
 	void Tilemap::LoadTileMapFromFile(int width, int height, const std::string& blockoutPart)
 	{
 		ClearGrid();
+		m_TilemapGrid.reserve(height);
 		for (int h = 0; h < height; h++)
 		{
-			std::deque<BaseBlock*> blocks;
+			std::vector<BaseBlock*> blocks;
+			blocks.reserve(width);
 			for (int w = 0; w < width; w++)
 			{
 				blocks.push_back(new BaseBlock{});

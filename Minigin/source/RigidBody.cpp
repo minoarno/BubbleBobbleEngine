@@ -1,4 +1,5 @@
 #include "MiniginPCH.h"
+#include "ColliderIncludes.h"
 
 namespace dae
 {

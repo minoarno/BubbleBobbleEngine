@@ -22,6 +22,9 @@
     <Filter Include="Bubbles">
       <UniqueIdentifier>{9aaae328-c096-430d-8bb2-dae01f4f55f1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Commands">
+      <UniqueIdentifier>{49e61ac1-5edd-4c9e-a043-12f20ce3fdee}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\SandboxApp.cpp">

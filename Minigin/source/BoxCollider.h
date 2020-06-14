@@ -8,7 +8,7 @@ namespace dae
 	{
 	public:
 		BoxCollider();
-		virtual ~BoxCollider() = default;
+		virtual ~BoxCollider();
 
 		virtual void Start() override;
 		virtual void Update() override;

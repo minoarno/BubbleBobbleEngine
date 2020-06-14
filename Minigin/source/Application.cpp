@@ -72,20 +72,6 @@ void MidestinyEngine::Application::LoadGame()
 	//scene.Add(to);
 }
 
-void MidestinyEngine::Application::Invoke(std::function<void()> func, int intervalInMilliseconds, bool isLooping)
-{
-	std::atomic<bool> gameloopBoolean{  };
-	std::thread([=]/*[func, intervalInMilliseconds,isLooping,gameloopBoolean]*/()
-	{
-		do
-		{
-			auto nextTimeFunctionCall = std::chrono::steady_clock::now() + std::chrono::milliseconds(intervalInMilliseconds);
-			std::this_thread::sleep_until(nextTimeFunctionCall);
-			func();
-		} while (isLooping && std::atomic<bool>(this->m_DoContinue));
-	}).detach();
-}
-
 void MidestinyEngine::Application::FixedUpdate()
 {
 	auto& sceneManager = dae::SceneManager::GetInstance();
@@ -103,6 +89,8 @@ void MidestinyEngine::Application::Cleanup()
 
 void MidestinyEngine::Application::Run()
 {
+	Core::g_DoContinue = true;
+
 	if(m_Window == nullptr) Initialize();
 
 	// tell the resource manager where he can find the game data
@@ -114,23 +102,24 @@ void MidestinyEngine::Application::Run()
 		auto& renderer = dae::Renderer::GetInstance();
 		auto& sceneManager = dae::SceneManager::GetInstance();
 		auto& input = dae::InputManager::GetInstance();
-
-		Invoke(std::bind(&MidestinyEngine::Application::FixedUpdate, this), 1000, true);
-		
-		while (m_DoContinue)
 		{
-			const auto currentTime = high_resolution_clock::now();
+			dae::Invoke(std::bind(&MidestinyEngine::Application::FixedUpdate, this), 1000, true);
 
-			m_DoContinue = input.ProcessInput();
-			sceneManager.Update();
-			renderer.Render();
-			sceneManager.LateUpdate();
+			while (Core::g_DoContinue)
+			{
+				const auto currentTime = high_resolution_clock::now();
 
-			//auto sleepTime = duration_cast<duration<float>>(currentTime + milliseconds(MsPerFrame) - high_resolution_clock::now());
-			//std::this_thread::sleep_for(sleepTime);
-			dae::GameTime::GetInstance().SetElapsedSeconds(std::chrono::duration<float>(high_resolution_clock::now() - currentTime).count());
+				Core::g_DoContinue = input.ProcessInput();
+				sceneManager.Update();
+				renderer.Render();
+				sceneManager.LateUpdate();
+
+				//auto sleepTime = duration_cast<duration<float>>(currentTime + milliseconds(MsPerFrame) - high_resolution_clock::now());
+				//std::this_thread::sleep_for(sleepTime);
+				dae::GameTime::GetInstance().SetElapsedSeconds(std::chrono::duration<float>(high_resolution_clock::now() - currentTime).count());
+			}
+			std::this_thread::sleep_for(std::chrono::milliseconds(1001));
 		}
-
 		dae::SceneManager::GetInstance().SaveScenesToFile("../Data/Scenes.txt");
 	}
 }

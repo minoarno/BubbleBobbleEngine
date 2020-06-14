@@ -12,8 +12,6 @@ namespace dae
 		~Tilemap();
 
 		void LoadTileMapFromFile(int width, int height, const std::string& blockoutPart);
-		void AddRow();
-		void AddCollum();
 
 		virtual void Start() override;
 		virtual void Update() override;
@@ -26,9 +24,13 @@ namespace dae
 		static float GetBlockSize() { return m_BlockSize; }
 
 		friend std::ostream& operator<<(std::ostream& out, const Tilemap& tilemap);
+
+		Rectf GetLevelBoundaries()const { return m_LevelBoundaries; }
 	private:
-		std::deque<std::deque<BaseBlock*>> m_TilemapGrid;
+		std::vector<std::vector<BaseBlock*>> m_TilemapGrid;
 		static float m_BlockSize;
+
+		Rectf m_LevelBoundaries;
 
 		void ClearGrid();
 	};

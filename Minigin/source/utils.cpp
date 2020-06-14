@@ -63,8 +63,6 @@ namespace dae
 		return ((x >= r.x) && (x <= r.x + r.w) && (y >= r.y) && (y <= r.y + r.h));
 	}
 
-#pragma region Parser
-
 	int Random(int min, int max)
 	{
 		return std::rand() % (max - min) + min;
@@ -89,5 +87,18 @@ namespace dae
 		return int(value * 100) / 100.f;
 	}
 
-#pragma endregion Parser
+	void Invoke(std::function<void()> func, int intervalInMilliseconds, bool isLooping)
+	{
+		std::thread([=]()
+		{
+			bool isGameStillGoing{ true };
+			do
+			{
+				auto nextTimeFunctionCall = std::chrono::steady_clock::now() + std::chrono::milliseconds(intervalInMilliseconds);
+				std::this_thread::sleep_until(nextTimeFunctionCall);
+				func();
+				isGameStillGoing = std::atomic<bool>(Core::g_DoContinue);
+			} while (isLooping && isGameStillGoing);
+		}).detach();
+	}
 }
