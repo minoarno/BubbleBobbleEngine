@@ -7,7 +7,7 @@ namespace MidestinyEngine
 		: BaseComponent{}
 	{
 		m_TypeName = "BoxCollider";
-
+		m_pBodyshape = new b2PolygonShape();
 		m_pBodyshape->SetAsBox(20, 20);
 	}
 

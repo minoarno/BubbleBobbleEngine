@@ -13,9 +13,11 @@ namespace MidestinyEngine
 
 		void Run();
 		void Cleanup();
+	protected:
+		virtual void LoadGame();
 	private:
 		void Initialize();
-		void LoadGame();
+
 
 		//void Invoke(std::function<void()> func,int IntervalInMilliseconds,bool isLooping);
 		void FixedUpdate();

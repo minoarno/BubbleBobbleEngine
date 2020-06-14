@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "Enums.h"
+#include "Structs.h"
 
 class UnitTexture;
 class Character final : public  MidestinyEngine::GameObject
@@ -18,10 +19,12 @@ public:
 	void SetTexture(const std::string& filename) override;
 
 	void SetInput();
-	CharacterState GetCharacterState()const { return m_CharacterState; }
+
+	Rectf GetBoundaries() const { return m_DestinationRectangle; }
+	CharacterState GetCharacterState() const { return m_CharacterState; }
 private:
-	UnitTexture* m_pTexture;
-	static int m_AmountOfCharacters;
+	Rectf m_DestinationRectangle;
+	UnitTexture* m_pTexture = nullptr;
 	CharacterState m_CharacterState;
 };
 

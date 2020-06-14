@@ -7,16 +7,17 @@ class Texture2D;
 class UnitTexture
 {
 public:
-	UnitTexture();
+	UnitTexture() = default;
 	UnitTexture(MidestinyEngine::GameObject* gameObject, const std::string& filepath, int amountOfFrames);
 	UnitTexture(const UnitTexture& other) = delete;
 	UnitTexture& operator=(const UnitTexture& other) = delete;
 	UnitTexture(UnitTexture&& other) = delete;
 	UnitTexture& operator=(UnitTexture&& other) = delete;
-	~UnitTexture();
+	~UnitTexture() = default;
 
 	void Start();
 	void Update();
+	void IncrementAnimationCounter();
 	void Render()const;
 
 	void ResetAnimationCounter();
@@ -27,7 +28,6 @@ public:
 	int GetAmountOfDyingFrames()const { return m_AmountOfDyingFrames; }
 	int GetAmountOfAttackingFrames()const { return m_AmountOfAttackingFrames; }
 
-	void SetDestRect(const Rectf& rect) { m_DestinationRectangle = rect; }
 	void SetFramesPerSec(int value) { m_FramesPerSec = value; }
 	void SetAmountOfFrames(int value) { m_AmountOfFrames = value; }
 	void SetAmountOfWalkingFrames(int value) { m_AmountOfWalkingFrames = value; }
@@ -37,9 +37,9 @@ public:
 
 	void SetTexture(const std::string& filepath);
 	void SetCharacter(Character* character) { m_pCharacter = character; }
+
 private:
 	Character* m_pCharacter = nullptr;
-	Rectf m_DestinationRectangle;
 
 	MidestinyEngine::GameObject* m_pGameObject = nullptr;
 

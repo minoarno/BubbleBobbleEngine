@@ -1,4 +1,6 @@
 #include <MidestinyEngine.h>
+#include "Character.h"
+#include "ResourceManager.h"
 
 class Sandbox final : public MidestinyEngine::Application
 {
@@ -6,14 +8,18 @@ public:
 	Sandbox()
 		:Application()
 	{
-		ME_WARN("Works");
-		glBegin(GL_LINE);
-		glVertex2f(0.f, 1.f);
-		glVertex2f(0.f, 5.f);
-		glEnd();
 	}
 
 	~Sandbox() = default;
+
+protected:
+	void LoadGame() override
+	{
+		MidestinyEngine::SceneManager::GetInstance().LoadScenesFromFile("../Data/Scenes.txt");
+		Character* Bub = new Character();
+		Bub->SetTexture("heroGreen.png");
+		MidestinyEngine::SceneManager::GetInstance().GetActiveScene()->Add(Bub);
+	}
 };
 
 MidestinyEngine::Application* MidestinyEngine::CreateApplication()

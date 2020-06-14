@@ -47,6 +47,9 @@ void MidestinyEngine::Application::Initialize()
 	}
 
 	MidestinyEngine::Renderer::GetInstance().Init(m_Window);
+
+	// tell the resource manager where he can find the game data
+	MidestinyEngine::ResourceManager::GetInstance().Init("../Data/");
 }
 
 /**
@@ -54,6 +57,8 @@ void MidestinyEngine::Application::Initialize()
  */
 void MidestinyEngine::Application::LoadGame()
 {
+	//MidestinyEngine::SceneManager::GetInstance().LoadScenesFromFile("../Data/Scenes.txt");
+
 	//auto& scene = dae::SceneManager::GetInstance().CreateScene("Demo");
 	//dae::SceneManager::GetInstance().CreateScene("level1");
 
@@ -92,9 +97,6 @@ void MidestinyEngine::Application::Run()
 
 	if(m_Window == nullptr) Initialize();
 
-	// tell the resource manager where he can find the game data
-	MidestinyEngine::ResourceManager::GetInstance().Init("../Data/");
-	MidestinyEngine::SceneManager::GetInstance().LoadScenesFromFile("../Data/Scenes.txt");
 	LoadGame();
 	
 	{
