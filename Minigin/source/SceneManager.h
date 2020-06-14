@@ -17,6 +17,8 @@ namespace MidestinyEngine
 		void SaveScenesToFile(const std::string& filename);
 		void LoadScenesFromFile(const std::string& filename);
 		Scene* GetActiveScene();
+		void NextScene(int index);
+		void NextScene(const std::string& sceneName);
 	private:
 		friend class Singleton<SceneManager>;
 		SceneManager() = default;

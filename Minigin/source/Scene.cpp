@@ -113,10 +113,7 @@ namespace MidestinyEngine
 
 	void Scene::Render() const
 	{
-		for (SceneObject* object : m_Objects)
-		{
-			object->Render();
-		}
+
 		if (m_pTilemap != nullptr)
 		{
 			m_pTilemap->Render();
@@ -125,7 +122,12 @@ namespace MidestinyEngine
 		{
 			ME_CORE_ERROR("Tilemap isn't loaded in");
 		}
+		for (SceneObject* object : m_Objects)
+		{
+			object->Render();
+		}
 	}
+
 	std::ostream& operator<<(std::ostream& out, const Scene& scene)
 	{
 		out << "<Scene " << scene.m_Name << " " << *scene.m_pTilemap << " GameObjects >";

@@ -1,5 +1,6 @@
 #pragma once
-class JumpCommand
+#include "Command.h"
+class JumpCommand : public Command
 {
 };
 

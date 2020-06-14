@@ -85,7 +85,6 @@ void MidestinyEngine::SceneManager::LoadScenesFromFile(const std::string& filena
 			{
 				ME_CORE_ERROR("File {0} doesn't match: {1} is not compatible with", filename, temp);
 			}
-			ME_CORE_INFO("{0}", m_Scenes.size());
 		}
 	}
 	in.close();
@@ -99,6 +98,29 @@ Scene* MidestinyEngine::SceneManager::GetActiveScene()
 		return nullptr;
 	}
 	return m_Scenes[m_CurrentSceneIndex];
+}
+
+void MidestinyEngine::SceneManager::NextScene(int index)
+{
+	if (m_Scenes.find(index) != m_Scenes.end())
+	{
+		m_CurrentSceneIndex = index;
+	}
+}
+
+void MidestinyEngine::SceneManager::NextScene(const std::string& sceneName)
+{
+	if (m_NameToIndexList.find(sceneName) != m_NameToIndexList.end())
+	{
+		if (m_Scenes.find(m_NameToIndexList[sceneName]) != m_Scenes.end())
+		{
+			m_CurrentSceneIndex = m_NameToIndexList[sceneName];
+		}
+	}
+	else
+	{
+		ME_CORE_ERROR("Can't load in scene with name {0}", sceneName);
+	}
 }
 
 MidestinyEngine::SceneManager::~SceneManager()
