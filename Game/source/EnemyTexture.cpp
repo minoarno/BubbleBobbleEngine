@@ -17,7 +17,7 @@ void EnemyTexture::Start()
 	m_ImageWidth = m_pTexture->GetWidth() / float(m_AmountOfFrames);
 	m_ImageHeight = m_pTexture->GetHeight() / 8.f;
 	int cooldown = int(1000.f / m_FramesPerSec);
-	MidestinyEngine::ThreadMaster::GetInstance().Invoke(std::bind(&EnemyTexture::IncrementAnimationCounter, this), cooldown, true);
+	//MidestinyEngine::ThreadMaster::GetInstance().Invoke(std::bind(&EnemyTexture::IncrementAnimationCounter, this), cooldown, true);
 }
 
 void EnemyTexture::Update()
