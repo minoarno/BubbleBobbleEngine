@@ -1,8 +1,8 @@
 #pragma once
-namespace dae
+namespace MidestinyEngine
 {
 	#include "GameObject.h"
-	class BaseBlock : public dae::GameObject
+	class BaseBlock : public MidestinyEngine::GameObject
 	{
 	public:
 		enum class BlockType

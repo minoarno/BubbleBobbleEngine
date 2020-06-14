@@ -1,7 +1,7 @@
 #include "MiniginPCH.h"
 #include "ColliderIncludes.h"
 
-namespace dae
+namespace MidestinyEngine
 {
 	RigidBody::RigidBody(bool isStatic)
 	{

@@ -42,6 +42,12 @@
     <ClCompile Include="source\ZenChan.cpp">
       <Filter>Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="source\FireCommand.cpp">
+      <Filter>Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="source\EnemyManager.cpp">
+      <Filter>Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\BaseEnemy.h">
@@ -54,6 +60,12 @@
       <Filter>Enemies</Filter>
     </ClInclude>
     <ClInclude Include="source\Maita.h">
+      <Filter>Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="source\FireCommand.h">
+      <Filter>Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="source\EnemyManager.h">
       <Filter>Enemies</Filter>
     </ClInclude>
   </ItemGroup>

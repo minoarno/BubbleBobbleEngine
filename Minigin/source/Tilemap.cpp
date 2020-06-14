@@ -4,7 +4,7 @@
 #include <sstream>
 #include "Tilemap.h"
 
-namespace dae
+namespace MidestinyEngine
 {
 	float Tilemap::m_BlockSize{ 20.f };
 

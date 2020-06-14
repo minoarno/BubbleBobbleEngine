@@ -178,6 +178,8 @@ $(SolutionDir)3rdParty/SDL2/lib/x86;$(LibraryPath)</LibraryPath>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\FireCommand.cpp" />
+    <ClCompile Include="source\EnemyManager.cpp" />
     <ClCompile Include="source\Maita.cpp" />
     <ClCompile Include="source\BaseEnemy.cpp" />
     <ClCompile Include="source\Character.cpp" />
@@ -190,6 +192,8 @@ $(SolutionDir)3rdParty/SDL2/lib/x86;$(LibraryPath)</LibraryPath>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\FireCommand.h" />
+    <ClInclude Include="source\EnemyManager.h" />
     <ClInclude Include="source\Maita.h" />
     <ClInclude Include="source\BaseEnemy.h" />
     <ClInclude Include="source\Character.h" />

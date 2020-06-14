@@ -7,3 +7,7 @@ BaseEnemy::BaseEnemy()
 BaseEnemy::~BaseEnemy()
 {
 }
+
+void BaseEnemy::GoTowardsThePlayer()
+{
+}

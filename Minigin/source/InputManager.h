@@ -2,7 +2,7 @@
 #include <XInput.h>
 #include "Singleton.h"
 
-namespace dae
+namespace MidestinyEngine
 {
 	enum class ControllerButton
 	{
@@ -29,6 +29,9 @@ namespace dae
 		bool IsPressed(ControllerButton button) const;
 		SDL_Event GetEvent();
 	private:
+		friend class Singleton<InputManager>;
+		InputManager() = default;
+
 		XINPUT_STATE m_CurrentState{};
 		SDL_Event m_Event;
 		bool m_DidInputGet = false;

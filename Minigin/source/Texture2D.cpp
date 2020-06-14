@@ -3,12 +3,12 @@
 #include "Texture2D.h"
 #include <SDL.h>
 
-dae::Texture2D::~Texture2D()
+MidestinyEngine::Texture2D::~Texture2D()
 {
 	SDL_DestroyTexture(m_Texture);
 }
 
-dae::Texture2D::Texture2D(SDL_Texture* texture)
+MidestinyEngine::Texture2D::Texture2D(SDL_Texture* texture)
 	: m_Format{NULL}
 	, m_Width{0}
 	, m_Height{0}

@@ -8,7 +8,7 @@ UnitTexture::UnitTexture()
 {
 }
 
-UnitTexture::UnitTexture(dae::GameObject* gameObject, const std::string& filepath, int amountOfFrames)
+UnitTexture::UnitTexture(MidestinyEngine::GameObject* gameObject, const std::string& filepath, int amountOfFrames)
 {
 	SetGameObject(gameObject);
 	SetTexture(filepath);

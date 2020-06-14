@@ -5,7 +5,7 @@
 #include "ResourceManager.h"
 #include "TextObject.h"
 
-using namespace dae;
+using namespace MidestinyEngine;
 using namespace std::chrono;
 
 MidestinyEngine::Application::Application()
@@ -46,7 +46,7 @@ void MidestinyEngine::Application::Initialize()
 		throw std::runtime_error(std::string("SDL_CreateWindow Error: ") + SDL_GetError());
 	}
 
-	dae::Renderer::GetInstance().Init(m_Window);
+	MidestinyEngine::Renderer::GetInstance().Init(m_Window);
 }
 
 /**
@@ -66,7 +66,7 @@ void MidestinyEngine::Application::LoadGame()
 	//go->SetPosition(216, 180);
 	//scene.Add(go);
 
-	dae::ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
+	MidestinyEngine::ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
 	//auto to = new dae::TextObject("Programming 4 Assignment", font);
 	//to->SetPosition(80, 20);
 	//scene.Add(to);
@@ -74,14 +74,13 @@ void MidestinyEngine::Application::LoadGame()
 
 void MidestinyEngine::Application::FixedUpdate()
 {
-	auto& sceneManager = dae::SceneManager::GetInstance();
+	auto& sceneManager = MidestinyEngine::SceneManager::GetInstance();
 	sceneManager.FixedUpdate();
 }
 
 void MidestinyEngine::Application::Cleanup()
 {
-	//dae::SceneManager::GetInstance().~SceneManager();
-	dae::Renderer::GetInstance().Destroy();
+	MidestinyEngine::Renderer::GetInstance().Destroy();
 	SDL_DestroyWindow(m_Window);
 	m_Window = nullptr;
 	SDL_Quit();
@@ -94,16 +93,16 @@ void MidestinyEngine::Application::Run()
 	if(m_Window == nullptr) Initialize();
 
 	// tell the resource manager where he can find the game data
-	dae::ResourceManager::GetInstance().Init("../Data/");
-	dae::SceneManager::GetInstance().LoadScenesFromFile("../Data/Scenes.txt");
+	MidestinyEngine::ResourceManager::GetInstance().Init("../Data/");
+	MidestinyEngine::SceneManager::GetInstance().LoadScenesFromFile("../Data/Scenes.txt");
 	LoadGame();
 	
 	{
-		auto& renderer = dae::Renderer::GetInstance();
-		auto& sceneManager = dae::SceneManager::GetInstance();
-		auto& input = dae::InputManager::GetInstance();
+		auto& renderer = MidestinyEngine::Renderer::GetInstance();
+		auto& sceneManager = MidestinyEngine::SceneManager::GetInstance();
+		auto& input = MidestinyEngine::InputManager::GetInstance();
 		{
-			dae::Invoke(std::bind(&MidestinyEngine::Application::FixedUpdate, this), 1000, true);
+			MidestinyEngine::Invoke(std::bind(&MidestinyEngine::Application::FixedUpdate, this), 1000, true);
 
 			while (Core::g_DoContinue)
 			{
@@ -116,10 +115,10 @@ void MidestinyEngine::Application::Run()
 
 				//auto sleepTime = duration_cast<duration<float>>(currentTime + milliseconds(MsPerFrame) - high_resolution_clock::now());
 				//std::this_thread::sleep_for(sleepTime);
-				dae::GameTime::GetInstance().SetElapsedSeconds(std::chrono::duration<float>(high_resolution_clock::now() - currentTime).count());
+				MidestinyEngine::GameTime::GetInstance().SetElapsedSeconds(std::chrono::duration<float>(high_resolution_clock::now() - currentTime).count());
 			}
 			std::this_thread::sleep_for(std::chrono::milliseconds(1001));
 		}
-		dae::SceneManager::GetInstance().SaveScenesToFile("../Data/Scenes.txt");
+		MidestinyEngine::SceneManager::GetInstance().SaveScenesToFile("../Data/Scenes.txt");
 	}
 }

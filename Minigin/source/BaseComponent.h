@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-namespace dae
+namespace MidestinyEngine
 {
 	class GameObject;
 	class BaseComponent

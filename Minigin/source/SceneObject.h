@@ -1,5 +1,5 @@
 #pragma once
-namespace dae
+namespace MidestinyEngine
 {
 	class Scene;
 	class SceneObject

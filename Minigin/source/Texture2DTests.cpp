@@ -2,7 +2,7 @@
 #include <catch.hpp>
 #include "ResourceManager.h"
 
-using namespace dae;
+using namespace MidestinyEngine;
 
 TEST_CASE("Texture creation", "Texture2D")
 {

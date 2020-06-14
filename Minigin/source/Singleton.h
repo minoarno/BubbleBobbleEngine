@@ -1,5 +1,5 @@
 #pragma once
-namespace dae
+namespace MidestinyEngine
 {
 	template <typename T>
 	class Singleton

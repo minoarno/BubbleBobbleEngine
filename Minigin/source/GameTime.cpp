@@ -1,6 +1,6 @@
 #include "MiniginPCH.h"
 #include "GameTime.h"
-namespace dae
+namespace MidestinyEngine
 {
 	GameTime::GameTime()
 	{

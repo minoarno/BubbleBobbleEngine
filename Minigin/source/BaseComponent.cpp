@@ -1,7 +1,7 @@
 #include "MiniginPCH.h"
 #include "BaseComponent.h"
 
-namespace dae
+namespace MidestinyEngine
 {
 	BaseComponent::BaseComponent()
 		: m_TypeName{ "BaseComponent" }

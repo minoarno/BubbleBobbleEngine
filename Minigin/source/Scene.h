@@ -2,7 +2,7 @@
 #include "SceneManager.h"
 #include "ColliderIncludes.h"
 
-namespace dae
+namespace MidestinyEngine
 {
 	class Tilemap;
 	class SceneObject;

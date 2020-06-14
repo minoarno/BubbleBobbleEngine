@@ -1,7 +1,7 @@
 #include "MiniginPCH.h"
 #include "BoxCollider.h"
 
-namespace dae
+namespace MidestinyEngine
 {
 	BoxCollider::BoxCollider()
 		: BaseComponent{}

@@ -2,7 +2,7 @@
 #include "Singleton.h"
 #include <map>
 
-namespace dae
+namespace MidestinyEngine
 {
 	class Scene;
 	class SceneManager final : public Singleton<SceneManager>

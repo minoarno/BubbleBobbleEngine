@@ -2,7 +2,7 @@
 #include "BaseBlock.h"
 #include <iomanip>
 
-namespace dae
+namespace MidestinyEngine
 {
 	float BaseBlock::m_BlockSize = 0;
 

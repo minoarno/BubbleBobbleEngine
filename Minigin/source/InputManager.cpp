@@ -4,7 +4,7 @@
 #include "Tilemap.h"
 #include "Core.h"
 
-bool dae::InputManager::ProcessInput()
+bool MidestinyEngine::InputManager::ProcessInput()
 {
 	ZeroMemory(&m_CurrentState, sizeof(XINPUT_STATE));
 	XInputGetState(0, &m_CurrentState);
@@ -36,7 +36,7 @@ bool dae::InputManager::ProcessInput()
 	return true;
 }
 
-bool dae::InputManager::IsPressed(ControllerButton button) const
+bool MidestinyEngine::InputManager::IsPressed(ControllerButton button) const
 {
 	switch (button)
 	{
@@ -52,7 +52,7 @@ bool dae::InputManager::IsPressed(ControllerButton button) const
 	}
 }
 
-SDL_Event dae::InputManager::GetEvent()
+SDL_Event MidestinyEngine::InputManager::GetEvent()
 {
 	SDL_Event temp = m_Event;
 	m_Event = SDL_Event{};

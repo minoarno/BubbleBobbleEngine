@@ -4,12 +4,12 @@
 #include "Renderer.h"
 #include <map>
 
-dae::GameObject::GameObject()
+MidestinyEngine::GameObject::GameObject()
 	:m_Transform{ new Transform{} }
 {
 }
 
-dae::GameObject::~GameObject()
+MidestinyEngine::GameObject::~GameObject()
 {
 	for (std::pair<std::string, BaseComponent*> component : m_pComponents)
 	{
@@ -21,7 +21,7 @@ dae::GameObject::~GameObject()
 	m_Transform = nullptr;
 }
 
-void dae::GameObject::Start()
+void MidestinyEngine::GameObject::Start()
 {
 	for(std::pair<std::string, BaseComponent*> component : m_pComponents)
 	{
@@ -29,7 +29,7 @@ void dae::GameObject::Start()
 	}
 }
 
-void dae::GameObject::Update()
+void MidestinyEngine::GameObject::Update()
 {
 	for (std::pair<std::string, BaseComponent*> component : m_pComponents)
 	{
@@ -37,7 +37,7 @@ void dae::GameObject::Update()
 	}
 }
 
-void dae::GameObject::LateUpdate()
+void MidestinyEngine::GameObject::LateUpdate()
 {
 	for (std::pair<std::string, BaseComponent*> component : m_pComponents)
 	{
@@ -45,7 +45,7 @@ void dae::GameObject::LateUpdate()
 	}
 }
 
-void dae::GameObject::FixedUpdate()
+void MidestinyEngine::GameObject::FixedUpdate()
 {
 	for (std::pair<std::string, BaseComponent*> component : m_pComponents)
 	{
@@ -53,7 +53,7 @@ void dae::GameObject::FixedUpdate()
 	}
 }
 
-void dae::GameObject::Render() const
+void MidestinyEngine::GameObject::Render() const
 {
 	const glm::vec3 pos = m_Transform->GetPosition();
 	Renderer::GetInstance().RenderTexture(*m_Texture, pos.x, pos.y);
@@ -63,23 +63,23 @@ void dae::GameObject::Render() const
 	}
 }
 
-void dae::GameObject::SetTexture(const std::string& filename)
+void MidestinyEngine::GameObject::SetTexture(const std::string& filename)
 {
 	m_Texture = ResourceManager::GetInstance().LoadTexture(filename);
 }
 
-void dae::GameObject::SetPosition(float x, float y)
+void MidestinyEngine::GameObject::SetPosition(float x, float y)
 {
 	m_Transform->SetPosition(x, y, 0.0f);;
 }
 
-void dae::GameObject::AddComponent(BaseComponent* component)
+void MidestinyEngine::GameObject::AddComponent(BaseComponent* component)
 {
 	component->SetGameObject(this);
 	m_pComponents.emplace(component->GetTypeName(), component);
 }
 
-dae::BaseComponent* dae::GameObject::GetComponent(const std::string& name)
+MidestinyEngine::BaseComponent* MidestinyEngine::GameObject::GetComponent(const std::string& name)
 {
 	if (m_pComponents.find(name) != m_pComponents.end())
 	{

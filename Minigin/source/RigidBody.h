@@ -1,6 +1,6 @@
 #pragma once
 #include "BaseComponent.h"
-namespace dae
+namespace MidestinyEngine
 {
 	class GameObject;
 	class RigidBody : public BaseComponent

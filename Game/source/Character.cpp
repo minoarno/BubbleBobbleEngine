@@ -5,7 +5,7 @@ Character::Character()
 {
 	if (m_pComponents.find("BoxCollider") == m_pComponents.end())
 	{
-		dae::BoxCollider* boxCollider = new dae::BoxCollider;
+		MidestinyEngine::BoxCollider* boxCollider = new MidestinyEngine::BoxCollider;
 
 		m_pComponents.emplace(boxCollider->GetTypeName(), boxCollider);
 	}
@@ -13,7 +13,7 @@ Character::Character()
 
 Character::~Character()
 {
-	dae::GameObject::~GameObject();
+	MidestinyEngine::GameObject::~GameObject();
 }
 
 void Character::Start()

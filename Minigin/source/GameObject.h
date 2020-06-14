@@ -3,7 +3,7 @@
 #include "SceneObject.h"
 #include <map>
 #include <memory>
-namespace dae
+namespace MidestinyEngine
 {
 
 	class Texture2D;

@@ -2,7 +2,7 @@
 #include "SceneManager.h"
 #include "Scene.h"
 
-void dae::SceneManager::Update()
+void MidestinyEngine::SceneManager::Update()
 {
 	if (m_Scenes.find(m_CurrentSceneIndex) != m_Scenes.end())
 	{
@@ -14,7 +14,7 @@ void dae::SceneManager::Update()
 	}
 }
 
-void dae::SceneManager::LateUpdate()
+void MidestinyEngine::SceneManager::LateUpdate()
 {
 	if (m_Scenes.find(m_CurrentSceneIndex) != m_Scenes.end())
 	{
@@ -26,7 +26,7 @@ void dae::SceneManager::LateUpdate()
 	}
 }
 
-void dae::SceneManager::FixedUpdate()
+void MidestinyEngine::SceneManager::FixedUpdate()
 {
 	if (m_Scenes.find(m_CurrentSceneIndex) != m_Scenes.end())
 	{
@@ -38,7 +38,7 @@ void dae::SceneManager::FixedUpdate()
 	}
 }
 
-void dae::SceneManager::Render()
+void MidestinyEngine::SceneManager::Render()
 {
 	if (m_Scenes.find(m_CurrentSceneIndex) != m_Scenes.end())
 	{
@@ -50,7 +50,7 @@ void dae::SceneManager::Render()
 	}
 }
 
-void dae::SceneManager::SaveScenesToFile(const std::string& filename)
+void MidestinyEngine::SceneManager::SaveScenesToFile(const std::string& filename)
 {
 	ME_CORE_INFO("Creating file {0} to save scenes",filename);
 
@@ -63,7 +63,7 @@ void dae::SceneManager::SaveScenesToFile(const std::string& filename)
 	out.close();
 }
 
-void dae::SceneManager::LoadScenesFromFile(const std::string& filename)
+void MidestinyEngine::SceneManager::LoadScenesFromFile(const std::string& filename)
 {
 	ME_CORE_INFO(filename);
 	std::ifstream in{ filename };
@@ -91,7 +91,7 @@ void dae::SceneManager::LoadScenesFromFile(const std::string& filename)
 	in.close();
 }
 
-Scene* dae::SceneManager::GetActiveScene()
+Scene* MidestinyEngine::SceneManager::GetActiveScene()
 {
 	if (m_Scenes.find(m_CurrentSceneIndex) == m_Scenes.end())
 	{
@@ -101,7 +101,7 @@ Scene* dae::SceneManager::GetActiveScene()
 	return m_Scenes[m_CurrentSceneIndex];
 }
 
-dae::SceneManager::~SceneManager()
+MidestinyEngine::SceneManager::~SceneManager()
 {
 	if (m_Scenes.size() != 0)
 	{
@@ -115,7 +115,7 @@ dae::SceneManager::~SceneManager()
 	}
 }
 
-dae::Scene& dae::SceneManager::CreateScene(const std::string& name)
+MidestinyEngine::Scene& MidestinyEngine::SceneManager::CreateScene(const std::string& name)
 {
 	const auto scene = new Scene(name);
 	int index = int(m_Scenes.size());

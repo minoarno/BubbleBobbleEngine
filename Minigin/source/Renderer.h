@@ -4,7 +4,7 @@
 struct SDL_Window;
 struct SDL_Renderer;
 
-namespace dae
+namespace MidestinyEngine
 {
 	class Texture2D;
 	/**

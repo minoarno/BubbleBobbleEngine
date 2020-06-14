@@ -2,7 +2,7 @@
 #include <deque>
 #include "SceneObject.h"
 
-namespace dae
+namespace MidestinyEngine
 {
 	class BaseBlock;
 	class Tilemap : public SceneObject

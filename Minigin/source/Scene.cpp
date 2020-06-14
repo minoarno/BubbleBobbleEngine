@@ -2,7 +2,7 @@
 #include "ColliderIncludes.h"
 #include "Tilemap.h"
 
-namespace dae
+namespace MidestinyEngine
 {
 	unsigned int Scene::m_IdCounter = 0;
 
@@ -39,7 +39,7 @@ namespace dae
 		m_Objects.push_back(object);
 	}
 
-	void dae::Scene::Start()
+	void MidestinyEngine::Scene::Start()
 	{
 		m_pWorld = new b2World{ b2Vec2{0,9.81f} };
 
@@ -92,7 +92,7 @@ namespace dae
 		}
 	}
 
-	void dae::Scene::FixedUpdate()
+	void MidestinyEngine::Scene::FixedUpdate()
 	{
 		//m_pWorld->Step(.5f,3,8);
 		for (SceneObject* object : m_Objects)

@@ -4,7 +4,7 @@
 #include <cmath>
 #include "Utils.h"
 
-namespace dae
+namespace MidestinyEngine
 {
 #pragma region OpenGLDrawFunctionality
 	void SetColor(const Color4f& color)

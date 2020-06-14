@@ -6,7 +6,7 @@
 #include "BaseComponent.h"
 #include <string>
 
-namespace dae
+namespace MidestinyEngine
 {
 	class Transform final
 	{

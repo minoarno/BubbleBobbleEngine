@@ -1,6 +1,6 @@
 #pragma once
 #include "Singleton.h"
-namespace dae
+namespace MidestinyEngine
 {
 	class GameTime : public Singleton<GameTime>
 	{

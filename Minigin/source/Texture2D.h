@@ -2,7 +2,7 @@
 #include "BaseComponent.h"
 
 struct SDL_Texture;
-namespace dae
+namespace MidestinyEngine
 {
 	/**
 	 * Simple RAII wrapper for an SDL_Texture

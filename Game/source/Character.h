@@ -1,7 +1,7 @@
 #pragma once
 #include "GameObject.h"
 
-class Character final : public  dae::GameObject
+class Character final : public  MidestinyEngine::GameObject
 {
 public:
 	enum class CharacterState

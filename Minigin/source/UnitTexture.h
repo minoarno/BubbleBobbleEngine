@@ -5,7 +5,7 @@ class UnitTexture
 {
 public:
 	UnitTexture();
-	UnitTexture(dae::GameObject* gameObject, const std::string& filepath, int amountOfFrames);
+	UnitTexture(MidestinyEngine::GameObject* gameObject, const std::string& filepath, int amountOfFrames);
 	UnitTexture(const UnitTexture& other) = delete;
 	UnitTexture& operator=(const UnitTexture& other) = delete;
 	UnitTexture(UnitTexture&& other) = delete;
@@ -20,16 +20,16 @@ public:
 	void SetDestRect(const Rectf& rect) { m_DestinationRectangle = rect; }
 	void SetFramesPerSec(int value) { m_FramesPerSec = value; }
 	void SetAmountOfFrames(int value) { m_AmountOfFrames = value; }
-	void SetGameObject(dae::GameObject* gameObject) { m_pGameObject = gameObject; }
+	void SetGameObject(MidestinyEngine::GameObject* gameObject) { m_pGameObject = gameObject; }
 	void SetTexture(const std::string& filepath);
 private:
 	Rectf m_DestinationRectangle;
 
-	dae::GameObject* m_pGameObject = nullptr;
+	MidestinyEngine::GameObject* m_pGameObject = nullptr;
 
 	float m_ImageWidth, m_ImageHeight;
 
-	std::shared_ptr<dae::Texture2D> m_pTexture;
+	std::shared_ptr<MidestinyEngine::Texture2D> m_pTexture;
 
 	int m_FramesPerSec = 4, m_AmountOfFrames;
 
