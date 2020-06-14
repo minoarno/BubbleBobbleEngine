@@ -75,8 +75,8 @@
     <ClCompile Include="source\UnitTexture.cpp">
       <Filter>Textures</Filter>
     </ClCompile>
-    <ClCompile Include="source\EnemyTexture.cpp">
-      <Filter>Textures</Filter>
+    <ClCompile Include="source\WalkRightCommand.cpp">
+      <Filter>Commands</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -122,8 +122,8 @@
     <ClInclude Include="source\UnitTexture.h">
       <Filter>Textures</Filter>
     </ClInclude>
-    <ClInclude Include="source\EnemyTexture.h">
-      <Filter>Textures</Filter>
+    <ClInclude Include="source\WalkRightCommand.h">
+      <Filter>Commands</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

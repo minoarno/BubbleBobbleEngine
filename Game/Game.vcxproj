@@ -178,7 +178,6 @@ $(SolutionDir)3rdParty/SDL2/lib/x86;$(LibraryPath)</LibraryPath>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="source\EnemyTexture.cpp" />
     <ClCompile Include="source\Drop.cpp" />
     <ClCompile Include="source\Boulder.cpp" />
     <ClCompile Include="source\Bubble.cpp" />
@@ -191,6 +190,7 @@ $(SolutionDir)3rdParty/SDL2/lib/x86;$(LibraryPath)</LibraryPath>
     <ClCompile Include="source\Character.cpp" />
     <ClCompile Include="source\SandboxApp.cpp" />
     <ClCompile Include="source\UnitTexture.cpp" />
+    <ClCompile Include="source\WalkRightCommand.cpp" />
     <ClCompile Include="source\ZenChan.cpp" />
     <ClCompile Include="source\WalkLeftCommand.cpp" />
     <ClCompile Include="source\Enums.cpp" />
@@ -201,7 +201,6 @@ $(SolutionDir)3rdParty/SDL2/lib/x86;$(LibraryPath)</LibraryPath>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\EnemyTexture.h" />
     <ClInclude Include="source\Drop.h" />
     <ClInclude Include="source\Boulder.h" />
     <ClInclude Include="source\Bubble.h" />
@@ -213,6 +212,7 @@ $(SolutionDir)3rdParty/SDL2/lib/x86;$(LibraryPath)</LibraryPath>
     <ClInclude Include="source\BaseEnemy.h" />
     <ClInclude Include="source\Character.h" />
     <ClInclude Include="source\UnitTexture.h" />
+    <ClInclude Include="source\WalkRightCommand.h" />
     <ClInclude Include="source\ZenChan.h" />
     <ClInclude Include="source\WalkLeftCommand.h" />
     <ClInclude Include="source\Enums.h" />

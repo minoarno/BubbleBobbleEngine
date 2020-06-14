@@ -1,9 +1,9 @@
 #pragma once
 #include "Command.h"
-class JumpCommand : public Command
+class WalkLeftCommand : public Command
 {
 public:
-	virtual ~JumpCommand() = default;
+	virtual ~WalkLeftCommand() = default;
 	virtual void Execute()const;
 };
 

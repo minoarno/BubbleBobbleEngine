@@ -76,3 +76,8 @@ void Character::SetTexture(const std::string& filename)
 void Character::SetInput()
 {
 }
+
+void Character::SetSize(float width, float height)
+{
+	m_DestinationRectangle = Rectf{ m_Transform->GetPosition().x, m_Transform->GetPosition().y,50,50 };
+}
