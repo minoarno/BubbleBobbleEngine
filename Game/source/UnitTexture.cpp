@@ -17,7 +17,7 @@ void UnitTexture::Start()
 {
 	m_ImageWidth = m_pTexture->GetWidth() / float(m_AmountOfFrames);
 	m_ImageHeight = m_pTexture->GetHeight() / 3.f;
-	//MidestinyEngine::ThreadMaster::GetInstance().Invoke(std::bind(&UnitTexture::IncrementAnimationCounter, this), int(1000.f / m_FramesPerSec), true);
+	MidestinyEngine::ThreadMaster::GetInstance().Invoke(std::bind(&UnitTexture::IncrementAnimationCounter, this), int(1000.f / m_FramesPerSec), true);
 }
 
 void UnitTexture::Update()
@@ -48,7 +48,7 @@ void UnitTexture::Render() const
 	int number = int(m_pCharacter->GetCharacterState());
 	Rectf srcRect{ m_AnimationCounter * m_ImageWidth, number * m_ImageHeight, m_ImageWidth, m_ImageHeight };
 
-	Renderer::GetInstance().RenderTexture(*m_pTexture, srcRect, m_pCharacter->GetBoundaries());
+	MidestinyEngine::Renderer::GetInstance().RenderTexture(*m_pTexture, srcRect, m_pCharacter->GetBoundaries());
 	//m_pTexture->GetSDLTexture();
 }
 
@@ -60,5 +60,5 @@ void UnitTexture::ResetAnimationCounter()
 
 void UnitTexture::SetTexture(const std::string& filepath)
 {
-	m_pTexture = ResourceManager::GetInstance().LoadTexture(filepath);
+	m_pTexture = MidestinyEngine::ResourceManager::GetInstance().LoadTexture(filepath);
 }

@@ -144,6 +144,9 @@
     <ClInclude Include="source\TextObject.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
+    <ClInclude Include="source\Invoker.h">
+      <Filter>Code Pattern</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Font.cpp">
@@ -232,6 +235,9 @@
     </ClCompile>
     <ClCompile Include="source\Structs.cpp">
       <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Invoker.cpp">
+      <Filter>Code Pattern</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

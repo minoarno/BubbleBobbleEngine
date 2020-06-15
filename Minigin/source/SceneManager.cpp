@@ -90,7 +90,7 @@ void MidestinyEngine::SceneManager::LoadScenesFromFile(const std::string& filena
 	in.close();
 }
 
-Scene* MidestinyEngine::SceneManager::GetActiveScene()
+MidestinyEngine::Scene* MidestinyEngine::SceneManager::GetActiveScene()
 {
 	if (m_Scenes.find(m_CurrentSceneIndex) == m_Scenes.end())
 	{

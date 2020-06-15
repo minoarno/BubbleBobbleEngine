@@ -216,6 +216,7 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="source\Invoker.h" />
     <ClInclude Include="source\Command.h" />
     <ClInclude Include="source\ColliderIncludes.h" />
     <ClInclude Include="source\Observer.h" />
@@ -251,6 +252,7 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
     <ClInclude Include="source\ThreadMaster.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\Invoker.cpp" />
     <ClCompile Include="source\Command.cpp" />
     <ClCompile Include="source\Observer.cpp" />
     <ClCompile Include="source\BinaryReader.cpp" />

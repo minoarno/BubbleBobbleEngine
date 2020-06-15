@@ -1,8 +1,10 @@
 #include "MiniginPCH.h"
 #include "ColliderIncludes.h"
+#include "InputManager.h"
 #include "Character.h"
 #include "UnitTexture.h"
 #include "BoxCollider.h"
+#include "Commands.h"
 
 Character::Character()
 	: GameObject{}
@@ -74,6 +76,23 @@ void Character::Render() const
 	m_pTexture->Render();
 }
 
+void Character::Move(bool isToTheRight)
+{
+	m_IsToTheRight = isToTheRight;
+	float speed = m_Speed * MidestinyEngine::GameTime::GetInstance().GetElapsedSeconds();
+	m_Transform->Translate((isToTheRight) ? speed : -speed, 0, 0);
+}
+
+void Character::Jump()
+{
+	GetComponent<MidestinyEngine::RigidBody>()->AddForce(30.f,0.f);
+}
+
+void Character::ShootBubble()
+{
+
+}
+
 void Character::SetTexture(const std::string& filename)
 {
 	m_pTexture->SetTexture(filename);
@@ -85,4 +104,8 @@ void Character::SetTexture(const std::string& filename)
 
 void Character::SetInput()
 {
+	MidestinyEngine::InputManager::GetInstance().AddControllerInput(MidestinyEngine::ControllerButton::ButtonA, new FireCommand{});
+	MidestinyEngine::InputManager::GetInstance().AddControllerInput(MidestinyEngine::ControllerButton::DPadRight, new WalkRightCommand{});
+	MidestinyEngine::InputManager::GetInstance().AddControllerInput(MidestinyEngine::ControllerButton::DPadLeft, new WalkLeftCommand{});
+	MidestinyEngine::InputManager::GetInstance().AddControllerInput(MidestinyEngine::ControllerButton::ButtonB, new JumpCommand{});
 }

@@ -90,6 +90,9 @@
     <ClCompile Include="source\ProjectileManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\Bob.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\BaseEnemy.h">
@@ -150,6 +153,12 @@
       <Filter>Projectiles</Filter>
     </ClInclude>
     <ClInclude Include="source\ProjectileManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Commands.h">
+      <Filter>Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Bob.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

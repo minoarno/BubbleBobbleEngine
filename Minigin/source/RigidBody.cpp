@@ -37,7 +37,8 @@ namespace MidestinyEngine
 
 	void RigidBody::FixedUpdate()
 	{
-		
+		m_pOwnerGameObject->GetComponent<Transform>()->Translate(m_Velocity.x, m_Velocity.y, 0);
+		m_Velocity *= 0.85f;
 	}
 
 	void RigidBody::LateUpdate()
@@ -47,6 +48,11 @@ namespace MidestinyEngine
 
 	void RigidBody::Render() const
 	{
+	}
+
+	void RigidBody::AddForce(float x, float y)
+	{
+		m_Velocity += glm::vec2(x, y);
 	}
 
 	//b2Fixture* RigidBody::AddCollider(const b2FixtureDef& fixtureDef)
