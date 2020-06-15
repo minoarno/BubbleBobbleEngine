@@ -3,12 +3,14 @@
 #include "Tilemap.h"
 #include "Core.h"
 #include "Command.h"
+#include <Xinput.h>
 
 bool MidestinyEngine::InputManager::ProcessInput()
 {
+	//DWORD state;
 	ZeroMemory(&m_CurrentState, sizeof(XINPUT_STATE));
 	XInputGetState(0, &m_CurrentState);
-
+	
 	m_DidInputGet = false;
 	SDL_Event e;
 	while (SDL_PollEvent(&e)) 
@@ -45,6 +47,15 @@ bool MidestinyEngine::InputManager::ProcessInput()
 			m_KeyboardCommands.at(e.key.keysym.scancode)->Execute();
 		}
 	}
+
+	//DWORD word[14]{ int(ControllerButton::DPadUp),int(ControllerButton::DPadDown),int(ControllerButton::DPadLeft),int(ControllerButton::DPadRight),int(ControllerButton::ButtonStart)
+	//	,int(ControllerButton::ButtonBack),int(ControllerButton::LeftThumb),int(ControllerButton::RightThumb),int(ControllerButton::LeftShoulder),int(ControllerButton::RightShoulder),
+	//		int(ControllerButton::ButtonA), int(ControllerButton::ButtonB),int(ControllerButton::ButtonX),int(ControllerButton::ButtonY) };
+	//for (int i = 0; i < 14; i++)
+	//{
+	//	IsPressed(word);
+	//}
+
 	return true;
 }
 
