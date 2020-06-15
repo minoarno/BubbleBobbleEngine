@@ -30,8 +30,12 @@ namespace MidestinyEngine
 
 		void AddComponent(BaseComponent* component);
 
+		template<class T>
+		T* GetComponent()const;
+		
 		BaseComponent* GetComponent(const std::string& name);
-		Transform* GetTransform()const { return m_Transform; }
+
+		Transform* GetTransform()const;
 		Rectf GetBoundaries()const { return Rectf{ m_Transform->GetPosition().x, m_Transform->GetPosition().y,m_DestinationRectangle.w,m_DestinationRectangle.h };
 		}
 		void SetSize(float width, float height) { m_DestinationRectangle = Rectf{ m_Transform->GetPosition().x, m_Transform->GetPosition().y,width,height }; }
@@ -41,4 +45,16 @@ namespace MidestinyEngine
 		std::map<std::string, BaseComponent*> m_pComponents;
 		std::shared_ptr<Texture2D> m_pTexture{};
 	};
+	template<class T>
+	inline T* GameObject::GetComponent()const
+	{
+		for (auto& p : m_pComponents)
+		{
+			if (typeid(T) == typeid(*p.second))
+			{
+				return dynamic_cast<T*>(p.second);
+			}
+		}
+		return nullptr;
+	}
 }

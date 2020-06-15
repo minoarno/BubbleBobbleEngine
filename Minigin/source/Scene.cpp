@@ -7,11 +7,17 @@ namespace MidestinyEngine
 {
 	unsigned int Scene::m_IdCounter = 0;
 
-	void Scene::LoadScene(int widthTilemap, int heightTilemap, const std::string& tileMapInfo, const std::string& gameObjectsInfo)
+	void Scene::LoadScene(int widthTilemap, int heightTilemap, const std::string& tileMapInfo)
 	{
 		m_pTilemap = new Tilemap{};
 		m_pTilemap->LoadTileMapFromFile(widthTilemap, heightTilemap, tileMapInfo);
-		LoadObjects(gameObjectsInfo);
+	}
+
+	void MidestinyEngine::Scene::LoadScene(int widthTilemap, int heightTilemap, const std::string& tileMapInfo, const std::string& gameObjectsInfo)
+	{
+		m_pTilemap = new Tilemap{};
+		m_pTilemap->LoadTileMapFromFile(widthTilemap, heightTilemap, tileMapInfo);
+		ME_INFO(gameObjectsInfo);
 	}
 
 	void Scene::LoadObjects(const std::string& gameObjectsInfo)

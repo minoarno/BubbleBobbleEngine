@@ -141,7 +141,7 @@
       <Filter>Enemies</Filter>
     </ClInclude>
     <ClInclude Include="source\HUD.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

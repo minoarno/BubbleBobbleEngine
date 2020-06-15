@@ -88,3 +88,8 @@ MidestinyEngine::BaseComponent* MidestinyEngine::GameObject::GetComponent(const 
 	ME_ERROR("GameObject {0} has no component of the type {1}", m_Name, name);
 	return nullptr;
 }
+
+Transform* MidestinyEngine::GameObject::GetTransform() const
+{
+	return GetComponent<Transform>();
+}

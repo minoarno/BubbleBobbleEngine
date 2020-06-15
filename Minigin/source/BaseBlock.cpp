@@ -8,19 +8,19 @@ namespace MidestinyEngine
 		:GameObject{}
 	{
 		SetTexture("LevelBlocks.png");
-		MidestinyEngine::BoxCollider* boxCollider = new MidestinyEngine::BoxCollider();
+		/*MidestinyEngine::BoxCollider* boxCollider = new MidestinyEngine::BoxCollider();
 		boxCollider->SetSize(Core::g_BlockSize, Core::g_BlockSize);
 		AddComponent(boxCollider);
 
 		MidestinyEngine::RigidBody* rigid = new MidestinyEngine::RigidBody(false);
-		AddComponent(rigid);
+		AddComponent(rigid);*/
 
 		Start();
 	}
 
 	void BaseBlock::Start()
 	{
-		if (m_BlockType == BlockType::Air)
+		/*if (m_BlockType == BlockType::Air)
 		{
 			if (m_pComponents.find("BoxCollider") != m_pComponents.end())
 			{
@@ -42,7 +42,7 @@ namespace MidestinyEngine
 				rigidBody->SetGameObject(this);
 				m_pComponents.emplace(rigidBody->GetTypeName(), rigidBody);
 			}
-		}
+		}*/
 	}
 
 	void BaseBlock::Update()

@@ -10,14 +10,14 @@ Character::Character()
 	, m_CharacterState{CharacterState::walking}
 {
 	m_pTexture->SetCharacter(this);
-	if (m_pComponents.find("BoxCollider") == m_pComponents.end())
+	//if (m_pComponents.find("BoxCollider") == m_pComponents.end())
 	{
-		MidestinyEngine::BoxCollider* boxCollider = new MidestinyEngine::BoxCollider();
-		boxCollider->SetSize(Core::g_BlockSize * 2, Core::g_BlockSize * 2);
-		AddComponent(boxCollider);
+		//MidestinyEngine::BoxCollider* boxCollider = new MidestinyEngine::BoxCollider();
+		//boxCollider->SetSize(Core::g_BlockSize * 2, Core::g_BlockSize * 2);
+		//AddComponent(boxCollider);
 
-		MidestinyEngine::RigidBody* rigid = new MidestinyEngine::RigidBody(false);
-		AddComponent(rigid);
+		//MidestinyEngine::RigidBody* rigid = new MidestinyEngine::RigidBody(false);
+		//AddComponent(rigid);
 	}
 }
 
@@ -35,8 +35,8 @@ void Character::Start()
 	}
 
 	m_pTexture->Start();
-	m_pComponents["RigidBody"]->Start();
-	m_pComponents["BoxCollider"]->Start();
+	//m_pComponents["RigidBody"]->Start();
+	//m_pComponents["BoxCollider"]->Start();
 	for (std::pair<std::string, MidestinyEngine::BaseComponent*> component : m_pComponents)
 	{
 		if (component.first != "RigidBody" || component.first != "BoxCollider") component.second->Start();

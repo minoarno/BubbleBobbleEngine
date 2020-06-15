@@ -24,6 +24,7 @@ namespace MidestinyEngine
 		Scene& operator=(const Scene& other) = delete;
 		Scene& operator=(Scene&& other) = delete;
 
+		void LoadScene(int widthTilemap, int heightTilemap, const std::string& tileMapInfo);
 		void LoadScene(int widthTilemap, int heightTilemap, const std::string& tileMapInfo, const std::string& gameObjectsInfo);
 		void LoadObjects(const std::string& gameObjectsInfo);
 		b2World* GetWorld() { return m_pWorld; };

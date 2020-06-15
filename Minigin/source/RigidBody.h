@@ -21,13 +21,13 @@ namespace MidestinyEngine
 		virtual void LateUpdate() override;
 		virtual void Render() const override;
 
-		b2Fixture* AddCollider(const b2FixtureDef& fixtureDef);
+		//b2Fixture* AddCollider(const b2FixtureDef& fixtureDef);
 	private:
 		friend class Transform;
 		bool m_IsStatic = false;
-		b2BodyDef m_BodyDef;
-		b2Fixture* m_pFixture;
-		b2Body* m_pBody = nullptr;
+		//b2BodyDef m_BodyDef;
+		//b2Fixture* m_pFixture;
+		//b2Body* m_pBody = nullptr;
 
 		void AdjustPosition(const glm::vec3& pos);
 	};
