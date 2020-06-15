@@ -36,8 +36,7 @@ namespace MidestinyEngine
 		BaseComponent* GetComponent(const std::string& name);
 
 		Transform* GetTransform()const;
-		Rectf GetBoundaries()const { return Rectf{ m_Transform->GetPosition().x, m_Transform->GetPosition().y,m_DestinationRectangle.w,m_DestinationRectangle.h };
-		}
+		virtual Rectf GetBoundaries()const;
 		void SetSize(float width, float height) { m_DestinationRectangle = Rectf{ m_Transform->GetPosition().x, m_Transform->GetPosition().y,width,height }; }
 	protected:
 		Rectf m_DestinationRectangle = Rectf{ 0,0,0,0 };

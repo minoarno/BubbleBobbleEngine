@@ -19,6 +19,6 @@ namespace MidestinyEngine
 		friend class Singleton<ThreadMaster>;
 		ThreadMaster() = default;
 
-		std::vector<std::thread> m_Threads;
+		std::vector<std::unique_ptr<std::thread>> m_Threads;
 	};
 }

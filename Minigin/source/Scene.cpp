@@ -39,8 +39,8 @@ namespace MidestinyEngine
 		}
 		m_Objects.clear();
 
-		delete m_pWorld;
-		m_pWorld = nullptr;
+		//delete m_pWorld;
+		//m_pWorld = nullptr;
 	}
 
 	void Scene::Add(SceneObject * object)
@@ -51,7 +51,7 @@ namespace MidestinyEngine
 
 	void MidestinyEngine::Scene::Start()
 	{
-		m_pWorld = new b2World{ b2Vec2{0,9.81f} };
+		//m_pWorld = new b2World{ b2Vec2{0,9.81f} };
 
 		for (SceneObject* object : m_Objects)
 		{
@@ -70,8 +70,8 @@ namespace MidestinyEngine
 
 	void Scene::Update()
 	{
-		float sec = GameTime::GetInstance().GetElapsedSeconds();
-		m_pWorld->Step(sec, 8, 3);
+		//float sec = GameTime::GetInstance().GetElapsedSeconds();
+		//m_pWorld->Step(sec, 8, 3);
 		for (SceneObject* object : m_Objects)
 		{
 			object->Update();

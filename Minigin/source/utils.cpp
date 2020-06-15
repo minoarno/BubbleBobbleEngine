@@ -68,6 +68,23 @@ namespace MidestinyEngine
 		return ((x >= r.x) && (x <= r.x + r.w) && (y >= r.y) && (y <= r.y + r.h));
 	}
 
+	bool IsOverlapping(const Rectf& r1, const Rectf& r2)
+	{
+		// If one rectangle is on left side of the other
+		if ((r1.x + r1.w) < r2.x || (r2.x + r2.w) < r1.x)
+		{
+			return false;
+		}
+
+		// If one rectangle is under the other
+		if (r1.y > (r2.y + r2.h) || r2.y > (r1.y + r1.h))
+		{
+			return false;
+		}
+
+		return true;
+	}
+
 	int Random(int min, int max)
 	{
 		return std::rand() % (max - min) + min;
@@ -92,8 +109,8 @@ namespace MidestinyEngine
 		return int(value * 100) / 100.f;
 	}
 
-	glm::vec3 MakeVec3(const b2Vec2& pos)
-	{
-		return glm::vec3{ float(pos.x),float(pos.y),0.f };
-	}
+	//glm::vec3 MakeVec3(const b2Vec2& pos)
+	//{
+	//	return glm::vec3{ float(pos.x),float(pos.y),0.f };
+	//}
 }

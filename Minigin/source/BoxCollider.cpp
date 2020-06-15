@@ -17,7 +17,7 @@ namespace MidestinyEngine
 	void BoxCollider::Start()
 	{
 		//RigidBody* rigidBody = static_cast<RigidBody*>(m_pOwnerGameObject->GetComponent("RigidBody"));
-		RigidBody* rigidBody = m_pOwnerGameObject->GetComponent<RigidBody>();
+		//RigidBody* rigidBody = m_pOwnerGameObject->GetComponent<RigidBody>();
 		//if (rigidBody == nullptr)
 		//{
 		//	

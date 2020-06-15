@@ -275,6 +275,7 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
     <ClCompile Include="source\RigidBody.cpp" />
     <ClCompile Include="source\Scene.cpp" />
     <ClCompile Include="source\SceneManager.cpp" />
+    <ClCompile Include="source\SceneObject.cpp" />
     <ClCompile Include="source\TextObject.cpp" />
     <ClCompile Include="source\Texture2D.cpp" />
     <ClCompile Include="source\Texture2DTests.cpp" />
@@ -283,6 +284,7 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
     <ClCompile Include="source\GameTime.cpp" />
     <ClCompile Include="source\utils.cpp" />
     <ClCompile Include="source\ThreadMaster.cpp" />
+    <ClCompile Include="source\Structs.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

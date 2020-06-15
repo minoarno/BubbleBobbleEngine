@@ -9,6 +9,8 @@ enum class DataType
 
 struct Rectf
 {
+	Rectf();
+	explicit Rectf(float left, float bottom, float width, float height);
 	float x, y, w, h;
 };
 

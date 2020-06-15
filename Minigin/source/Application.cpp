@@ -87,9 +87,9 @@ void MidestinyEngine::Application::Run()
 		auto& renderer = MidestinyEngine::Renderer::GetInstance();
 		auto& sceneManager = MidestinyEngine::SceneManager::GetInstance();
 		auto& input = MidestinyEngine::InputManager::GetInstance();
-		//auto& threadMaster = MidestinyEngine::ThreadMaster::GetInstance();
+		auto& threadMaster = MidestinyEngine::ThreadMaster::GetInstance();
 		{
-			//threadMaster.Invoke(std::bind(&MidestinyEngine::Application::FixedUpdate, this), 1000, true);
+			threadMaster.Invoke(std::bind(&MidestinyEngine::Application::FixedUpdate, this), 100, true);
 
 			sceneManager.GetActiveScene()->Start();
 			while (Core::g_DoContinue)
@@ -100,10 +100,10 @@ void MidestinyEngine::Application::Run()
 				sceneManager.Update();
 				renderer.Render();
 				sceneManager.LateUpdate();
-				//threadMaster.Update();
+				threadMaster.Update();
 				MidestinyEngine::GameTime::GetInstance().SetElapsedSeconds(std::chrono::duration<float>(high_resolution_clock::now() - currentTime).count());
 			}
-			//threadMaster.TerminateAllThreads();
+			threadMaster.TerminateAllThreads();
 		}
 		MidestinyEngine::SceneManager::GetInstance().SaveScenesToFile("../Data/Scenes.txt");
 	}

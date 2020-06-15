@@ -9,6 +9,7 @@ Character::Character()
 	, m_pTexture{ new UnitTexture{}}
 	, m_CharacterState{CharacterState::walking}
 {
+	m_Tag = "Character";
 	m_pTexture->SetCharacter(this);
 	//if (m_pComponents.find("BoxCollider") == m_pComponents.end())
 	{

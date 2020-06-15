@@ -7,6 +7,7 @@ namespace MidestinyEngine
 	RigidBody::RigidBody(bool isStatic)
 	{
 		m_TypeName = "RigidBody";
+		m_IsStatic = isStatic;
 		//m_BodyDef.type = (isStatic) ? b2BodyType::b2_staticBody : b2BodyType::b2_dynamicBody;
 	}
 
@@ -36,6 +37,7 @@ namespace MidestinyEngine
 
 	void RigidBody::FixedUpdate()
 	{
+		
 	}
 
 	void RigidBody::LateUpdate()
@@ -53,8 +55,8 @@ namespace MidestinyEngine
 	//	return m_pFixture;
 	//}
 
-	void RigidBody::AdjustPosition(const glm::vec3& pos)
-	{
+	//void RigidBody::AdjustPosition(const glm::vec3& pos)
+	//{
 		//if (m_pBody != nullptr)
 		//{
 		//	m_pBody = m_pOwnerGameObject->GetScene()->GetWorld()->CreateBody(&m_BodyDef);
@@ -63,5 +65,5 @@ namespace MidestinyEngine
 		//{
 		//	m_BodyDef.position = b2Vec2{ pos.x,pos.y };
 		//}
-	}
+	//}
 }

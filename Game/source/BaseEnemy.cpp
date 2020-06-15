@@ -6,6 +6,7 @@
 BaseEnemy::BaseEnemy()
 	:m_pTexture{ new EnemyTexture{} }
 {
+	m_Tag = "BaseEnemy";
 	SetTexture("EnemySpriteSheet.png");
 	m_pTexture->SetBaseEnemy(this);
 	//if (m_pComponents.find("BoxCollider") == m_pComponents.end())

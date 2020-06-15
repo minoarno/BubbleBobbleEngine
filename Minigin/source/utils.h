@@ -20,11 +20,13 @@ namespace MidestinyEngine
 	
 	bool IsPointInRect(float x, float y, const Rectf& r);
 	
+	bool IsOverlapping(const Rectf& r1, const Rectf& r2);
+
 	int Random(int min, int max);
 
 	bool CheckStream(std::istream& inputStream);
 
 	float Round2Dec(float value);
 
-	glm::vec3 MakeVec3(const b2Vec2& pos);
+	//glm::vec3 MakeVec3(const b2Vec2& pos);
 }

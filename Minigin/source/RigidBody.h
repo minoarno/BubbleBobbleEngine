@@ -1,6 +1,6 @@
 #pragma once
 #include "BaseComponent.h"
-#include "Transform.h"
+//#include "Transform.h"
 
 namespace MidestinyEngine
 {
@@ -23,12 +23,13 @@ namespace MidestinyEngine
 
 		//b2Fixture* AddCollider(const b2FixtureDef& fixtureDef);
 	private:
-		friend class Transform;
+		//friend class Transform;
 		bool m_IsStatic = false;
+		int m_Weight = 1;
 		//b2BodyDef m_BodyDef;
 		//b2Fixture* m_pFixture;
 		//b2Body* m_pBody = nullptr;
 
-		void AdjustPosition(const glm::vec3& pos);
+		//void AdjustPosition(const glm::vec3& pos);
 	};
 }
