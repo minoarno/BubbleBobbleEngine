@@ -26,6 +26,9 @@ namespace MidestinyEngine
 
 		void AddForce(float x, float y);
 
+		void SetVelocityY(float y) { m_Velocity.y = y; };
+		void SetVelocityX(float x) { m_Velocity.x = x; };
+		void SetVelocityX(float x, float y) { m_Velocity = glm::vec2{x,y}; };
 		//b2Fixture* AddCollider(const b2FixtureDef& fixtureDef);
 	private:
 		//friend class Transform;

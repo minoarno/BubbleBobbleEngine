@@ -37,6 +37,7 @@ namespace MidestinyEngine
 
 	void RigidBody::FixedUpdate()
 	{
+		if (m_IsStatic)return;
 		m_pOwnerGameObject->GetComponent<Transform>()->Translate(m_Velocity.x, m_Velocity.y, 0);
 		m_Velocity *= 0.85f;
 	}

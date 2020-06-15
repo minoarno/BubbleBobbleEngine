@@ -29,5 +29,10 @@ namespace MidestinyEngine
 		Rectf GetSourceRect()const;
 	protected:
 		BlockType m_BlockType = BlockType::BaseFill;
+	private:
+		void CheckCollisionTopsideBlock(GameObject* gameObject);
+		void CheckCollisionBottomsideBlock(GameObject* gameObject);
+		void CheckCollisionRightsideBlock(GameObject* gameObject);
+		void CheckCollisionLeftsideBlock(GameObject* gameObject);
 	};
 }

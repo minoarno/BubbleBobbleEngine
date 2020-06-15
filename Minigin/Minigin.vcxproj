@@ -250,6 +250,7 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
     <ClInclude Include="source\GameTime.h" />
     <ClInclude Include="source\utils.h" />
     <ClInclude Include="source\ThreadMaster.h" />
+    <ClInclude Include="source\Vector2f.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Invoker.cpp" />
@@ -287,6 +288,7 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
     <ClCompile Include="source\utils.cpp" />
     <ClCompile Include="source\ThreadMaster.cpp" />
     <ClCompile Include="source\Structs.cpp" />
+    <ClCompile Include="source\Vector2f.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

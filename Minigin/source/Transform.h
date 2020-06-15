@@ -24,6 +24,9 @@ namespace MidestinyEngine
 		const glm::vec3& GetPosition() const { return m_Position; }
 		void SetPosition(float x, float y, float z);
 		void SetPosition(const glm::vec3& pos);
+		void SetX(float x) { m_Position.x = x; }
+		void SetY(float y) { m_Position.y = y; }
+		void SetZ(float z) { m_Position.z = z; }
 		void SetPosThroughRigidBody(const glm::vec3& pos);
 		void Translate(float x, float y, float z);
 		void Translate(const glm::vec3& pos);
