@@ -36,14 +36,16 @@ namespace MidestinyEngine
 		bool IsPressed(ControllerButton button) const;
 		SDL_Event GetEvent();
 
-		void AddControllerInput(ControllerButton controllerButton, Command* command);
-		void AddKeyboardInput(SDL_Scancode scancode, Command* command);
+		void AddInput(ControllerButton controllerButton, Command* command);
+		void AddInput(SDL_Scancode scancode, Command* command);
 	private:
 		friend class Singleton<InputManager>;
 		InputManager() = default;
 
+		bool ProcessKeyboardInput();
+		bool ProcessControllerInput();
+
 		std::map<ControllerButton, Command*> m_ControllerCommands;
-		//std::vector<std::pair<SDL_Scancode, Command*>> m_KeyboardCommands;
 		std::map<SDL_Scancode, Command*> m_KeyboardCommands;
 		XINPUT_STATE m_CurrentState{};
 		SDL_Event m_Event;

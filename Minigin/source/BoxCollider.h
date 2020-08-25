@@ -17,10 +17,10 @@ namespace MidestinyEngine
 
 		virtual void Render()const override;
 		
-		//void SetSize(float width, float height);
+		void SetSize(float width, float height);
 	private:
-		//b2PolygonShape* m_pBodyshape = nullptr;
-		//b2FixtureDef m_FixtureDef;
-		//b2Fixture* m_pFixture = nullptr;
+		b2PolygonShape* m_pBodyshape = nullptr;
+		b2FixtureDef m_FixtureDef;
+		b2Fixture* m_pFixture = nullptr;
 	};
 }

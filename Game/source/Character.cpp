@@ -8,26 +8,19 @@
 
 Character::Character()
 	: GameObject{}
-	, m_pTexture{ new UnitTexture{}}
+	//, m_pTexture{ new UnitTexture{}}
+	//, m_pTexture{nullptr}
 	, m_CharacterState{CharacterState::walking}
 {
 	m_Tag = "Character";
-	m_pTexture->SetCharacter(this);
-	//if (m_pComponents.find("BoxCollider") == m_pComponents.end())
-	{
-		//MidestinyEngine::BoxCollider* boxCollider = new MidestinyEngine::BoxCollider();
-		//boxCollider->SetSize(Core::g_BlockSize * 2, Core::g_BlockSize * 2);
-		//AddComponent(boxCollider);
-
-		//MidestinyEngine::RigidBody* rigid = new MidestinyEngine::RigidBody(false);
-		//AddComponent(rigid);
-	}
+	//m_pTexture->SetCharacter(this);
+	SetTexture("Digger.png");
 }
 
 Character::~Character()
 {
-	delete m_pTexture;
-	m_pTexture = nullptr;
+	//delete m_pTexture;
+	//m_pTexture = nullptr;
 }
 
 void Character::Start()
@@ -37,18 +30,18 @@ void Character::Start()
 		component.second->SetGameObject(this);
 	}
 
-	m_pTexture->Start();
-	//m_pComponents["RigidBody"]->Start();
-	//m_pComponents["BoxCollider"]->Start();
+	//if(m_pTexture != nullptr) m_pTexture->Start();
+
 	for (std::pair<std::string, MidestinyEngine::BaseComponent*> component : m_pComponents)
 	{
-		if (component.first != "RigidBody" || component.first != "BoxCollider") component.second->Start();
+		component.second->Start();
 	}
 }
 
 void Character::Update()
 {
-	m_pTexture->Update();
+	//if(m_pTexture != nullptr) m_pTexture->Update();
+
 	for (std::pair<std::string, MidestinyEngine::BaseComponent*> component : m_pComponents)
 	{
 		component.second->Update();
@@ -73,7 +66,7 @@ void Character::FixedUpdate()
 
 void Character::Render() const
 {
-	m_pTexture->Render();
+	//if (m_pTexture != nullptr) m_pTexture->Render();
 }
 
 void Character::Move(bool isToTheRight)
@@ -88,24 +81,23 @@ void Character::Jump()
 	GetComponent<MidestinyEngine::RigidBody>()->AddForce(30.f,0.f);
 }
 
-void Character::ShootBubble()
+void Character::Fire()
 {
-
+	ME_INFO("Fire OwO");
 }
 
-void Character::SetTexture(const std::string& filename)
-{
-	m_pTexture->SetTexture(filename);
-	m_pTexture->SetAmountOfFrames(4);
-	m_pTexture->SetAmountOfWalkingFrames(4);
-	m_pTexture->SetAmountOfDyingFrames(4);
-	m_pTexture->SetAmountOfAttackingFrames(2);
-}
+//void Character::SetTexture(const std::string& filename)
+//{
+//	if (m_pTexture != nullptr)
+//	{
+//		m_pTexture->SetTexture(filename);
+//		m_pTexture->SetAmountOfFrames(4);
+//		m_pTexture->SetAmountOfWalkingFrames(4);
+//		m_pTexture->SetAmountOfDyingFrames(4);
+//		m_pTexture->SetAmountOfAttackingFrames(2);
+//	}
+//}
 
 void Character::SetInput()
 {
-	MidestinyEngine::InputManager::GetInstance().AddControllerInput(MidestinyEngine::ControllerButton::ButtonA, new FireCommand{});
-	MidestinyEngine::InputManager::GetInstance().AddControllerInput(MidestinyEngine::ControllerButton::DPadRight, new WalkRightCommand{});
-	MidestinyEngine::InputManager::GetInstance().AddControllerInput(MidestinyEngine::ControllerButton::DPadLeft, new WalkLeftCommand{});
-	MidestinyEngine::InputManager::GetInstance().AddControllerInput(MidestinyEngine::ControllerButton::ButtonB, new JumpCommand{});
 }

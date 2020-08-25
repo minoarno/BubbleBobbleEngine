@@ -45,11 +45,14 @@ void UnitTexture::IncrementAnimationCounter()
 
 void UnitTexture::Render() const
 {
-	int number = int(m_pCharacter->GetCharacterState());
-	Rectf srcRect{ m_AnimationCounter * m_ImageWidth, number * m_ImageHeight, m_ImageWidth, m_ImageHeight };
+	if (m_pTexture != nullptr)
+	{
+		int number = int(m_pCharacter->GetCharacterState());
+		Rectf srcRect{ m_AnimationCounter * m_ImageWidth, number * m_ImageHeight, m_ImageWidth, m_ImageHeight };
 
-	MidestinyEngine::Renderer::GetInstance().RenderTexture(*m_pTexture, srcRect, m_pCharacter->GetBoundaries());
-	//m_pTexture->GetSDLTexture();
+		MidestinyEngine::Renderer::GetInstance().RenderTexture(*m_pTexture, srcRect, m_pCharacter->GetBoundaries());
+		//m_pTexture->GetSDLTexture();
+	}
 }
 
 void UnitTexture::ResetAnimationCounter()

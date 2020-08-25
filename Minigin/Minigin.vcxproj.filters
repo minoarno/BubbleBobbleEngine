@@ -43,6 +43,9 @@
     <Filter Include="Code Pattern">
       <UniqueIdentifier>{ecb97da8-b1aa-423f-8eab-596cd0fc9fb3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Command">
+      <UniqueIdentifier>{f0c82771-03fd-4030-946a-9297802cc81d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Font.h">
@@ -150,6 +153,18 @@
     <ClInclude Include="source\Vector2f.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="source\Input.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Commands.h">
+      <Filter>Command</Filter>
+    </ClInclude>
+    <ClInclude Include="source\FireCommand.h">
+      <Filter>Command</Filter>
+    </ClInclude>
+    <ClInclude Include="source\FunctionCommand.h">
+      <Filter>Command</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Font.cpp">
@@ -238,9 +253,6 @@
     </ClCompile>
     <ClCompile Include="source\Structs.cpp">
       <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Invoker.cpp">
-      <Filter>Code Pattern</Filter>
     </ClCompile>
     <ClCompile Include="source\Vector2f.cpp">
       <Filter>Core</Filter>

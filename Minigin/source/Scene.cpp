@@ -9,13 +9,13 @@ namespace MidestinyEngine
 
 	void Scene::LoadScene(int widthTilemap, int heightTilemap, const std::string& tileMapInfo)
 	{
-		m_pTilemap = new Tilemap{};
+		m_pTilemap = new Tilemap{widthTilemap,heightTilemap};
 		m_pTilemap->LoadTileMapFromFile(widthTilemap, heightTilemap, tileMapInfo);
 	}
 
 	void MidestinyEngine::Scene::LoadScene(int widthTilemap, int heightTilemap, const std::string& tileMapInfo, const std::string& gameObjectsInfo)
 	{
-		m_pTilemap = new Tilemap{};
+		m_pTilemap = new Tilemap{widthTilemap,heightTilemap};
 		m_pTilemap->LoadTileMapFromFile(widthTilemap, heightTilemap, tileMapInfo);
 		ME_INFO(gameObjectsInfo);
 	}
@@ -63,8 +63,7 @@ namespace MidestinyEngine
 		}
 		else
 		{
-			ME_CORE_ERROR("Tilemap isn't loaded in");
-			m_pTilemap = new Tilemap{};
+			//ME_CORE_ERROR("Tilemap isn't loaded in");
 		}
 	}
 
@@ -82,8 +81,7 @@ namespace MidestinyEngine
 		}
 		else
 		{
-			ME_CORE_ERROR("Tilemap isn't loaded in");
-			m_pTilemap = new Tilemap{};
+			//ME_CORE_ERROR("Tilemap isn't loaded in");
 		}
 	}
 
@@ -99,8 +97,7 @@ namespace MidestinyEngine
 		}
 		else
 		{
-			ME_CORE_ERROR("Tilemap isn't loaded in");
-			m_pTilemap = new Tilemap{};
+			//ME_CORE_ERROR("Tilemap isn't loaded in");
 		}
 	}
 
@@ -118,8 +115,7 @@ namespace MidestinyEngine
 		}
 		else
 		{
-			ME_CORE_ERROR("Tilemap isn't loaded in");
-			m_pTilemap = new Tilemap{};
+			//ME_CORE_ERROR("Tilemap isn't loaded in");
 		}
 	}
 
@@ -132,7 +128,7 @@ namespace MidestinyEngine
 		}
 		else
 		{
-			ME_CORE_ERROR("Tilemap isn't loaded in");
+			//ME_CORE_ERROR("Tilemap isn't loaded in");
 		}
 		for (SceneObject* object : m_Objects)
 		{

@@ -16,6 +16,11 @@ namespace MidestinyEngine
 
 	GameObject::~GameObject()
 	{
+		CleanUp();
+	}
+
+	void GameObject::CleanUp()
+	{
 		for (std::pair<std::string, BaseComponent*> component : m_pComponents)
 		{
 			delete component.second;

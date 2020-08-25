@@ -26,8 +26,9 @@ enum class EnemyState
 	dying = 2,
 };
 
-enum class EnemyType
+enum class Cooldown
 {
-	ZenChan = 0,
-	Maita = 6
+	Reloading = 0,
+	Activated = 1,
+	Ready = 2
 };

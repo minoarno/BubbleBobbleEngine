@@ -14,6 +14,8 @@ namespace MidestinyEngine
 	public:
 		GameObject();
 		virtual ~GameObject();
+		virtual void CleanUp();
+
 		virtual void Start() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;
@@ -51,7 +53,7 @@ namespace MidestinyEngine
 		{
 			if (typeid(T) == typeid(*p.second))
 			{
-				return dynamic_cast<T*>(p.second);
+				return static_cast<T*>(p.second);
 			}
 		}
 		return nullptr;

@@ -46,8 +46,7 @@ void EnemyTexture::IncrementAnimationCounter()
 void EnemyTexture::Render() const
 {
 	int stateIndex = int(m_pBaseEnemy->GetEnemyState());
-	int typeIndex = int(m_pBaseEnemy->GetEnemyType());
-	Rectf srcRect{ (stateIndex * 4 + m_AnimationCounter) * m_ImageWidth, typeIndex * m_ImageHeight, m_ImageWidth, m_ImageHeight };
+	Rectf srcRect{ (stateIndex * 4 + m_AnimationCounter) * m_ImageWidth,m_ImageHeight, m_ImageWidth, m_ImageHeight };
 
 	MidestinyEngine::Renderer::GetInstance().RenderTexture(*m_pTexture, srcRect, m_pBaseEnemy->GetBoundaries());
 }

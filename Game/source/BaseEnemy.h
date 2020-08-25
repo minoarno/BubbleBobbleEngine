@@ -18,11 +18,10 @@ public:
 
 	virtual void GoTowardsThePlayer();
 	EnemyState GetEnemyState()const { return m_EnemyState; }
-	EnemyType GetEnemyType()const { return m_EnemyType; }
+
 	void SetTexture(const std::string& filename) override;
 protected:
 	EnemyTexture* m_pTexture = nullptr;
 	bool m_HitWithBubble = false;
 	EnemyState m_EnemyState = EnemyState::walking;
-	EnemyType m_EnemyType = EnemyType::ZenChan;
 };
