@@ -12,10 +12,9 @@ namespace MidestinyEngine
 	{
 		for (int i = 0; i < m_Threads.size(); i++)
 		{
-			ME_WARN(m_Threads[i].joinable());
-			if (m_Threads[i].joinable())
+			if ((*m_Threads[i]).joinable())
 			{
-				m_Threads[i].detach();
+				(*m_Threads[i]).join();
 			}
 		}
 	}
@@ -27,7 +26,7 @@ namespace MidestinyEngine
 
 	void ThreadMaster::Invoke(std::function<void()> func, int intervalInMilliseconds, bool isLooping)
 	{
-		std::thread newThread = std::thread([func, intervalInMilliseconds, isLooping]()
+		std::thread([func, intervalInMilliseconds, isLooping]()
 		{
 			do
 			{
@@ -35,16 +34,16 @@ namespace MidestinyEngine
 				std::this_thread::sleep_until(nextTimeFunctionCall);
 				func();
 			} while (isLooping);
-		});
+		}).detach();
 
-		m_Threads.push_back(std::move(newThread));
+		//_Threads.push_back(std::make_unique(&newThread));
 	}
 
 	void ThreadMaster::TerminateAllThreads()
 	{
-		if (m_Threads.size() > 0)
+		for (int i = 0; i < m_Threads.size(); i++)
 		{
-			m_Threads.clear();
+			m_Threads[i]->join();
 		}
 	}
 }

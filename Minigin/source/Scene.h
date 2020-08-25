@@ -24,10 +24,12 @@ namespace MidestinyEngine
 		Scene& operator=(const Scene& other) = delete;
 		Scene& operator=(Scene&& other) = delete;
 
+		void LoadScene(int widthTilemap, int heightTilemap, const std::string& tileMapInfo);
 		void LoadScene(int widthTilemap, int heightTilemap, const std::string& tileMapInfo, const std::string& gameObjectsInfo);
 		void LoadObjects(const std::string& gameObjectsInfo);
-		b2World* GetWorld() { return m_pWorld; };
+		//b2World* GetWorld() { return m_pWorld; };
 		Tilemap* GetTilemap() { return m_pTilemap; }
+		std::vector <SceneObject*>& GetObjectsInScene() { return m_Objects; };
 
 		friend std::ostream& operator<<(std::ostream& out, const Scene& scene);
 	private: 
@@ -37,7 +39,7 @@ namespace MidestinyEngine
 		std::vector <SceneObject*> m_Objects{};
 
 		static unsigned int m_IdCounter;
-		b2World* m_pWorld = nullptr;
+		//b2World* m_pWorld = nullptr;
 		Tilemap* m_pTilemap = nullptr;
 	};
 }

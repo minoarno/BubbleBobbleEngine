@@ -4,25 +4,30 @@
 #include "Structs.h"
 
 class UnitTexture;
-class Character final : public  MidestinyEngine::GameObject
+class Character : public  MidestinyEngine::GameObject
 {
 public:
 	Character();
 	~Character();
 
-	void Start() override;
-	void Update() override;
-	void LateUpdate() override;
-	void FixedUpdate() override;
-	void Render() const override;
+	virtual void Start() override;
+	virtual void Update() override;
+	virtual void LateUpdate() override;
+	virtual void FixedUpdate() override;
+	virtual void Render() const override;
+
+	void Move(bool isToTheRight);
+	void Jump();
+	void ShootBubble();
 
 	void SetTexture(const std::string& filename) override;
-
 	void SetInput();
 
 	CharacterState GetCharacterState() const { return m_CharacterState; }
 private:
 	UnitTexture* m_pTexture = nullptr;
 	CharacterState m_CharacterState;
+	bool m_IsToTheRight = true;
+	float m_Speed = 30.f;
 };
 

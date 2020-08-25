@@ -1,99 +1,613 @@
 #include "MiniginPCH.h"
-#include <algorithm>
 #include <iostream>
 #include <cmath>
-#include "Utils.h"
+#include "utils.h"
 #pragma warning(push)
 #pragma warning(disable:4201)
 #include "glm/vec2.hpp"
 #pragma warning(pop)
 #include <ios>
-
-namespace MidestinyEngine
-{
+#include <algorithm>
+#pragma warning(push)
+#pragma warning(disable:4456)
+#pragma warning(disable:4457)
 #pragma region OpenGLDrawFunctionality
-	void SetColor(const Color4f& color)
-	{
-		glColor4f(color.r, color.g, color.b, color.a);
-	}
+void MidestinyEngine::SetColor( const Color4f& color )
+{
+	glColor4f( color.r, color.g, color.b, color.a );
+}
 
-	void DrawPoint(float x, float y, float pointSize)
+void MidestinyEngine::DrawPoint( float x, float y, float pointSize )
+{
+	glPointSize( pointSize );
+	glBegin( GL_POINTS );
 	{
-		glPointSize(pointSize);
-		glBegin(GL_POINTS);
+		glVertex2f( x, y );
+	}
+	glEnd( );
+}
+
+void MidestinyEngine::DrawPoint( const Point2f& p, float pointSize )
+{
+	DrawPoint( p.x, p.y, pointSize );
+}
+
+void MidestinyEngine::DrawPoints( Point2f *pVertices, int nrVertices, float pointSize )
+{
+	glPointSize( pointSize );
+	glBegin( GL_POINTS );
+	{
+		for ( int idx{ 0 }; idx < nrVertices; ++idx )
 		{
-			glVertex2f(x, y);
+			glVertex2f( pVertices[idx].x, pVertices[idx].y );
 		}
-		glEnd();
 	}
+	glEnd( );
+}
 
-	void DrawRect(float left, float bottom, float width, float height, float lineWidth)
+void MidestinyEngine::DrawLine( float x1, float y1, float x2, float y2, float lineWidth )
+{
+	glLineWidth( lineWidth );
+	glBegin( GL_LINES );
 	{
-		glLineWidth(lineWidth);
-		glBegin(GL_LINE_LOOP);
+		glVertex2f( x1, y1 );
+		glVertex2f( x2, y2 );
+	}
+	glEnd( );
+}
+
+void MidestinyEngine::DrawLine( const Point2f& p1, const Point2f& p2, float lineWidth )
+{
+	DrawLine( p1.x, p1.y, p2.x, p2.y, lineWidth );
+}
+
+void MidestinyEngine::DrawCross(const Rectf & boundaries, float lineWidth)
+{
+	MidestinyEngine::DrawLine(Point2f{ boundaries.x,boundaries.y }, Point2f{ boundaries.x + boundaries.w, boundaries.y + boundaries.h },lineWidth);
+	MidestinyEngine::DrawLine(Point2f{ boundaries.x,boundaries.y + boundaries.h }, Point2f{ boundaries.x + boundaries.w, boundaries.y }, lineWidth);
+}
+
+void MidestinyEngine::DrawRect( float left, float bottom, float width, float height, float lineWidth )
+{
+	glLineWidth( lineWidth );
+	glBegin( GL_LINE_LOOP );
+	{
+		glVertex2f( left, bottom );
+		glVertex2f( left + width, bottom );
+		glVertex2f( left + width, bottom + height );
+		glVertex2f( left, bottom + height );
+	}
+	glEnd( );
+}
+
+void MidestinyEngine::DrawRect( const Point2f& bottomLeft, float width, float height, float lineWidth )
+{
+	DrawRect( bottomLeft.x, bottomLeft.y, width, height, lineWidth );
+}
+
+void MidestinyEngine::DrawRect( const Rectf& rect, float lineWidth )
+{
+	DrawRect( rect.x, rect.y, rect.w, rect.h, lineWidth );
+}
+
+void MidestinyEngine::FillRect( float left, float bottom, float width, float height )
+{
+	glBegin( GL_POLYGON );
+	{
+		glVertex2f( left, bottom );
+		glVertex2f( left + width, bottom );
+		glVertex2f( left + width, bottom + height );
+		glVertex2f( left, bottom + height );
+	}
+	glEnd( );
+}
+
+void MidestinyEngine::FillRect( const Point2f& bottomLeft, float width, float height )
+{
+	FillRect( bottomLeft.x, bottomLeft.y, width, height );
+}
+
+void MidestinyEngine::FillRect( const Rectf& rect )
+{
+	FillRect( rect.x, rect.y, rect.w, rect.h );
+}
+
+void MidestinyEngine::DrawEllipse( float centerX, float centerY, float radX, float radY, float lineWidth )
+{
+	float dAngle{ radX > radY ? float( M_PI / radX ) : float( M_PI / radY ) };
+
+	glLineWidth( lineWidth );
+	glBegin( GL_LINE_LOOP );
+	{
+		for ( float angle = 0.0; angle < float( 2 * M_PI  ); angle += dAngle )
 		{
-			glVertex2f(left, bottom);
-			glVertex2f(left + width, bottom);
-			glVertex2f(left + width, bottom + height);
-			glVertex2f(left, bottom + height);
+			glVertex2f( centerX + radX * float( cos( angle ) ), centerY + radY * float( sin( angle ) ) );
 		}
-		glEnd();
 	}
+	glEnd( );
+}
 
-	void DrawRect(const Rectf& rect, float lineWidth)
-	{
-		DrawRect(rect.x, rect.y, rect.w, rect.h, lineWidth);
-	}
+void MidestinyEngine::DrawEllipse( const Point2f& center, float radX, float radY, float lineWidth )
+{
+	DrawEllipse( center.x, center.y, radX, radY, lineWidth );
+}
 
-	void FillRect(float left, float bottom, float width, float height)
+void MidestinyEngine::DrawEllipse( const Ellipsef& ellipse, float lineWidth  )
+{
+	DrawEllipse( ellipse.center.x, ellipse.center.y, ellipse.radiusX, ellipse.radiusY, lineWidth );
+}
+
+void MidestinyEngine::FillEllipse( float centerX, float centerY, float radX, float radY )
+{
+	float dAngle{ radX > radY ? float( M_PI / radX ) : float( M_PI / radY ) };
+
+	glBegin( GL_POLYGON );
 	{
-		glBegin(GL_POLYGON);
+		for ( float angle = 0.0; angle < float( 2 * M_PI  ); angle += dAngle )
 		{
-			glVertex2f(left, bottom);
-			glVertex2f(left + width, bottom);
-			glVertex2f(left + width, bottom + height);
-			glVertex2f(left, bottom + height);
+			glVertex2f( centerX + radX * float( cos( angle ) ), centerY + radY * float( sin( angle ) ) );
 		}
-		glEnd();
+	}
+	glEnd( );
+}
+
+void MidestinyEngine::FillEllipse( const Ellipsef& ellipse )
+{
+	FillEllipse( ellipse.center.x, ellipse.center.y, ellipse.radiusX, ellipse.radiusY );
+}
+
+void MidestinyEngine::FillEllipse( const Point2f& center, float radX, float radY )
+{
+	FillEllipse( center.x, center.y, radX, radY );
+}
+
+void MidestinyEngine::DrawArc( float centerX, float centerY, float radX, float radY, float fromAngle, float tillAngle, float lineWidth )
+{
+	if ( fromAngle > tillAngle )
+	{
+		return;
 	}
 
-	void FillRect(const Rectf& rect)
+	float dAngle{ radX > radY ? float( M_PI / radX ) : float( M_PI / radY ) };
+
+	glLineWidth( lineWidth );
+	glBegin( GL_LINE_STRIP );
 	{
-		FillRect(rect.x, rect.y, rect.w, rect.h);
+		for ( float angle = fromAngle; angle < tillAngle; angle += dAngle )
+		{
+			glVertex2f( centerX + radX * float( cos( angle ) ), centerY + radY * float( sin( angle ) ) );
+		}
+		glVertex2f( centerX + radX * float( cos( tillAngle ) ), centerY + radY * float( sin( tillAngle ) ) );
 	}
+	glEnd( );
+
+}
+
+void MidestinyEngine::DrawArc( const Point2f& center, float radX, float radY, float fromAngle, float tillAngle, float lineWidth )
+{
+	DrawArc( center.x, center.y, radX, radY, fromAngle, tillAngle, lineWidth );
+}
+
+void MidestinyEngine::FillArc( float centerX, float centerY, float radX, float radY, float fromAngle, float tillAngle )
+{
+	if ( fromAngle > tillAngle )
+	{
+		return;
+	}
+	float dAngle{ radX > radY ? float( M_PI / radX ) : float( M_PI / radY ) };
+
+	glBegin( GL_POLYGON );
+	{
+		glVertex2f( centerX, centerY );
+		for ( float angle = fromAngle; angle < tillAngle; angle += dAngle )
+		{
+			glVertex2f( centerX + radX * float( cos( angle ) ), centerY + radY * float( sin( angle ) ) );
+		}
+		glVertex2f( centerX + radX * float( cos( tillAngle ) ), centerY + radY * float( sin( tillAngle ) ) );
+	}
+	glEnd( );
+}
+
+void MidestinyEngine::FillArc( const Point2f& center, float radX, float radY, float fromAngle, float tillAngle )
+{
+	FillArc( center.x, center.y, radX, radY, fromAngle, tillAngle );
+}
+void MidestinyEngine::DrawPolygon( const std::vector<Point2f>& vertices, bool closed, float lineWidth )
+{
+	DrawPolygon( vertices.data( ), vertices.size( ), closed, lineWidth );
+}
+void MidestinyEngine::DrawPolygon( const Point2f *pVertices, size_t nrVertices, bool closed, float lineWidth )
+{
+	glLineWidth( lineWidth );
+	closed ? glBegin( GL_LINE_LOOP ) : glBegin( GL_LINE_STRIP );
+	{
+		for ( size_t idx{ 0 }; idx < nrVertices; ++idx )
+		{
+			glVertex2f( pVertices[idx].x, pVertices[idx].y );
+		}
+	}
+	glEnd( );
+}
+void MidestinyEngine::FillPolygon( const std::vector<Point2f>& vertices )
+{
+	FillPolygon( vertices.data( ), vertices.size( ) );
+}
+void MidestinyEngine::FillPolygon( const Point2f *pVertices, size_t nrVertices )
+{
+	glBegin( GL_POLYGON );
+	{
+		for ( size_t idx{ 0 }; idx < nrVertices; ++idx )
+		{
+			glVertex2f( pVertices[idx].x, pVertices[idx].y );
+		}
+	}
+	glEnd( );
+}
 #pragma endregion OpenGLDrawFunctionality
 
-	bool IsPointInRect(float x,float y, const Rectf& r)
-	{
-		return ((x >= r.x) && (x <= r.x + r.w) && (y >= r.y) && (y <= r.y + r.h));
-	}
+#pragma region CollisionFunctionality
 
-	int Random(int min, int max)
-	{
-		return std::rand() % (max - min) + min;
-	}
+bool MidestinyEngine::IsPointInRect( const Point2f& p, const Rectf& r )
+{
+	return ( p.x >= r.x && p.x <= r.x + r.w && p.y >= r.y&& p.y <= r.y + r.h );
+}
 
-	///Checking if the stream is valid or not
-	bool CheckStream(std::istream& inputStream)
+bool MidestinyEngine::IsPointInCircle( const Point2f& p, const Circlef& c )
+{
+	float squaredDist = ( p.x - c.center.x )*( p.x - c.center.x ) + ( p.y - c.center.y ) * ( p.y - c.center.y );
+	float squaredRadius = c.radius * c.radius;
+	return ( squaredRadius >= squaredDist );
+}
+
+
+bool MidestinyEngine::IsOverlapping( const Point2f& a, const Point2f& b, const Rectf& r )
+{
+	// if one of the line segment end points is in the rect
+	if ( MidestinyEngine::IsPointInRect( a, r ) || MidestinyEngine::IsPointInRect( b, r ) )
 	{
-		if (!inputStream)
-		{
-			if (inputStream.eof()) ME_CORE_ERROR("End of file reached");
-			if (inputStream.fail()) ME_CORE_ERROR("Stream is in a fail state");
-			if (inputStream.bad()) ME_CORE_ERROR("Stream is in a bad state");
-			inputStream.clear();
-			return false;
-		}
 		return true;
 	}
 
-	float Round2Dec(float value)
+	HitInfo hitInfo{};
+	Point2f vertices[]{ Point2f {r.x, r.y},
+		Point2f{ r.x + r.w, r.y },
+		Point2f{ r.x + r.w, r.y + r.h },
+		Point2f{ r.x, r.y + r.h } };
+
+	return Raycast( vertices, 4, a, b, hitInfo );
+}
+
+bool MidestinyEngine::IsOverlapping( const Rectf& r1, const Rectf& r2 )
+{
+	// If one rectangle is on left side of the other
+	if ( ( r1.x + r1.w ) < r2.x || ( r2.x + r2.w ) < r1.x )
 	{
-		return int(value * 100) / 100.f;
+		return false;
 	}
 
-	glm::vec3 MakeVec3(const b2Vec2& pos)
+	// If one rectangle is under the other
+	if ( r1.y > ( r2.y + r2.h ) || r2.y > ( r1.y + r1.h ) )
 	{
-		return glm::vec3{ float(pos.x),float(pos.y),0.f };
+		return false;
+	}
+
+	return true;
+}
+
+bool MidestinyEngine::IsOverlapping( const Rectf& r, const Circlef& c )
+{
+	// Is center of circle in the rectangle?
+	if ( IsPointInRect( c.center, r ) )return true;
+
+	// Check line segments
+	if ( MidestinyEngine::DistPointLineSegment( c.center, Point2f{ r.x, r.y }, Point2f{ r.x, r.y + r.h } ) <= c.radius ) return true;
+	if ( MidestinyEngine::DistPointLineSegment( c.center, Point2f{ r.x, r.y }, Point2f{ r.x + r.w, r.y } ) <= c.radius ) return true;
+	if ( MidestinyEngine::DistPointLineSegment( c.center, Point2f{ r.x + r.w, r.y + r.h }, Point2f{ r.x, r.y + r.h } ) <= c.radius ) return true;
+	if ( MidestinyEngine::DistPointLineSegment( c.center, Point2f{ r.x + r.w, r.y + r.h }, Point2f{ r.x + r.w, r.y } ) <= c.radius ) return true;
+	return false;
+}
+bool MidestinyEngine::IsOverlapping( const Circlef& c1, const Circlef& c2 )
+{
+	// squared distance between centers
+	float xDistance{ c1.center.x - c2.center.x };
+	float yDistance{ c1.center.y - c2.center.y };
+	float squaredDistance = xDistance * xDistance + yDistance * yDistance;
+
+	float squaredTouchingDistance = ( c1.radius + c2.radius ) * ( c1.radius + c2.radius );
+	if ( squaredDistance < squaredTouchingDistance )
+	{
+		return true;
+	}
+	else
+	{
+		return false;
 	}
 }
+
+bool MidestinyEngine::IsOverlapping( const Point2f& a, const Point2f& b, const Circlef& c )
+{
+	return MidestinyEngine::DistPointLineSegment( c.center, a, b ) <= c.radius;
+}
+
+bool MidestinyEngine::IsOverlapping( const std::vector<Point2f>& vertices, const Circlef& c )
+{
+	return IsOverlapping( vertices.data( ), vertices.size( ), c );
+}
+
+bool MidestinyEngine::IsOverlapping( const Point2f* vertices, size_t nrVertices, const Circlef& c )
+{
+	// Check points in circle
+	for ( size_t i{ 0 }; i < nrVertices; ++i )
+	{
+		if ( IsPointInCircle( vertices[i], c ) )
+		{
+			return true;
+		}
+	}
+
+	// Check overlapping line segments with circle
+	for ( size_t i{ 0 }; i < nrVertices; ++i )
+	{
+		if ( DistPointLineSegment( c.center, vertices[i], vertices[( i + 1 ) % nrVertices] ) <= c.radius )
+		{
+			return true;
+		}
+	}
+
+	// No overlapping line segments, verify whether circle is inside polygon
+	if ( IsPointInPolygon( c.center, vertices, nrVertices ) )
+	{
+		return true;
+	}
+	return false;
+}
+
+bool MidestinyEngine::IsPointInPolygon( const Point2f& p, const std::vector<Point2f>& vertices )
+{
+	return IsPointInPolygon( p, vertices.data( ), vertices.size( ) );
+}
+
+bool MidestinyEngine::IsPointInPolygon( const Point2f& p, const Point2f* vertices, size_t nrVertices )
+{
+	if ( nrVertices < 2 )
+	{
+		return false;
+	}
+	// 1. First do a simple test with axis aligned bounding box around the polygon
+	float xMin{ vertices[0].x };
+	float xMax{ vertices[0].x };
+	float yMin{ vertices[0].y };
+	float yMax{ vertices[0].y };
+	for ( size_t idx{ 1 }; idx < nrVertices; ++idx )
+	{
+		if ( xMin > vertices[idx].x )
+			xMin = vertices[idx].x;
+		if ( xMax < vertices[idx].x )
+			xMax = vertices[idx].x;
+		if ( yMin > vertices[idx].y )
+			yMin = vertices[idx].y;
+		if ( yMax < vertices[idx].y )
+			yMax = vertices[idx].y;
+	}
+	if ( p.x < xMin || p.x > xMax || p.y < yMin || p.y > yMax )
+		return false;
+
+	// 2. Draw a virtual ray from anywhere outside the polygon to the point 
+	//    and count how often it hits any side of the polygon. 
+	//    If the number of hits is even, it's outside of the polygon, if it's odd, it's inside.
+	int numberOfIntersectionPoints{0};
+	Point2f p2{ xMax + 10.0f, p.y }; // Horizontal line from point to point outside polygon (p2)
+
+	// Count the number of intersection points
+	float lambda1{}, lambda2{};
+	for ( size_t i{ 0 }; i < nrVertices; ++i )
+	{
+		if ( IntersectLineSegments( vertices[i], vertices[( i + 1 ) % nrVertices], p, p2, lambda1, lambda2 ) )
+		{
+			if ( lambda1 > 0&& lambda1 <= 1&& lambda2 > 0&& lambda2 <= 1 )
+			{
+				++numberOfIntersectionPoints;
+			}
+		}
+	}
+	if ( numberOfIntersectionPoints % 2 == 0 )
+		return false;
+	else
+		return true;
+}
+
+bool MidestinyEngine::IntersectLineSegments( const Point2f& p1, const Point2f& p2, const Point2f& q1, const Point2f& q2, float& outLambda1, float& outLambda2, float epsilon )
+{
+	bool intersecting{ false };
+
+	Vector2f p1p2{ p1, p2 };
+	Vector2f q1q2{ q1, q2 };
+
+	// cross product to determine if parallel
+	float denom = p1p2.CrossProduct( q1q2 );
+
+	// Don't divide by zero
+	if ( std::abs( denom ) > epsilon )
+	{
+		intersecting = true;
+
+		Vector2f p1q1{ p1, q1 };
+
+		float num1 = p1q1.CrossProduct( q1q2 );
+		float num2 = p1q1.CrossProduct( p1p2 );
+		outLambda1 = num1 / denom;
+		outLambda2 = num2 / denom;
+	}
+	else // are parallel
+	{
+		//connect start points
+		Vector2f p1q1{ p1, q1 };
+
+		// cross product to determine if segments and the line connecting their start points are parallel, 
+		// if so, than they are on a line
+		// if not, then there is no intersection
+		float denom = p1q1.CrossProduct( q1q2 );
+		if ( std::abs( denom ) > epsilon ) return false;
+
+		// check the 4 conditions
+		outLambda1 = 0;
+		outLambda2 = 0;
+		if ( MidestinyEngine::IsPointOnLineSegment( p1, q1, q2 ) )intersecting = true;
+		if ( MidestinyEngine::IsPointOnLineSegment( p2, q1, q2 ) )intersecting = true;
+		if ( MidestinyEngine::IsPointOnLineSegment( q1, p1, p2 ) )intersecting = true;
+		if ( MidestinyEngine::IsPointOnLineSegment( q2, p1, p2 ) )intersecting = true;
+	}
+	return intersecting;
+}
+bool MidestinyEngine::Raycast( const std::vector<Point2f>& vertices, const Point2f& rayP1, const Point2f& rayP2, HitInfo& hitInfo )
+{
+	return Raycast( vertices.data( ), vertices.size( ), rayP1, rayP2, hitInfo );
+}
+
+bool MidestinyEngine::Raycast( const Point2f* vertices, const size_t nrVertices, const Point2f& rayP1, const Point2f& rayP2, HitInfo& hitInfo )
+{
+	if ( nrVertices == 0 )
+	{
+		return false;
+	}
+
+	std::vector<HitInfo> hits;
+
+	Rectf r1, r2;
+	// r1: minimal AABB rect enclosing the ray
+	r1.x = min( rayP1.x, rayP2.x );
+	r1.y = min( rayP1.y, rayP2.y );
+	r1.w = max( rayP1.x, rayP2.x ) - r1.x;
+	r1.h = max( rayP1.y, rayP2.y ) - r1.y;
+
+	// Line-line intersections.
+	for ( size_t idx{ 0 }; idx <= nrVertices; ++idx )
+	{
+		// Consider line segment between 2 consecutive vertices
+		// (modulo to allow closed polygon, last - first vertice)
+		Point2f q1 = vertices[( idx + 0 ) % nrVertices];
+		Point2f q2 = vertices[( idx + 1 ) % nrVertices];
+
+		// r2: minimal AABB rect enclosing the 2 vertices
+		r2.x = min( q1.x, q2.x );
+		r2.y = min( q1.y, q2.y );
+		r2.w = max( q1.x, q2.x ) - r2.x;
+		r2.h = max( q1.y, q2.y ) - r2.y;
+
+		if ( IsOverlapping( r1, r2 ) )
+		{
+			float lambda1{};
+			float lambda2{};
+			if ( IntersectLineSegments( rayP1, rayP2, q1, q2, lambda1, lambda2 ) )
+			{
+				if ( lambda1 > 0&& lambda1 <= 1&& lambda2 > 0&& lambda2 <= 1 )
+				{
+					HitInfo hitInfo{};
+					hitInfo.lambda = lambda1;
+					hitInfo.intersectPoint = Point2f{ rayP1.x + ( ( rayP2.x - rayP1.x ) * lambda1 ), rayP1.y + ( ( rayP2.y - rayP1.y ) * lambda1 ) };
+					hitInfo.normal = Vector2f{ q2 - q1 }.Orthogonal( ).Normalized( );
+					hits.push_back( hitInfo );
+				}
+			}
+		}
+	}
+
+	if ( hits.size( ) == 0 )
+	{
+		return false;
+	}
+
+	// Get closest intersection point and copy it into the hitInfo parameter
+	hitInfo = *std::min_element( hits.begin( ), hits.end( ),
+		[]( const HitInfo& first, const HitInfo& last ) {
+		return first.lambda < last.lambda; } );
+	return true;
+}
+
+
+bool  MidestinyEngine::IsPointOnLineSegment( const Point2f& p, const Point2f& a, const Point2f& b )
+{
+	Vector2f ap{ a, p }, bp{ b, p };
+	// If not on same line, return false
+	if ( abs( ap.CrossProduct( bp ) ) > 0.001f )
+	{
+		return false;
+	}
+
+	// Both vectors must point in opposite directions if p is between p1 and p2
+	if ( ap.DotProduct( bp ) > 0 )
+	{
+		return false;
+	}
+
+	return true;
+}
+
+int MidestinyEngine::Random(int min, int max)
+{
+	return std::rand() % (max - min + 1) + min;
+}
+
+float  MidestinyEngine::DistPointLineSegment( const Point2f& p, const Point2f& a, const Point2f& b )
+{
+	Vector2f ab{ a, b };
+	Vector2f ap{ a, p };
+	Vector2f abNorm = ab.Normalized( );
+	float distToA = abNorm.DotProduct( ap );
+	// if distToA is negative, then the closest point is A
+	// return the distance a, p
+	if ( distToA < 0 )
+	{
+		return ap.Length( );
+	}
+	// if distToA is > than dist(a,b) then the closest point is B
+	// return the distance b, p
+	float distAB = ab.Length( );
+	if ( distToA > distAB )
+	{
+		return Vector2f{ b, p }.Length( );
+	}
+
+	//closest point is between A and B, calc intersection point
+	Vector2f intersection = abNorm.DotProduct(ap) * abNorm + Vector2f{ a };
+	return Vector2f{ p - intersection }.Length( );
+}
+#pragma endregion CollisionFunctionality
+
+
+#pragma region Parser
+Point2f MidestinyEngine::ToPoint2f(const std::string& point2fStr)
+{
+	try
+	{
+		size_t found{ point2fStr.find(",") };
+		//std::cout << point2fStr.substr(0, found) << " " << point2fStr.substr(found + 1, point2fStr.size() - 2);
+		return Point2f{ std::stof(point2fStr.substr(0, found)), std::stof(point2fStr.substr(found + 1, point2fStr.size() - 2)) };
+	}
+	catch (const std::exception&)
+	{
+		return Point2f{ 0,0 };
+	}
+}
+
+///Checking if the stream is valid or not
+bool MidestinyEngine::CheckStream(std::istream& inputStream)
+{
+	if (!inputStream)
+	{
+		if (inputStream.eof())std::cout << "End of file reached\n";
+		if (inputStream.fail())std::cout << "Stream is in a fail state\n";
+		if (inputStream.bad())std::cout << "Stream is in a bad state\n";
+		inputStream.clear();
+		return false;
+	}
+	return true;
+}
+
+float MidestinyEngine::Round2Dec(float value)
+{
+	return int(value * 100) / 100.f;
+}
+
+#pragma endregion Parser
+#pragma warning(pop)

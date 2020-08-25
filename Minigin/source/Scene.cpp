@@ -7,11 +7,17 @@ namespace MidestinyEngine
 {
 	unsigned int Scene::m_IdCounter = 0;
 
-	void Scene::LoadScene(int widthTilemap, int heightTilemap, const std::string& tileMapInfo, const std::string& gameObjectsInfo)
+	void Scene::LoadScene(int widthTilemap, int heightTilemap, const std::string& tileMapInfo)
 	{
 		m_pTilemap = new Tilemap{};
 		m_pTilemap->LoadTileMapFromFile(widthTilemap, heightTilemap, tileMapInfo);
-		LoadObjects(gameObjectsInfo);
+	}
+
+	void MidestinyEngine::Scene::LoadScene(int widthTilemap, int heightTilemap, const std::string& tileMapInfo, const std::string& gameObjectsInfo)
+	{
+		m_pTilemap = new Tilemap{};
+		m_pTilemap->LoadTileMapFromFile(widthTilemap, heightTilemap, tileMapInfo);
+		ME_INFO(gameObjectsInfo);
 	}
 
 	void Scene::LoadObjects(const std::string& gameObjectsInfo)
@@ -33,8 +39,8 @@ namespace MidestinyEngine
 		}
 		m_Objects.clear();
 
-		delete m_pWorld;
-		m_pWorld = nullptr;
+		//delete m_pWorld;
+		//m_pWorld = nullptr;
 	}
 
 	void Scene::Add(SceneObject * object)
@@ -45,7 +51,7 @@ namespace MidestinyEngine
 
 	void MidestinyEngine::Scene::Start()
 	{
-		m_pWorld = new b2World{ b2Vec2{0,9.81f} };
+		//m_pWorld = new b2World{ b2Vec2{0,9.81f} };
 
 		for (SceneObject* object : m_Objects)
 		{
@@ -64,8 +70,8 @@ namespace MidestinyEngine
 
 	void Scene::Update()
 	{
-		float sec = GameTime::GetInstance().GetElapsedSeconds();
-		m_pWorld->Step(sec, 8, 3);
+		//float sec = GameTime::GetInstance().GetElapsedSeconds();
+		//m_pWorld->Step(sec, 8, 3);
 		for (SceneObject* object : m_Objects)
 		{
 			object->Update();

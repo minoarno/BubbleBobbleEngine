@@ -1,6 +1,7 @@
 #pragma once
 #include "SceneObject.h"
 #include "Transform.h"
+#include "Structs.h"
 
 namespace MidestinyEngine
 {

@@ -6,6 +6,7 @@
 #include "Renderer.h"
 #include "Font.h"
 #include "Texture2D.h"
+#include "Structs.h"
 
 MidestinyEngine::TextObject::TextObject(const std::string& text, const std::shared_ptr<Font>& font, const SDL_Color& color)
 	: m_NeedsUpdate(true), m_Text(text), m_Font(font), m_Texture(nullptr), m_Color{color}

@@ -6,7 +6,7 @@ public:
 	Maita();
 	~Maita() = default;
 
-	
+	void Shoot();
 private:
 	
 };

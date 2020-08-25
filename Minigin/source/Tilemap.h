@@ -23,7 +23,7 @@ namespace MidestinyEngine
 	#endif
 		friend std::ostream& operator<<(std::ostream& out, const Tilemap& tilemap);
 
-		Rectf GetLevelBoundaries()const { return m_LevelBoundaries; }
+		Rectf GetBoundaries()const { return m_LevelBoundaries; }
 	private:
 		std::vector<std::vector<BaseBlock*>> m_TilemapGrid;
 

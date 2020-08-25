@@ -97,7 +97,7 @@ namespace MidestinyEngine
 			for (BaseBlock* block : vector)
 			{
 				if (block == nullptr) continue;
-				if (IsPointInRect(x, y, block->GetBoundaries()))
+				if (IsPointInRect(Point2f{ x, y }, block->GetBoundaries()))
 				{
 					block->UpdateBlockType();
 				}

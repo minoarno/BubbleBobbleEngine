@@ -24,7 +24,8 @@
  *
  *  Defines keyboard scancodes.
  */
-
+#pragma warning(push)
+#pragma warning(disable:26812)
 #ifndef SDL_scancode_h_
 #define SDL_scancode_h_
 
@@ -411,3 +412,4 @@ typedef enum
 #endif /* SDL_scancode_h_ */
 
 /* vi: set ts=4 sw=4 expandtab: */
+#pragma warning(pop)

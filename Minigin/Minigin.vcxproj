@@ -216,6 +216,7 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="source\Invoker.h" />
     <ClInclude Include="source\Command.h" />
     <ClInclude Include="source\ColliderIncludes.h" />
     <ClInclude Include="source\Observer.h" />
@@ -249,8 +250,10 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
     <ClInclude Include="source\GameTime.h" />
     <ClInclude Include="source\utils.h" />
     <ClInclude Include="source\ThreadMaster.h" />
+    <ClInclude Include="source\Vector2f.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\Invoker.cpp" />
     <ClCompile Include="source\Command.cpp" />
     <ClCompile Include="source\Observer.cpp" />
     <ClCompile Include="source\BinaryReader.cpp" />
@@ -275,6 +278,7 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
     <ClCompile Include="source\RigidBody.cpp" />
     <ClCompile Include="source\Scene.cpp" />
     <ClCompile Include="source\SceneManager.cpp" />
+    <ClCompile Include="source\SceneObject.cpp" />
     <ClCompile Include="source\TextObject.cpp" />
     <ClCompile Include="source\Texture2D.cpp" />
     <ClCompile Include="source\Texture2DTests.cpp" />
@@ -283,6 +287,8 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
     <ClCompile Include="source\GameTime.cpp" />
     <ClCompile Include="source\utils.cpp" />
     <ClCompile Include="source\ThreadMaster.cpp" />
+    <ClCompile Include="source\Structs.cpp" />
+    <ClCompile Include="source\Vector2f.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -17,7 +17,7 @@ void EnemyTexture::Start()
 	m_ImageWidth = m_pTexture->GetWidth() / float(m_AmountOfFrames);
 	m_ImageHeight = m_pTexture->GetHeight() / 8.f;
 	int cooldown = int(1000.f / m_FramesPerSec);
-	//MidestinyEngine::ThreadMaster::GetInstance().Invoke(std::bind(&EnemyTexture::IncrementAnimationCounter, this), cooldown, true);
+	MidestinyEngine::ThreadMaster::GetInstance().Invoke(std::bind(&EnemyTexture::IncrementAnimationCounter, this), cooldown, true);
 }
 
 void EnemyTexture::Update()
@@ -49,7 +49,7 @@ void EnemyTexture::Render() const
 	int typeIndex = int(m_pBaseEnemy->GetEnemyType());
 	Rectf srcRect{ (stateIndex * 4 + m_AnimationCounter) * m_ImageWidth, typeIndex * m_ImageHeight, m_ImageWidth, m_ImageHeight };
 
-	Renderer::GetInstance().RenderTexture(*m_pTexture, srcRect, m_pBaseEnemy->GetBoundaries());
+	MidestinyEngine::Renderer::GetInstance().RenderTexture(*m_pTexture, srcRect, m_pBaseEnemy->GetBoundaries());
 }
 
 void EnemyTexture::ResetAnimationCounter()
@@ -60,5 +60,5 @@ void EnemyTexture::ResetAnimationCounter()
 
 void EnemyTexture::SetTexture(const std::string& filepath)
 {
-	m_pTexture = ResourceManager::GetInstance().LoadTexture(filepath);
+	m_pTexture = MidestinyEngine::ResourceManager::GetInstance().LoadTexture(filepath);
 }
