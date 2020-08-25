@@ -216,6 +216,9 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="source\Commands.h" />
+    <ClInclude Include="source\FireCommand.h" />
+    <ClInclude Include="source\FunctionCommand.h" />
     <ClInclude Include="source\Input.h" />
     <ClInclude Include="source\Invoker.h" />
     <ClInclude Include="source\Command.h" />

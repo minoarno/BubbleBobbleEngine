@@ -43,7 +43,7 @@
     <Filter Include="Code Pattern">
       <UniqueIdentifier>{ecb97da8-b1aa-423f-8eab-596cd0fc9fb3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="NewFilter1">
+    <Filter Include="Command">
       <UniqueIdentifier>{f0c82771-03fd-4030-946a-9297802cc81d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -155,6 +155,15 @@
     </ClInclude>
     <ClInclude Include="source\Input.h">
       <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Commands.h">
+      <Filter>Command</Filter>
+    </ClInclude>
+    <ClInclude Include="source\FireCommand.h">
+      <Filter>Command</Filter>
+    </ClInclude>
+    <ClInclude Include="source\FunctionCommand.h">
+      <Filter>Command</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

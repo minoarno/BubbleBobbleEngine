@@ -14,6 +14,8 @@ namespace MidestinyEngine
 	public:
 		GameObject();
 		virtual ~GameObject();
+		virtual void CleanUp();
+
 		virtual void Start() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;

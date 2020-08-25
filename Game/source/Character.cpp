@@ -9,17 +9,18 @@
 Character::Character()
 	: GameObject{}
 	//, m_pTexture{ new UnitTexture{}}
-	, m_pTexture{nullptr}
+	//, m_pTexture{nullptr}
 	, m_CharacterState{CharacterState::walking}
 {
 	m_Tag = "Character";
 	//m_pTexture->SetCharacter(this);
+	SetTexture("Digger.png");
 }
 
 Character::~Character()
 {
-	delete m_pTexture;
-	m_pTexture = nullptr;
+	//delete m_pTexture;
+	//m_pTexture = nullptr;
 }
 
 void Character::Start()
@@ -65,7 +66,7 @@ void Character::FixedUpdate()
 
 void Character::Render() const
 {
-	if (m_pTexture != nullptr) m_pTexture->Render();
+	//if (m_pTexture != nullptr) m_pTexture->Render();
 }
 
 void Character::Move(bool isToTheRight)
@@ -85,17 +86,17 @@ void Character::Fire()
 	ME_INFO("Fire OwO");
 }
 
-void Character::SetTexture(const std::string& filename)
-{
-	if (m_pTexture != nullptr)
-	{
-		m_pTexture->SetTexture(filename);
-		m_pTexture->SetAmountOfFrames(4);
-		m_pTexture->SetAmountOfWalkingFrames(4);
-		m_pTexture->SetAmountOfDyingFrames(4);
-		m_pTexture->SetAmountOfAttackingFrames(2);
-	}
-}
+//void Character::SetTexture(const std::string& filename)
+//{
+//	if (m_pTexture != nullptr)
+//	{
+//		m_pTexture->SetTexture(filename);
+//		m_pTexture->SetAmountOfFrames(4);
+//		m_pTexture->SetAmountOfWalkingFrames(4);
+//		m_pTexture->SetAmountOfDyingFrames(4);
+//		m_pTexture->SetAmountOfAttackingFrames(2);
+//	}
+//}
 
 void Character::SetInput()
 {

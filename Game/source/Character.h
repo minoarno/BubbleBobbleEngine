@@ -20,12 +20,12 @@ public:
 	void Jump();
 	void Fire();
 
-	void SetTexture(const std::string& filename) override;
+	//void SetTexture(const std::string& filename) override;
 	void SetInput();
 
 	CharacterState GetCharacterState() const { return m_CharacterState; }
 private:
-	UnitTexture* m_pTexture = nullptr;
+	//UnitTexture* m_pTexture = nullptr;
 	CharacterState m_CharacterState;
 	bool m_IsToTheRight = true;
 	float m_Speed = 30.f;

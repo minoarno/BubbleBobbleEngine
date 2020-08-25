@@ -178,7 +178,12 @@ $(SolutionDir)3rdParty/SDL2/lib/x86;$(LibraryPath)</LibraryPath>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="source\FireCommand.cpp" />
+    <ClCompile Include="source\Drop.cpp" />
+    <ClCompile Include="source\Emerald.cpp" />
+    <ClCompile Include="source\GoldBag.cpp" />
+    <ClCompile Include="source\Hobbin.cpp" />
+    <ClCompile Include="source\Nobbin.cpp" />
+    <ClCompile Include="source\PickUp.cpp" />
     <ClCompile Include="source\ProjectileManager.cpp" />
     <ClCompile Include="source\EnemyTexture.cpp" />
     <ClCompile Include="source\HUD.cpp" />
@@ -196,9 +201,13 @@ $(SolutionDir)3rdParty/SDL2/lib/x86;$(LibraryPath)</LibraryPath>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\FunctionCommand.h" />
-    <ClInclude Include="source\FireCommand.h" />
-    <ClInclude Include="source\Commands.h" />
+    <ClInclude Include="source\Drop.h" />
+    <ClInclude Include="source\Emerald.h" />
+    <ClInclude Include="source\GoldBag.h" />
+    <ClInclude Include="source\Hobbin.h" />
+    <ClInclude Include="source\Nobbin.h" />
+    <ClInclude Include="source\PickUp.h" />
+    <ClInclude Include="source\PickUps.h" />
     <ClInclude Include="source\ProjectileManager.h" />
     <ClInclude Include="source\Projectiles.h" />
     <ClInclude Include="source\Enemies.h" />

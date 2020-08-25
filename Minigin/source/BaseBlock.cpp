@@ -7,7 +7,7 @@ namespace MidestinyEngine
 	BaseBlock::BaseBlock()
 		:GameObject{}
 	{
-		SetTexture("LevelBlocks.png");
+		SetTexture("Block.png");
 		/*MidestinyEngine::BoxCollider* boxCollider = new MidestinyEngine::BoxCollider();
 		boxCollider->SetSize(Core::g_BlockSize, Core::g_BlockSize);
 		AddComponent(boxCollider);

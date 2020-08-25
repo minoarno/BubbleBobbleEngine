@@ -16,9 +16,6 @@
     <Filter Include="Enemies">
       <UniqueIdentifier>{797ad136-53d2-41f5-a064-fb36aa5ca7e0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Commands">
-      <UniqueIdentifier>{49e61ac1-5edd-4c9e-a043-12f20ce3fdee}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Projectiles">
       <UniqueIdentifier>{9aaae328-c096-430d-8bb2-dae01f4f55f1}</UniqueIdentifier>
     </Filter>
@@ -27,6 +24,9 @@
     </Filter>
     <Filter Include="Character">
       <UniqueIdentifier>{a43e7d76-585e-4d2c-8bea-b8305cd5d737}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PickUps">
+      <UniqueIdentifier>{e9408127-4028-4e2e-aa9a-20b57a188a52}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -60,8 +60,23 @@
     <ClCompile Include="source\ProjectileManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\FireCommand.cpp">
-      <Filter>Commands</Filter>
+    <ClCompile Include="source\Nobbin.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\PickUp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GoldBag.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Emerald.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Drop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Hobbin.cpp">
+      <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -98,13 +113,25 @@
     <ClInclude Include="source\ProjectileManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\Commands.h">
-      <Filter>Commands</Filter>
+    <ClInclude Include="source\Nobbin.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\FireCommand.h">
-      <Filter>Commands</Filter>
+    <ClInclude Include="source\Hobbin.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\FunctionCommand.h">
+    <ClInclude Include="source\PickUps.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\PickUp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\GoldBag.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Emerald.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Drop.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
