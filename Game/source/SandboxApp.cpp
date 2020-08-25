@@ -2,6 +2,8 @@
 #include "Character.h"
 #include "Enemies.h"
 #include "ResourceManager.h"
+#include "Input.h"
+#include "Commands.h"
 
 class Sandbox final : public MidestinyEngine::Application
 {
@@ -9,27 +11,15 @@ public:
 	Sandbox()
 		:Application()
 	{
-		MidestinyEngine::SceneManager::GetInstance().LoadScenesFromFile("../Data/Scenes.txt");
-		Character* Bub = new Character{};
-		Bub->SetTexture("heroGreen.png");
-		Bub->SetPosition(60, 460);
-		Bub->SetSize(Core::g_BlockSize * 2, Core::g_BlockSize * 2);
-		MidestinyEngine::SceneManager::GetInstance().GetActiveScene()->Add(Bub);
+		MidestinyEngine::SceneManager::GetInstance().CreateScene("0");
+		Character* player1 = new Character{};
+		MidestinyEngine::SceneManager::GetInstance().GetActiveScene()->Add(player1);
+		//MidestinyEngine::InputManager::GetInstance().AddInput(MidestinyEngine::ControllerButton::ButtonA, new FireCommand{});
+		//MidestinyEngine::InputManager::GetInstance().AddInput(SDL_SCANCODE_UP, new FireCommand{});
 
-		ZenChan* zenchan1 = new ZenChan{};
-		zenchan1->SetPosition(60, 40); 
-		zenchan1->SetSize(Core::g_BlockSize * 2, Core::g_BlockSize * 2);
-		MidestinyEngine::SceneManager::GetInstance().GetActiveScene()->Add(zenchan1);
 
-		ZenChan* zenchan2 = new ZenChan{};
-		zenchan2->SetPosition(230, 40);
-		zenchan2->SetSize(Core::g_BlockSize * 2, Core::g_BlockSize * 2);
-		MidestinyEngine::SceneManager::GetInstance().GetActiveScene()->Add(zenchan2);
-
-		ZenChan* zenchan3 = new ZenChan{};
-		zenchan3->SetPosition(400, 40);
-		zenchan3->SetSize(Core::g_BlockSize * 2, Core::g_BlockSize * 2);
-		MidestinyEngine::SceneManager::GetInstance().GetActiveScene()->Add(zenchan3);
+		MidestinyEngine::InputManager::GetInstance().AddInput(MidestinyEngine::ControllerButton::ButtonA, new FunctionCommand{ std::bind(&Character::Fire,player1) });
+		MidestinyEngine::InputManager::GetInstance().AddInput(SDL_SCANCODE_UP, new FunctionCommand{ std::bind(&Character::Fire,player1) });
 	}
 
 	~Sandbox() = default;

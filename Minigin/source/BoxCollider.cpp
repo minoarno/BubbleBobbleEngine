@@ -7,23 +7,22 @@ namespace MidestinyEngine
 		: BaseComponent{}
 	{
 		m_TypeName = "BoxCollider";
-		//m_pBodyshape = new b2PolygonShape();
-		//m_pBodyshape->SetAsBox(20, 20);
+		m_pBodyshape = new b2PolygonShape();
+		m_pBodyshape->SetAsBox(20, 20);
 
-		//m_FixtureDef.shape = m_pBodyshape;
-		//m_FixtureDef.density = 1.f;
+		m_FixtureDef.shape = m_pBodyshape;
+		m_FixtureDef.density = 1.f;
 	}
 
 	void BoxCollider::Start()
 	{
 		//RigidBody* rigidBody = static_cast<RigidBody*>(m_pOwnerGameObject->GetComponent("RigidBody"));
-		//RigidBody* rigidBody = m_pOwnerGameObject->GetComponent<RigidBody>();
-		//if (rigidBody == nullptr)
-		//{
-		//	
-		//	return;
-		//}
-		//m_pFixture = rigidBody->AddCollider(m_FixtureDef);
+		RigidBody* rigidBody = m_pOwnerGameObject->GetComponent<RigidBody>();
+		if (rigidBody == nullptr)
+		{
+			return;
+		}
+		m_pFixture = rigidBody->AddCollider(m_FixtureDef);
 	}
 
 	void BoxCollider::Update()
@@ -45,8 +44,8 @@ namespace MidestinyEngine
 	{
 	}
 
-	//void BoxCollider::SetSize(float width, float height)
-	//{
-	//	m_pBodyshape->SetAsBox(width, height);
-	//}
+	void BoxCollider::SetSize(float width, float height)
+	{
+		m_pBodyshape->SetAsBox(width, height);
+	}
 }

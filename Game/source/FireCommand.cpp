@@ -1,6 +1,8 @@
 #include "FireCommand.h"
-#include "Character.h"
-void FireCommand::Execute() const
+#include <iostream>
+#include "Log.h"
+
+void FireCommand::Execute()const
 {
-	receiver->ShootBubble();
+	ME_INFO("FIRE");
 }

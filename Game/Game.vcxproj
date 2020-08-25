@@ -178,25 +178,16 @@ $(SolutionDir)3rdParty/SDL2/lib/x86;$(LibraryPath)</LibraryPath>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="source\Bob.cpp" />
+    <ClCompile Include="source\FireCommand.cpp" />
     <ClCompile Include="source\ProjectileManager.cpp" />
     <ClCompile Include="source\EnemyTexture.cpp" />
-    <ClCompile Include="source\Drop.cpp" />
-    <ClCompile Include="source\Boulder.cpp" />
-    <ClCompile Include="source\Bubble.cpp" />
     <ClCompile Include="source\HUD.cpp" />
-    <ClCompile Include="source\JumpCommand.cpp" />
     <ClCompile Include="source\Projectile.cpp" />
-    <ClCompile Include="source\FireCommand.cpp" />
     <ClCompile Include="source\EnemyManager.cpp" />
-    <ClCompile Include="source\Maita.cpp" />
     <ClCompile Include="source\BaseEnemy.cpp" />
     <ClCompile Include="source\Character.cpp" />
     <ClCompile Include="source\SandboxApp.cpp" />
     <ClCompile Include="source\UnitTexture.cpp" />
-    <ClCompile Include="source\WalkRightCommand.cpp" />
-    <ClCompile Include="source\ZenChan.cpp" />
-    <ClCompile Include="source\WalkLeftCommand.cpp" />
     <ClCompile Include="source\Enums.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -205,27 +196,19 @@ $(SolutionDir)3rdParty/SDL2/lib/x86;$(LibraryPath)</LibraryPath>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\Bob.h" />
+    <ClInclude Include="source\FunctionCommand.h" />
+    <ClInclude Include="source\FireCommand.h" />
     <ClInclude Include="source\Commands.h" />
     <ClInclude Include="source\ProjectileManager.h" />
     <ClInclude Include="source\Projectiles.h" />
     <ClInclude Include="source\Enemies.h" />
     <ClInclude Include="source\EnemyTexture.h" />
-    <ClInclude Include="source\Drop.h" />
-    <ClInclude Include="source\Boulder.h" />
-    <ClInclude Include="source\Bubble.h" />
     <ClInclude Include="source\HUD.h" />
-    <ClInclude Include="source\JumpCommand.h" />
     <ClInclude Include="source\Projectile.h" />
-    <ClInclude Include="source\FireCommand.h" />
     <ClInclude Include="source\EnemyManager.h" />
-    <ClInclude Include="source\Maita.h" />
     <ClInclude Include="source\BaseEnemy.h" />
     <ClInclude Include="source\Character.h" />
     <ClInclude Include="source\UnitTexture.h" />
-    <ClInclude Include="source\WalkRightCommand.h" />
-    <ClInclude Include="source\ZenChan.h" />
-    <ClInclude Include="source\WalkLeftCommand.h" />
     <ClInclude Include="source\Enums.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

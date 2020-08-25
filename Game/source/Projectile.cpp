@@ -34,9 +34,6 @@ bool Projectile::DoesProjectileHit(MidestinyEngine::SceneObject* sceneObject)
 				return true;
 			}
 		}
-
 	}
 	return false;
 }
-
-

@@ -6,14 +6,14 @@
 
 namespace MidestinyEngine
 {
-	Tilemap::Tilemap()
+	Tilemap::Tilemap(const int defaultWidth, const int defaultHeight)
 	{
-		m_TilemapGrid.reserve(27);
-		for (int i = 0; i < 27; i++)
+		m_TilemapGrid.reserve(defaultHeight);
+		for (int i = 0; i < defaultHeight; i++)
 		{
 			std::vector<BaseBlock*> blocks;
-			blocks.reserve(35);
-			for (int j = 0; j < 35; j++)
+			blocks.reserve(defaultWidth);
+			for (int j = 0; j < defaultWidth; j++)
 			{
 				BaseBlock* block = new BaseBlock{};
 				block->SetPosition((j + .5f) * Core::g_BlockSize, (i + .5f) * Core::g_BlockSize);
@@ -21,7 +21,7 @@ namespace MidestinyEngine
 			}
 			m_TilemapGrid.push_back(blocks);
 		}
-		m_LevelBoundaries = Rectf{ 0,0,35 * Core::g_BlockSize,27 * Core::g_BlockSize };
+		m_LevelBoundaries = Rectf{ 0,0,defaultWidth * Core::g_BlockSize,defaultHeight * Core::g_BlockSize };
 	}
 
 	Tilemap::~Tilemap()

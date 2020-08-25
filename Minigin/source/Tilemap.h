@@ -8,7 +8,7 @@ namespace MidestinyEngine
 	class Tilemap : public SceneObject
 	{
 	public:
-		Tilemap();
+		Tilemap(const int defaultWidth, const int defaultHeight);
 		~Tilemap();
 
 		void LoadTileMapFromFile(int width, int height, const std::string& blockoutPart);

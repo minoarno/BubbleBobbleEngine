@@ -18,7 +18,7 @@ public:
 
 	void Move(bool isToTheRight);
 	void Jump();
-	void ShootBubble();
+	void Fire();
 
 	void SetTexture(const std::string& filename) override;
 	void SetInput();

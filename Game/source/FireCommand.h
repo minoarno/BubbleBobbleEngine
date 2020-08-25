@@ -1,11 +1,7 @@
 #pragma once
-#include "Command.h"
-class Character;
+#include <Command.h>
 class FireCommand : public Command
 {
-public:
-	virtual ~FireCommand() = default;
 	virtual void Execute()const;
-private:
-	Character* receiver;
 };
+

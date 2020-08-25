@@ -16,9 +16,6 @@
     <Filter Include="Enemies">
       <UniqueIdentifier>{797ad136-53d2-41f5-a064-fb36aa5ca7e0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Drops">
-      <UniqueIdentifier>{b3a11256-ec48-4cc4-9f44-5cbb58584531}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Commands">
       <UniqueIdentifier>{49e61ac1-5edd-4c9e-a043-12f20ce3fdee}</UniqueIdentifier>
     </Filter>
@@ -39,44 +36,17 @@
     <ClCompile Include="source\BaseEnemy.cpp">
       <Filter>Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="source\Maita.cpp">
-      <Filter>Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="source\ZenChan.cpp">
-      <Filter>Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="source\FireCommand.cpp">
-      <Filter>Commands</Filter>
-    </ClCompile>
     <ClCompile Include="source\EnemyManager.cpp">
       <Filter>Enemies</Filter>
     </ClCompile>
     <ClCompile Include="source\Projectile.cpp">
       <Filter>Projectiles</Filter>
     </ClCompile>
-    <ClCompile Include="source\Bubble.cpp">
-      <Filter>Projectiles</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Boulder.cpp">
-      <Filter>Projectiles</Filter>
-    </ClCompile>
-    <ClCompile Include="source\JumpCommand.cpp">
-      <Filter>Commands</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Drop.cpp">
-      <Filter>Drops</Filter>
-    </ClCompile>
     <ClCompile Include="source\Enums.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\WalkLeftCommand.cpp">
-      <Filter>Commands</Filter>
-    </ClCompile>
     <ClCompile Include="source\UnitTexture.cpp">
       <Filter>Textures</Filter>
-    </ClCompile>
-    <ClCompile Include="source\WalkRightCommand.cpp">
-      <Filter>Commands</Filter>
     </ClCompile>
     <ClCompile Include="source\EnemyTexture.cpp">
       <Filter>Textures</Filter>
@@ -90,49 +60,22 @@
     <ClCompile Include="source\ProjectileManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Bob.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="source\FireCommand.cpp">
+      <Filter>Commands</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\BaseEnemy.h">
       <Filter>Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="source\ZenChan.h">
-      <Filter>Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Maita.h">
-      <Filter>Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="source\FireCommand.h">
-      <Filter>Commands</Filter>
-    </ClInclude>
     <ClInclude Include="source\EnemyManager.h">
       <Filter>Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Boulder.h">
-      <Filter>Projectiles</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Bubble.h">
-      <Filter>Projectiles</Filter>
     </ClInclude>
     <ClInclude Include="source\Projectile.h">
       <Filter>Projectiles</Filter>
     </ClInclude>
-    <ClInclude Include="source\JumpCommand.h">
-      <Filter>Commands</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Drop.h">
-      <Filter>Drops</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WalkLeftCommand.h">
-      <Filter>Commands</Filter>
-    </ClInclude>
     <ClInclude Include="source\UnitTexture.h">
       <Filter>Textures</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WalkRightCommand.h">
-      <Filter>Commands</Filter>
     </ClInclude>
     <ClInclude Include="source\EnemyTexture.h">
       <Filter>Textures</Filter>
@@ -158,7 +101,10 @@
     <ClInclude Include="source\Commands.h">
       <Filter>Commands</Filter>
     </ClInclude>
-    <ClInclude Include="source\Bob.h">
+    <ClInclude Include="source\FireCommand.h">
+      <Filter>Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="source\FunctionCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -51,7 +51,7 @@ namespace MidestinyEngine
 		{
 			if (typeid(T) == typeid(*p.second))
 			{
-				return dynamic_cast<T*>(p.second);
+				return static_cast<T*>(p.second);
 			}
 		}
 		return nullptr;

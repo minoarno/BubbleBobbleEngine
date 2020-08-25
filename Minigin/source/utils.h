@@ -4,6 +4,7 @@
 #include <vector>
 #include <deque>
 #include <ios>
+#include "ColliderIncludes.h"
 
 namespace MidestinyEngine
 {
@@ -81,4 +82,6 @@ namespace MidestinyEngine
 	bool CheckStream(std::istream& inputStream);
 
 	float Round2Dec(float value);
+
+	glm::vec3 MakeVec3(const b2Vec2& vec);
 }
