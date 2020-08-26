@@ -87,7 +87,7 @@ void MidestinyEngine::Transform::Translate(const glm::vec3& pos)
 void MidestinyEngine::Transform::ClampLevelBoundaries()
 {
 	Rectf bounds = MidestinyEngine::SceneManager::GetInstance().GetActiveScene()->GetTilemap()->GetBoundaries();
-	if (bounds.x == 0 && bounds.y == 0 && bounds.w == 0 && bounds.h == 0)return;
+	if (bounds.x == 0 && bounds.y == 0 && bounds.w == Core::g_BlockSize && bounds.h == Core::g_BlockSize)return;
 	if (m_Position.x < bounds.x) m_Position.x = bounds.x;
 	else if (m_Position.x + Core::g_BlockSize > bounds.x + bounds.w) m_Position.x = bounds.x + bounds.w - Core::g_BlockSize;
 

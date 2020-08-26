@@ -104,15 +104,15 @@ namespace MidestinyEngine
 			}
 		}
 	}
+	#endif
 	Rectf Tilemap::GetBoundaries() const
 	{
 		if (this != nullptr)
 		{
 			return m_LevelBoundaries;
 		}
-		return Rectf();
+		return Rectf(0,0,Core::g_BlockSize,Core::g_BlockSize);
 	}
-	#endif
 
 	void Tilemap::ClearGrid()
 	{
