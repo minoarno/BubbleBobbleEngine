@@ -104,6 +104,14 @@ namespace MidestinyEngine
 			}
 		}
 	}
+	Rectf Tilemap::GetBoundaries() const
+	{
+		if (this != nullptr)
+		{
+			return m_LevelBoundaries;
+		}
+		return Rectf();
+	}
 	#endif
 
 	void Tilemap::ClearGrid()

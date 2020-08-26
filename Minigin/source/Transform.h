@@ -30,7 +30,12 @@ namespace MidestinyEngine
 		void SetPosThroughRigidBody(const glm::vec3& pos);
 		void Translate(float x, float y, float z);
 		void Translate(const glm::vec3& pos);
+
+		void SetLevelBoundariesClamp(bool value) { m_LevelBoundariesClamp = value; };
 	private:
 		glm::vec3 m_Position;
+		bool m_LevelBoundariesClamp = true;
+
+		void ClampLevelBoundaries();
 	};
 }

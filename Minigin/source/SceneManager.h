@@ -9,6 +9,8 @@ namespace MidestinyEngine
 	{
 	public:
 		~SceneManager();
+		void CleanUp();
+
 		Scene& CreateScene(const std::string& name);
 		void Update();
 		void LateUpdate();

@@ -64,7 +64,7 @@ namespace MidestinyEngine
 	void GameObject::Render() const
 	{
 		const glm::vec3 pos = m_Transform->GetPosition();
-		Renderer::GetInstance().RenderTexture(*m_pTexture, pos.x, pos.y);
+		Renderer::GetInstance().RenderTexture(*m_pTexture, pos.x, pos.y,Core::g_BlockSize,Core::g_BlockSize);
 		for (std::pair<std::string, BaseComponent*> component : m_pComponents)
 		{
 			component.second->Render();

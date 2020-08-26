@@ -65,7 +65,6 @@ void MidestinyEngine::SceneManager::SaveScenesToFile(const std::string& filename
 
 void MidestinyEngine::SceneManager::LoadScenesFromFile(const std::string& filename)
 {
-	ME_CORE_INFO(filename);
 	std::ifstream in{ filename };
 	std::string temp{};
 	while (!in.eof())
@@ -78,6 +77,7 @@ void MidestinyEngine::SceneManager::LoadScenesFromFile(const std::string& filena
 			std::smatch matches;
 			if (std::regex_search(temp, matches, levelRegex))
 			{
+				ME_CORE_INFO(matches[1].str());
 				Scene& scene = CreateScene(matches[1].str());
 				scene.LoadScene(std::stoi(matches[2].str()), std::stoi(matches[3].str()), matches[4].str(), matches[5].str());
 			}
@@ -125,6 +125,11 @@ void MidestinyEngine::SceneManager::NextScene(const std::string& sceneName)
 
 MidestinyEngine::SceneManager::~SceneManager()
 {
+	CleanUp();
+}
+
+void MidestinyEngine::SceneManager::CleanUp()
+{
 	if (m_Scenes.size() != 0)
 	{
 		for (std::pair<int, Scene*> scene : m_Scenes)
@@ -143,6 +148,5 @@ MidestinyEngine::Scene& MidestinyEngine::SceneManager::CreateScene(const std::st
 	int index = int(m_Scenes.size());
 	m_Scenes.emplace(index,scene);
 	m_NameToIndexList.emplace(name, index);
-	ME_CORE_INFO("{0}", m_Scenes.size());
 	return *scene;
 }

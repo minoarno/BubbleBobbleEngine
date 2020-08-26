@@ -66,7 +66,7 @@ void Character::FixedUpdate()
 
 void Character::Render() const
 {
-	//if (m_pTexture != nullptr) m_pTexture->Render();
+	GameObject::Render();
 }
 
 void Character::Move(bool isToTheRight)
@@ -76,14 +76,37 @@ void Character::Move(bool isToTheRight)
 	m_Transform->Translate((isToTheRight) ? speed : -speed, 0, 0);
 }
 
-void Character::Jump()
+void Character::MoveUp()
 {
-	GetComponent<MidestinyEngine::RigidBody>()->AddForce(30.f,0.f);
+	float speed = m_Speed * MidestinyEngine::GameTime::GetInstance().GetElapsedSeconds();
+	m_Transform->Translate(0, -speed, 0);
+	ME_INFO("Move Up");
+}
+
+void Character::MoveDown()
+{
+	float speed = m_Speed * MidestinyEngine::GameTime::GetInstance().GetElapsedSeconds();
+	m_Transform->Translate(0, speed, 0);
+	ME_INFO("Move Down");
+}
+
+void Character::MoveLeft()
+{
+	float speed = m_Speed * MidestinyEngine::GameTime::GetInstance().GetElapsedSeconds();
+	m_Transform->Translate(-speed, 0, 0);
+	ME_INFO("Move Left");
+}
+
+void Character::MoveRight()
+{
+	float speed = m_Speed * MidestinyEngine::GameTime::GetInstance().GetElapsedSeconds();
+	m_Transform->Translate(speed, 0, 0);
+	ME_INFO("Move Right");
 }
 
 void Character::Fire()
 {
-	ME_INFO("Fire OwO");
+	ME_INFO("Fire");
 }
 
 //void Character::SetTexture(const std::string& filename)
@@ -97,7 +120,3 @@ void Character::Fire()
 //		m_pTexture->SetAmountOfAttackingFrames(2);
 //	}
 //}
-
-void Character::SetInput()
-{
-}

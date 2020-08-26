@@ -62,8 +62,6 @@ namespace MidestinyEngine
 	{
 		if (m_BlockType != BlockType::Air)
 		{
-			const glm::vec3 pos = m_Transform->GetPosition();
-
 			Renderer::GetInstance().RenderTexture(*m_pTexture, GetSourceRect(), GetBoundaries());
 		}
 	}
@@ -75,7 +73,7 @@ namespace MidestinyEngine
 
 	Rectf BaseBlock::GetSourceRect() const
 	{
-		return Rectf{ 0,0,float(m_pTexture->GetWidth() / 10),float(m_pTexture->GetHeight() / 10) };
+		return Rectf{ 0,0,float(m_pTexture->GetWidth()),float(m_pTexture->GetHeight()) };
 	}
 
 	void BaseBlock::CheckCollisionTopsideBlock(GameObject* gameObject)
