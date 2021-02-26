@@ -95,11 +95,13 @@ void MidestinyEngine::Application::Run()
 			while (Core::g_DoContinue)
 			{
 				const auto currentTime = high_resolution_clock::now();
-
+				sceneManager.FixedUpdate();
+				
 				Core::g_DoContinue = input.ProcessInput();
 				sceneManager.Update();
-				renderer.Render();
+
 				sceneManager.LateUpdate();
+				renderer.Render();
 				threadMaster.Update();
 				MidestinyEngine::GameTime::GetInstance().SetElapsedSeconds(std::chrono::duration<float>(high_resolution_clock::now() - currentTime).count());
 			}
